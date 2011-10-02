@@ -18,8 +18,8 @@ from tipfyext.wtforms import Form, fields, validators
 REQUIRED = validators.required()
 
 class LoginForm(Form):
-    username = fields.TextField('Username', validators=[REQUIRED])
-    password = fields.PasswordField('Password', validators=[REQUIRED])
+    username_login = fields.TextField('Username', validators=[REQUIRED])
+    password_login = fields.PasswordField('Password', validators=[REQUIRED])
     remember = fields.BooleanField('Keep me signed in')
 
 
@@ -32,7 +32,8 @@ class RegistrationForm(Form):
     email = fields.TextField('Email', validators=[REQUIRED])
     password = fields.PasswordField('Password', validators=[REQUIRED])
     password_confirm = fields.PasswordField('Confirm the password', validators=[REQUIRED])
-
+    username_login = fields.TextField('')
+    password_login = fields.PasswordField('')
 
 # ----- Handlers -----
 
@@ -146,7 +147,7 @@ class LoginHandler(BaseHandler):
 
         if self.auth.user:
             # User is already registered, so don't display the signup form.
-            return self.redirect(redirect_url)
+            return self.redirect('/dashboard')
 
         opts = {'continue': self.redirect_path()}
         context = {
@@ -167,8 +168,8 @@ class LoginHandler(BaseHandler):
             return self.redirect(redirect_url)
 
         if self.form.validate():
-            username = self.form.username.data
-            password = self.form.password.data
+            username = self.form.username_login.data
+            password = self.form.password_login.data
             remember = self.form.remember.data
 
             res = self.auth.login_with_form(username, password, remember)

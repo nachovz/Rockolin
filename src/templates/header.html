@@ -1,3 +1,6 @@
+
+{% from '_form_macros.html' import form_field %}
+
 <div class="topbar">	
 	<div class="container">
 		{% if current_user or auth_session -%}
@@ -23,11 +26,15 @@
             </ul>
             {%- endif %} 
         {% else %}
-		<form class="pull-right" action="#">
-			<input class="small" type="text" name="username" placeholder="username" />
-			<input class="small" type="password" name="password" placeholder="password" />
-			<input  type="submit" value="submit" />
-		</form>
+        <form class="pull-right" method="post" action="/auth/login" enctype="multipart/form-data" class="tipfy-form">
+        
+            {{ form_field(form.username_login, class='small',placeholder='username') }}
+            {{ form_field(form.password_login, class='small',placeholder='password') }}
+        
+            <input type="submit" name="submit" value="{{ _('Sign in') }}">
+        
+    	</form>
+		
 		{% endif %}
 	</div>
 </div>
