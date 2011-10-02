@@ -1,7 +1,9 @@
-application: my-app
+application: rockolinapp
 version: 1
 runtime: python
 api_version: 1
+
+default_expiration: "30d"
 
 builtins:
 - appstats: on
