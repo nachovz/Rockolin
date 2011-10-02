@@ -115,6 +115,14 @@ opacity: 0.8;
 	float: left;
 	margin-left: -29px;
 	margin-top: 1em;
+	border: 0;
+	border:none;
+	width: 340px;
+	height: 82px;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	
 }
 
 footer{

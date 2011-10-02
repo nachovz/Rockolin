@@ -5,10 +5,23 @@
 				<a href="#">About Rockolin</a>
 			</li>
 		</ul>
+		{% if current_user or auth_session -%}
+            {% if current_user -%}
+            <ul class="nav secondary-nav">
+            	<li>
+	                <span class="user_email">{{ current_user.username|e }}</span> |        		
+            	</li>
+            	<li>
+            		<a href="{{ logout_url }}">Sign out</a>
+            	</li>
+            </ul>
+            {%- endif %} 
+        {% else %}
 		<form class="pull-right" action="#">
 			<input class="small" type="text" name="username" placeholder="username" />
 			<input class="small" type="password" name="password" placeholder="password" />
 			<input  type="submit" value="submit" />
 		</form>
+		{% endif %}
 	</div>
 </div>
