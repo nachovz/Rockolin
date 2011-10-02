@@ -23,7 +23,7 @@ html, body{
 	margin-right:0.5em;
 }
 
-label{
+.form-stacked label{
 	color: white;
 	font-size: 1.1em;
 }
@@ -40,7 +40,7 @@ label{
 	min-height: 578px;
 }
 
-.register-page{
+.background-with{
 	background-color:#562F2F; 
 }
 
@@ -110,22 +110,27 @@ label{
 
 .register-box{
 	margin:7.5em 0 0 4em;
+		padding-left: 1em;
+	padding-bottom: 1em;
+}
+
+.gradient-div{
 	-webkit-box-shadow: 0px 0px 20px 25px rgba(0, 0, 0, 0.40);
 	-moz-box-shadow: 0px 0px 20px 25px rgba(0, 0, 0, 0.40);
 	box-shadow: 0px 0px 20px 25px rgba(0, 0, 0, 0.40);
-	padding-left: 1em;
-	padding-bottom: 1em;
-background: -moz-linear-gradient(top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.4) 1%, rgba(0,0,0,0.4) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.4)), color-stop(1%,rgba(0,0,0,0.4)), color-stop(100%,rgba(0,0,0,0.4))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top, rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.4) 1%,rgba(0,0,0,0.4) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top, rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.4) 1%,rgba(0,0,0,0.4) 100%); /* Opera11.10+ */
-background: -ms-linear-gradient(top, rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.4) 1%,rgba(0,0,0,0.4) 100%); /* IE10+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#66000000', endColorstr='#66000000',GradientType=0 ); /* IE6-9 */
-background: linear-gradient(top, rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.4) 1%,rgba(0,0,0,0.4) 100%); /* W3C */
+
+	background: -moz-linear-gradient(top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.4) 1%, rgba(0,0,0,0.4) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.4)), color-stop(1%,rgba(0,0,0,0.4)), color-stop(100%,rgba(0,0,0,0.4))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.4) 1%,rgba(0,0,0,0.4) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.4) 1%,rgba(0,0,0,0.4) 100%); /* Opera11.10+ */
+	background: -ms-linear-gradient(top, rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.4) 1%,rgba(0,0,0,0.4) 100%); /* IE10+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#66000000', endColorstr='#66000000',GradientType=0 ); /* IE6-9 */
+	background: linear-gradient(top, rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.4) 1%,rgba(0,0,0,0.4) 100%); /* W3C */
+
 }
 
-.register-box div{
-	opacity: 1;
+.input label{
+	display: none;
 }
 
 .submit-button{
@@ -187,3 +192,11 @@ footer{
 .blogger{
 	background-position-x: -313px;
 }
+
+.logInbox{
+	margin-top: 6em;
+}
+
+
+//LOGIN//
+

@@ -18,9 +18,9 @@ from tipfyext.wtforms import Form, fields, validators
 REQUIRED = validators.required()
 
 class LoginForm(Form):
-    username_login = fields.TextField('Username', validators=[REQUIRED])
-    password_login = fields.PasswordField('Password', validators=[REQUIRED])
-    remember = fields.BooleanField('Keep me signed in')
+    username_login = fields.TextField('')
+    password_login = fields.PasswordField('')
+    remember = fields.BooleanField('')
 
 
 class SignupForm(Form):
