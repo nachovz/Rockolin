@@ -6,6 +6,7 @@ rules = [
     Rule('/', endpoint='home', handler='handlers.UserHandler.RegisterHandler'),
     Rule('/auth/login', endpoint='auth/login', handler='handlers.UserHandler.LoginHandler'),
     Rule('/artist', endpoint='artist', handler='handlers.LastFmHandler.LastFmSearchHandler'),
+    Rule('/dashboard', endpoint='dashboard', handler='handlers.DashboardHandler.DashboardHandler'),
     Rule('/auth/logout', endpoint='auth/logout', handler='handlers.UserHandler.LogoutHandler'),
     Rule('/auth/signup', endpoint='auth/signup', handler='handlers.UserHandler.SignupHandler'),
     
