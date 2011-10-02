@@ -1,20 +1,60 @@
 {% extends 'layout.html' %}
-
 {% from '_form_macros.html' import form_field %}
-
 {% block body %}
-    <h1>Register</h1>
-    <p>Fill the form to create a new account, or <a href="{{ url_for('auth/login') }}">sign in with your existing one</a>.</p>
-    <form method="post" action="{{ current_url }}" enctype="multipart/form-data" class="tipfy-form">
-        <ol>
-            <li>{{ form_field(form.username, class='medium') }}</li>
-            <li>{{ form_field(form.email, class='medium') }}</li>
-            <li>{{ form_field(form.password, class='medium') }}</li>
-            <li>{{ form_field(form.password_confirm, class='medium') }}</li>
-        </ol>
-        <fieldset class="submit">
-            <input type="submit" name="submit" value="{{ _('Register') }}">
-        </fieldset>
-    </form>
+
+<div class="big-content">
+	<div class="container">
+		<div class="row">
+			<div class="span9">
+				<img class="logo-img" src="/static/images/logo.png" />
+				<ul class="home-text-ul">
+					<li class="li-first">Create your event</li>
+					<li class="li-second">Add music to you setlist</li>
+					<li class="li-third">Share and invite</li>
+					<li class="li-fourth">... and let <span>THEM</span> choose how it will go!</li>
+				</ul>
+			</div>
+			<div class="span7">
+				<div class="register-box">
+					<div class="fade in">
+						<form name = "signup" class="form-stacked" method="post" action="{{ current_url }}" enctype="multipart/form-data">
+						
+						<div class="clearfix">
+							
+							<div class="input">
+								{{ form_field(form.username, class='required xlarge') }}
+							</div>
+						</div>
+						<br/>
+						<div class="clearfix">
+							<div class="input">
+								{{ form_field(form.email, class='required xlarge') }}
+							</div>
+						</div>
+						<br/>
+						<div class="clearfix">
+							<div class="input">
+								{{ form_field(form.password, class='required xlarge') }}
+							</div>
+						</div>
+						<br/>
+						<div class="clearfix">
+							<div class="input">
+								{{ form_field(form.password_confirm, class='required xlarge') }}
+							</div>
+						</div>
+						<input type="submit" name="submit" value="{{ _('Register') }}">
+						<a class="submit-button" onClick="document.signup.submit()"><img src="/static/images/buttonSignUp.png" /></a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+ <!--   <p>This is a <a href="http://www.tipfy.org/">tipfy</a> example for
+    authentication using multi-auth users system.</p>
+
+    <p>Users are required to save an account record to access <a href="{{ url_for('content/index') }}">protected content</a>.</p>-->
 {% endblock %}
 

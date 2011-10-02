@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-
+{% from '_form_macros.html' import form_field %}
 {% block body %}
 
 <div class="big-content">
@@ -17,36 +17,34 @@
 			<div class="span7">
 				<div class="register-box">
 					<div class="fade in">
-						<form class="form-stacked">
+						<form name = "signup" class="form-stacked" method="post" action="{{ current_url }}" enctype="multipart/form-data">
 						
 						<div class="clearfix">
-							<label>Username:</label>
+							
 							<div class="input">
-								<input class="required xlarge" type="text" name="username" />
+								{{ form_field(form.username, class='required xlarge') }}
 							</div>
 						</div>
 						<br/>
 						<div class="clearfix">
-							<label>Email:</label>
 							<div class="input">
-								<input class="required xlarge" type="text" name="email" />
+								{{ form_field(form.email, class='required xlarge') }}
 							</div>
 						</div>
 						<br/>
 						<div class="clearfix">
-							<label>Password:</label>
 							<div class="input">
-								<input class="required xlarge" type="text" name="password" />
+								{{ form_field(form.password, class='required xlarge') }}
 							</div>
 						</div>
 						<br/>
 						<div class="clearfix">
-							<label>Repeat Password:</label>
 							<div class="input">
-								<input class="required xlarge" type="text" name="re-password" />
+								{{ form_field(form.password_confirm, class='required xlarge') }}
 							</div>
 						</div>
-						<a class="submit-button"><img src="/static/images/buttonSignUp.png" /></a>
+						
+						<a class="submit-button" onClick="document.signup.submit()"><img src="/static/images/buttonSignUp.png" /></a>
 						</div>
 					</form>
 				</div>

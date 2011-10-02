@@ -90,7 +90,48 @@ class BaseHandler(RequestHandler, Jinja2Mixin):
 
 class HomeHandler(BaseHandler):
     def get(self, **kwargs):
-        return self.render_response('home.html', section='home')
+        
+       
+        
+        return self.render_response('home.html', form = self.form,section='home')
+    
+    def post(self, **kwargs):
+        redirect_url = self.redirect_path()
+
+        if self.auth.user:
+            # User is already registered, so don't process the signup form.
+            return self.redirect(redirect_url)
+
+        if self.form.validate():
+            username = self.form.username.data
+            email = self.form.email.data
+            password = self.form.password.data
+            password_confirm = self.form.password_confirm.data
+
+            if password != password_confirm:
+                self.messages.append(("Password confirmation didn't match.",
+                    'error'))
+                return self.get(**kwargs)
+
+            auth_id = 'own|%s' % username
+            user = self.auth.create_user(username, auth_id, email = email, password=password)
+            if user:
+                self.auth.login_with_auth_id(user.auth_id, True)
+                self.session.add_flash('You are now registered. Welcome!',
+                    'success', '_messages')
+                return self.redirect(redirect_url)
+            else:
+                self.messages.append(('This nickname is already registered.',
+                    'error'))
+                return self.get(**kwargs)
+
+        self.messages.append(('A problem occurred. Please correct the '
+            'errors listed in the form.', 'error'))
+        return self.get(**kwargs)
+    
+    @cached_property
+    def form(self):
+        return RegistrationForm(self.request)
 
 
 class ContentHandler(BaseHandler):
@@ -195,7 +236,7 @@ class RegisterHandler(BaseHandler):
 
         if self.auth.user:
             # User is already registered, so don't display the registration form.
-            return self.redirect(redirect_url)
+            return self.redirect('/dashboard')
 
         return self.render_response('register.html', form=self.form)
 
