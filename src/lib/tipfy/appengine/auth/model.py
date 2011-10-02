@@ -20,9 +20,6 @@ from tipfy.auth import create_session_id
 
 
 class User(db.Model):
-    """Universal user model. Can be used with App Engine's default users API,
-    own auth or third party authentication methods (OpenId, OAuth etc).
-    """
     #: Creation date.
     created = db.DateTimeProperty(auto_now_add=True)
     #: Modification date.

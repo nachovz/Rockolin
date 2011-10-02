@@ -12,8 +12,8 @@ config['tipfy.sessions'] = {
 }
 
 config['tipfy.auth.facebook'] = {
-    'api_key':    'XXXXXXXXXXXXXXX',
-    'app_secret': 'XXXXXXXXXXXXXXX',
+    'api_key':    '283934171634741',
+    'app_secret': '6a16d773ecd9f178e75b0a778ec636d4 ',
 }
 
 config['tipfy.auth.friendfeed'] = {
@@ -22,8 +22,8 @@ config['tipfy.auth.friendfeed'] = {
 }
 
 config['tipfy.auth.twitter'] = {
-    'consumer_key':    'XXXXXXXXXXXXXXX',
-    'consumer_secret': 'XXXXXXXXXXXXXXX',
+    'consumer_key':    'o6j5ow67Rk6trS5WnRgXPA',
+    'consumer_secret': 'hFKfwAZ77MPmEhRMgtKwsoolsQSXyVhTabzSgBn3Eg',
 }
 
 config['tipfyext.jinja2'] = {

@@ -8,6 +8,7 @@
     <form method="post" action="{{ current_url }}" enctype="multipart/form-data" class="tipfy-form">
         <ol>
             <li>{{ form_field(form.username, class='medium') }}</li>
+            <li>{{ form_field(form.email, class='medium') }}</li>
             <li>{{ form_field(form.password, class='medium') }}</li>
             <li>{{ form_field(form.password_confirm, class='medium') }}</li>
         </ol>

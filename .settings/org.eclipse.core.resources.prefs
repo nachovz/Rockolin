@@ -1,0 +1,10 @@
+#Sat Oct 01 22:59:40 VET 2011
+eclipse.preferences.version=1
+encoding//src/config.py=utf-8
+encoding//src/lib/tipfy/appengine/auth/__init__.py=utf-8
+encoding//src/lib/tipfy/appengine/auth/model.py=utf-8
+encoding//src/lib/tipfy/auth/__init__.py=utf-8
+encoding//src/lib/tipfy/auth/facebook.py=utf-8
+encoding//src/lib/tipfy/auth/google.py=utf-8
+encoding//src/main.py=utf-8
+encoding//src/urls.py=utf-8

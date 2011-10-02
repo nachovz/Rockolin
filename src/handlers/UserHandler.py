@@ -29,6 +29,7 @@ class SignupForm(Form):
 
 class RegistrationForm(Form):
     username = fields.TextField('Username', validators=[REQUIRED])
+    email = fields.TextField('Email', validators=[REQUIRED])
     password = fields.PasswordField('Password', validators=[REQUIRED])
     password_confirm = fields.PasswordField('Confirm the password', validators=[REQUIRED])
 
@@ -207,6 +208,7 @@ class RegisterHandler(BaseHandler):
 
         if self.form.validate():
             username = self.form.username.data
+            email = self.form.email.data
             password = self.form.password.data
             password_confirm = self.form.password_confirm.data
 
@@ -216,7 +218,7 @@ class RegisterHandler(BaseHandler):
                 return self.get(**kwargs)
 
             auth_id = 'own|%s' % username
-            user = self.auth.create_user(username, auth_id, password=password)
+            user = self.auth.create_user(username, auth_id, email = email, password=password)
             if user:
                 self.auth.login_with_auth_id(user.auth_id, True)
                 self.session.add_flash('You are now registered. Welcome!',
