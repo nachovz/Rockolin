@@ -17,6 +17,12 @@ html, body{
     height:100%;
 }
 
+.img-logo{
+	height: 35px;
+	float: left;
+	margin-right:0.5em;
+}
+
 label{
 	color: white;
 	font-size: 1.1em;

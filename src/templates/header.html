@@ -1,15 +1,21 @@
 <div class="topbar">	
 	<div class="container">
+		{% if current_user or auth_session -%}
+            {% if current_user -%}
+		<img class="img-logo" src="/static/images/disc.png" /><a class="brand" href="/dashboard"> Rockolin'</a>
+		    {%- endif %} 
+		{%- endif %} 
+		
 		<ul class="nav">
 			<li>
-				<a href="#">About Rockolin</a>
+				<!--<a href="#">About Rockolin</a>-->
 			</li>
 		</ul>
 		{% if current_user or auth_session -%}
             {% if current_user -%}
             <ul class="nav secondary-nav">
             	<li>
-	                <span class="user_email">{{ current_user.username|e }}</span> |        		
+	                <a>{{ current_user.username|e }}</a>        		
             	</li>
             	<li>
             		<a href="{{ logout_url }}">Sign out</a>
