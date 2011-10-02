@@ -158,7 +158,7 @@ class LoginHandler(BaseHandler):
             'twitter_login_url':    self.url_for('auth/twitter', **opts),
             'yahoo_login_url':      self.url_for('auth/yahoo', **opts),
         }
-        return self.render_response('login.html', **context)
+        return self.render_response('login.html',section='login', **context)
 
     def post(self, **kwargs):
         redirect_url = self.redirect_path()
