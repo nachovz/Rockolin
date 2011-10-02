@@ -1,46 +1,128 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-    <head>
-        <title>Tipfy Auth Example</title>
-        <link rel="stylesheet" type="text/css" href="/static/styles/screen.css">
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]--><html>
+    <head charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		  {% block head %}
+		  <title>{% block title %}{% endblock %}</title>
+		  <meta name="description" content="">
+		  {% endblock %}
+        <!--<title>Tipfy Auth Example</title>-->
+          <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+		  <meta name="viewport" content="width=device-width,initial-scale=1">
+		
+		  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+		
+		  <!-- CSS: implied media=all -->
+		  <!-- CSS concatenated and minified via ant build script-->
+		  <!-- Important: Do not reference other stylesheets here! The build-script won't include them. 
+		       Instead use @import in style.css -->
+		  <link rel="stylesheet" href="/static/styles/bootstrap.min.css" />
+		  
+		 <!-- <link rel="stylesheet/less" type="style/css" href="/static/styles/lib/bootstrap.less ">
+		   end CSS-->
+		
+		  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+		
+		  <!-- All JavaScript at the bottom, except for Modernizr / Respond.
+		       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+		       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+		  <script src="/static/scripts/libs/modernizr-2.0.6.min.js"></script>
+		  <!--<script src="/static/scripts/less-1.1.3.min.js"></script>-->
+		  
+		  {% block head_include %}{% endblock %}
+		  
+        <link rel="stylesheet" type="text/css" href="/static/styles/main.css">
     </head>
     <body>
-        <div class="yui-d1">
-            <div class="top">
-                <h1>tipfy.ext.auth example</h1>
-                <div class="user-status">
-                    <p>{% if current_user or auth_session -%}
-                        {% if current_user -%}
-                            Signed in as <span class="user_email">{{ current_user.username|e }}</span> |
-                        {%- endif %} <a href="{{ logout_url }}">Sign out</a>
-                    {% else %}
-                        Hi, there. <a href="{{ login_url }}">Sign in</a>
-                    {% endif %}</p>
-                </div>
-            </div>
-        </div>
-        <div class="yui-d1">
-            <div class="yui-t2">
-                <div class="yui-main">
-                    <div class="yui-b">
-                        <div class="content">
-                        {% block body %}
-                        {% endblock %}
-                        </div>
-
-                        <div class="footer">
-                            <p>Powered by <a href="http://www.tipfy.org/">tipfy</a>. Source code is <a href="http://code.google.com/p/tipfy-ext-auth/source/browse/#hg/examples/multi-auth">here</a>. Icons by <a href="http://jwloh.deviantart.com/art/Aquaticus-Social-91014249">jwloh</a>.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="yui-b">
-                    <ul class="menu">
-                        <li{% if section == 'home' %} class="active"{% endif %}><a href="{{ url_for('home') }}">Home</a></li>
-                        <li{% if section == 'content' %} class="active"{% endif %}><a href="{{ url_for('content/index') }}">Protected Content</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    	<header class="topbar-wrapper">
+    		{% include "header.html"%}
+    	</header>
+    	{% block body %}
+	    {% endblock %}
+    <!--	<div class="big-content">
+	    	<div class="container">
+	    		<div class="row">
+	    			<div class="span9">
+	    				<img class="logo-img" src="/static/images/logo.png" />
+	    				<ul class="home-text-ul">
+	    					<li class="li-first">Create your event</li>
+	    					<li class="li-second">Add music to you setlist</li>
+	    					<li class="li-third">Share and invite</li>
+	    					<li class="li-fourth">... and let <span>THEM</span> choose how it will go!</li>
+	    				</ul>
+	    			</div>
+	    			<div class="span7">
+	    				<div class="register-box">
+	    					<div class="fade in">
+	    						<form class="form-stacked">
+	    						
+	    						<div class="clearfix">
+	    							<label>Username:</label>
+	    							<div class="input">
+	    								<input class="required xlarge" type="text" name="username" />
+	    							</div>
+								</div>
+								<br/>
+	    						<div class="clearfix">
+	    							<label>Email:</label>
+	    							<div class="input">
+	    								<input class="required xlarge" type="text" name="email" />
+	    							</div>
+								</div>
+								<br/>
+								<div class="clearfix">
+	    							<label>Password:</label>
+	    							<div class="input">
+	    								<input class="required xlarge" type="text" name="password" />
+	    							</div>
+								</div>
+								<br/>
+								<div class="clearfix">
+	    							<label>Repeat Password:</label>
+	    							<div class="input">
+	    								<input class="required xlarge" type="text" name="re-password" />
+	    							</div>
+								</div>
+								<a class="submit-button"><img src="/static/images/buttonSignUp.png" /></a>
+								</div>
+	    					</form>
+	    				</div>
+	    			</div>
+	    		</div>
+	    	</div>
+	    </div>
+	    		<div class="yui-d1">
+		            <div class="top">
+		                <h1>tipfy.ext.auth example</h1>
+		                <div class="user-status">
+		                    <p>{% if current_user or auth_session -%}
+		                        {% if current_user -%}
+		                            Signed in as <span class="user_email">{{ current_user.username|e }}</span> |
+		                        {%- endif %} <a href="{{ logout_url }}">Sign out</a>
+		                    {% else %}
+		                        Hi, there. <a href="{{ login_url }}">Sign in</a>
+		                    {% endif %}</p>
+		                </div>
+		            </div>
+		        </div>
+		        <div class="yui-b">
+	                <ul class="menu">
+	                    <li{% if section == 'home' %} class="active"{% endif %}><a href="{{ url_for('home') }}">Home</a></li>
+	                    <li{% if section == 'content' %} class="active"{% endif %}><a href="{{ url_for('content/index') }}">Protected Content</a></li>
+	                </ul>
+	            </div>
+	    		
+	    	</div>
+    	</div>-->
+    	<footer>
+    		{% include "footer.html"%}
+    	</footer>
+    	
 
         {%- block body_extra %}
             <script src="/static/scripts/scripts.js"></script>
@@ -55,5 +137,26 @@
                 </script>
             {%- endblock -%}
         {% endblock %}
+        
+          <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+		  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		  <script>window.jQuery || document.write('<script src="/static/scripts/libs/jquery-1.6.2.min.js"><\/script>')</script>
+		
+		
+		  <!-- scripts concatenated and minified via ant build script-->
+		  <script defer src="/static/scripts/plugins.js"></script>
+		  <!--<script defer src="/static/scripts/script.js"></script>-->
+		  <script defer src="/static/scripts/mylibs/openid-en.js"></script>
+		  <!-- end scripts-->
+		
+		  {% block scripts %}{% endblock %}
+		  
+		  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+		       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+		  <!--[if lt IE 7 ]>
+		    <script defer src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+		    <script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+		  <![endif]-->
+		  
     </body>
 </html>

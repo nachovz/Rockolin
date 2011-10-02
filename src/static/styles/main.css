@@ -1,0 +1,164 @@
+@font-face {
+    font-family: 'MyriadProCondensed';
+    src: url('fonts/myriad/myriadpro-cond-webfont.eot');
+    src: url('fonts/myriad/myriadpro-cond-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/myriad/myriadpro-cond-webfont.woff') format('woff'),
+         url('fonts/myriad/myriadpro-cond-webfont.ttf') format('truetype'),
+         url('fonts/myriad/myriadpro-cond-webfont.svg#MyriadProCondensed') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+html, body{
+	font-family: 'MyriadProCondensed';
+	background-color:#562F2F;                  /* This removes the border around the viewport in old versions of IE */
+    width:100%;
+    height:100%;
+}
+
+label{
+	color: white;
+	font-size: 1.1em;
+}
+
+.topbar{
+	background-color: #1C0404;
+	position:relative;
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.big-content{
+	background: no-repeat url("/static/images/background.jpg");
+	background-position:center top;
+	max-width: 1824px;
+	margin:auto;
+	overflow: hidden;
+	height: 578px;
+}
+
+.logo-img{
+	margin-top: 40px;
+}
+
+.home-text-ul{
+	list-style-type: none;
+	padding-left: 0;
+	margin-left:1em;
+	margin-top: 1.2em;
+}
+
+.home-text-ul li{
+	background-image: url("/static/images/asteriscos.png");
+	background-repeat:no-repeat;
+	//text-shadow: 0 0 0.05em white;
+	color: white;
+	height: 1em;
+	margin-bottom: 0.7em;
+	line-height: 30px;
+}
+
+.li-first{
+	font-size: 2.6em;
+		padding-left:50px;
+	background-position-y: 5px;
+}
+
+.li-second{
+	font-size: 3em;
+	background-position-y: -27px;
+	padding-top: 5px;
+		padding-left:50px;
+}
+
+.li-third{
+	font-size: 3.8em;
+	background-position-y: -71px;
+	padding-top: 8px;
+		padding-left:50px;
+}
+
+.li-fourth{
+	font-size: 3.3em;
+	background-position-y: -200px;
+	padding-left: 0px; 
+	margin-top:0.5em;
+}
+
+.li-fourth span{
+	font-weight: bolder;
+	color: #ffc60d;
+	text-shadow: none;
+
+}
+
+.register-box{
+	margin:7.5em 0 0 4em;
+	-webkit-box-shadow: 0px 0px 20px 35px rgba(0, 0, 0, 0.40);
+	-moz-box-shadow: 0px 0px 20px 35px rgba(0, 0, 0, 0.40);
+	box-shadow: 0px 0px 20px 35px rgba(0, 0, 0, 0.40);
+	padding-left: 1em;
+	padding-bottom: 1em;
+filter: alpha(opacity=80);
+-khtml-opacity: 0.8;
+-moz-opacity: 0.8;
+opacity: 0.8;
+}
+
+.register-box div{
+	opacity: 1;
+}
+
+.submit-button{
+	float: left;
+	margin-left: -29px;
+	margin-top: 1em;
+}
+
+footer{
+	background-color: #1C0404;
+	margin: 0;
+}
+
+.social-icons{
+	list-style: none;
+	text-align: center;
+	width: 50%;
+	overflow: hidden;
+	margin: auto;
+}
+
+.social-icons li{
+	float:left;
+	width: 55px;
+	height: 63px;
+	background-image:url("/static/images/social.png");
+	background-position-y:9px;
+	margin-left:1em;
+}
+
+.twitter{
+	background-position-x: -60px;
+}
+
+.social-icons li:hover{
+	background-position-y: -50px;
+}
+
+.google{
+	background-position-x: -123px;
+}
+
+.tumblr{
+	background-position-x: -193px;	
+}
+
+.friends{
+	background-position-x: -253px;
+}
+
+.blogger{
+	background-position-x: -313px;
+}
