@@ -44,73 +44,8 @@
     	</header>
     	{% block body %}
 	    {% endblock %}
-    <!--	<div class="big-content">
-	    	<div class="container">
-	    		<div class="row">
-	    			<div class="span9">
-	    				<img class="logo-img" src="/static/images/logo.png" />
-	    				<ul class="home-text-ul">
-	    					<li class="li-first">Create your event</li>
-	    					<li class="li-second">Add music to you setlist</li>
-	    					<li class="li-third">Share and invite</li>
-	    					<li class="li-fourth">... and let <span>THEM</span> choose how it will go!</li>
-	    				</ul>
-	    			</div>
-	    			<div class="span7">
-	    				<div class="register-box">
-	    					<div class="fade in">
-	    						<form class="form-stacked">
-	    						
-	    						<div class="clearfix">
-	    							<label>Username:</label>
-	    							<div class="input">
-	    								<input class="required xlarge" type="text" name="username" />
-	    							</div>
-								</div>
-								<br/>
-	    						<div class="clearfix">
-	    							<label>Email:</label>
-	    							<div class="input">
-	    								<input class="required xlarge" type="text" name="email" />
-	    							</div>
-								</div>
-								<br/>
-								<div class="clearfix">
-	    							<label>Password:</label>
-	    							<div class="input">
-	    								<input class="required xlarge" type="text" name="password" />
-	    							</div>
-								</div>
-								<br/>
-								<div class="clearfix">
-	    							<label>Repeat Password:</label>
-	    							<div class="input">
-	    								<input class="required xlarge" type="text" name="re-password" />
-	    							</div>
-								</div>
-								<a class="submit-button"><img src="/static/images/buttonSignUp.png" /></a>
-								</div>
-	    					</form>
-	    				</div>
-	    			</div>
-	    		</div>
-	    	</div>
-	    </div>
-	    		<div class="yui-d1">
-		            <div class="top">
-		                <h1>tipfy.ext.auth example</h1>
-		                <div class="user-status">
-		                    <p>{% if current_user or auth_session -%}
-		                        {% if current_user -%}
-		                            Signed in as <span class="user_email">{{ current_user.username|e }}</span> |
-		                        {%- endif %} <a href="{{ logout_url }}">Sign out</a>
-		                    {% else %}
-		                        Hi, there. <a href="{{ login_url }}">Sign in</a>
-		                    {% endif %}</p>
-		                </div>
-		            </div>
-		        </div>
-		        <div class="yui-b">
+    
+		        <!--<div class="yui-b">
 	                <ul class="menu">
 	                    <li{% if section == 'home' %} class="active"{% endif %}><a href="{{ url_for('home') }}">Home</a></li>
 	                    <li{% if section == 'content' %} class="active"{% endif %}><a href="{{ url_for('content/index') }}">Protected Content</a></li>
