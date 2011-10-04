@@ -4,7 +4,8 @@
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]--><html>
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<html>
     <head charset="utf-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		  {% block head %}
@@ -22,7 +23,12 @@
 		  <!-- Important: Do not reference other stylesheets here! The build-script won't include them. 
 		       Instead use @import in style.css -->
 		  <link rel="stylesheet" href="/static/styles/bootstrap.min.css" />
-		  
+		  <link rel="stylesheet" type="text/css" href="/static/styles/main.css">
+		<!--[if !IE 7]>
+			<style type="text/css">
+				#wrap {display:table;height:100%}
+			</style>
+		<![endif]-->
 		 <!-- <link rel="stylesheet/less" type="style/css" href="/static/styles/lib/bootstrap.less ">
 		   end CSS-->
 		
@@ -36,24 +42,21 @@
 		  
 		  {% block head_include %}{% endblock %}
 		  
-        <link rel="stylesheet" type="text/css" href="/static/styles/main.css">
+        
+        
+        <script type="text/javascript" src="http://use.typekit.com/ibi3agd.js"></script>
+		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     </head>
     <body>
-    	<header class="topbar-wrapper">
-    		{% include "header.html"%}
-    	</header>
-    	{% block body %}
-	    {% endblock %}
-    
-		        <!--<div class="yui-b">
-	                <ul class="menu">
-	                    <li{% if section == 'home' %} class="active"{% endif %}><a href="{{ url_for('home') }}">Home</a></li>
-	                    <li{% if section == 'content' %} class="active"{% endif %}><a href="{{ url_for('content/index') }}">Protected Content</a></li>
-	                </ul>
-	            </div>
-	    		
+    	<div id="wrap">
+	    	<header class="topbar-wrapper">
+	    		{% include "header.html"%}
+	    	</header>
+	    	<div id="main">
+	    	{% block body %}
+		    {% endblock %}
 	    	</div>
-    	</div>-->
+	    </div>
     	<footer>
     		{% include "footer.html"%}
     	</footer>
