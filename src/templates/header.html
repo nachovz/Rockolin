@@ -3,17 +3,16 @@
 
 <div class="topbar">	
 	<div class="container">
-		{% if current_user or auth_session -%}
-            {% if current_user -%}
-		<img class="img-logo" src="/static/images/disc.png" /><a class="brand" href="/dashboard"> Rockolin'</a>
-		    {%- endif %} 
-		{%- endif %} 
-		
+		{% if current_user or auth_session or section == 'login' -%}
+		<a href="/"><img class="img-logo" src="/static/images/logo.png" /></a>
 		<ul class="nav">
 			<li>
-				<!--<a href="#">About Rockolin</a>-->
+				<a class="big-menu" href="#">About us</a>
 			</li>
 		</ul>
+		{%- endif %} 
+		
+		
 		{% if current_user or auth_session or section == 'login' -%}
             {% if current_user -%}
             <ul class="nav secondary-nav">
@@ -24,6 +23,16 @@
             		<a href="{{ logout_url }}">Sign out</a>
             	</li>
             </ul>
+            {%- endif %}
+            {% if section == 'login' -%}
+             <ul class="nav secondary-nav">
+            	<li>
+            		<a class="big-menu">Haven't try Rockolin' yet? </a>
+            	</li>
+            	<li>
+            		<a class="yellow-text big-menu" href="/"><span>Sign Up Now!</span></a>
+            	</li>
+            </ul>
             {%- endif %} 
         {% else %}
         <form class="pull-right" method="post" action="/auth/login" enctype="multipart/form-data" class="tipfy-form">
@@ -31,7 +40,7 @@
             {{ form_field(form.username_login, class='small',placeholder='username') }}
             {{ form_field(form.password_login, class='small',placeholder='password') }}
         
-            <input type="submit" name="submit" value="{{ _('Sign in') }}">
+            <input id="login-button-header" type="image" src="/static/images/loginrockolin.png" name="submit" value="{{ _('Sign in') }}">
         
     	</form>
 		
