@@ -6,34 +6,41 @@
 <section id="main-section" class="background-with big-content">
 	<div class="container">
 		<div class="row">
-			<div class="span6 offset5 logInbox gradient-div">
-				<div class="page-header">
-					<h1>Log In</h1>
-				</div>
-			    <form class="form-stacked"  method="post" action="{{ current_url }}" enctype="multipart/form-data" class="tipfy-form">
-			        <div class="clearfix">
-			        	<label for="username_login">Username</label>
-			        	<div class="input">
-			        		{{ form_field(form.username_login, class='xlarge') }}
-			        	</div>
-			        </div>
-		            <div class="clearfix">
-		            	<label for="password_login">Password</label>
-		            	<div class="input">
-		            		{{ form_field(form.password_login, class='xlarge') }}
-		            	</div>
-		            </div>
-		            <div class="clearfix">
-		            	<label>Keep me signed in</label>
-		            	<div class="input">
-			            				{{ form_field(form.remember) }}
-		        		</div>
-		        	</div>
-		        	<br />
-			            <input class="btn large primary" type="submit" name="submit" value="{{ _('Sign in') }}">
-			    </form>
 			
-			    <p>Don't have an account? <a href="/">Create a new one</a>.</p>
+			<div class="span6 offset5 logInbox">
+				<div class="box-title">
+					<h1 class="yellow-text">LOG IN</h1>
+				</div>
+				<div class=" gradient-div">
+				    <form class="form-stacked"  method="post" action="{{ current_url }}" enctype="multipart/form-data" class="tipfy-form">
+				        <fieldset class="textbox">
+				        	<div class="clearfix">
+					        	<label for="username_login">Username</label>
+					        	<div class="input">
+					        		{{ form_field(form.username_login, class='xlarge') }}
+					        	</div>
+					        </div>
+				            <div class="clearfix">
+				            	<label for="password_login">Password</label>
+				            	<div class="input">
+				            		{{ form_field(form.password_login, class='xlarge') }}
+				            	</div>
+				            </div>
+			            </fieldset>
+			            <fieldset class="subchck">
+			            	<label class="remember">
+			            		<span>Keep me signed in</span>
+				            	{{ form_field(form.remember) }}
+				            </label>
+			        	</fieldset>
+			        	<p>
+			        		<span class="white-text">Don't have an account? <a href="/">Create a new one</a></span>
+			        	</p>
+			        	<br />
+				            <input class="submit-button" type="image" src="/static/images/loginrockolin.png" name="submit" value="{{ _('Sign in') }}">
+				    </form>
+				</div>
+			    
 			<!--
 			    <p>Or select a service to sign in with:</p>
 			    <p>

@@ -1,3 +1,8 @@
+html{
+	background-color: #43292A;
+	height: 100%;
+}
+
 @font-face {
     font-family: 'MyriadProCondensed';
     src: url('fonts/myriad/myriadpro-cond-webfont.eot');
@@ -7,20 +12,43 @@
          url('fonts/myriad/myriadpro-cond-webfont.svg#MyriadProCondensed') format('svg');
     font-weight: normal;
     font-style: normal;
+}
+
+@font-face {
+    font-family: 'VintageRegular';
+    src: url('fonts/vintage/vintage-webfont.eot');
+    src: url('fonts/vintage/vintage-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/vintage/vintage-webfont.woff') format('woff'),
+         url('fonts/vintage/vintage-webfont.ttf') format('truetype'),
+         url('fonts/vintage/vintage-webfont.svg#VintageRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 
 }
 
-html, body{
+body{
 	font-family: 'MyriadProCondensed';
                  /* This removes the border around the viewport in old versions of IE */
+    background: #43292A url("/static/images/pixelbg.png") repeat-x top left;
+    background-position:0px 60px;
     width:100%;
-    height:100%;
+    height: 100%;
+}
+
+#wrap{
+	min-height:100%;
+}
+
+#main{
+	overflow: auto;
+	padding-bottom: 60px;
 }
 
 .img-logo{
-	height: 35px;
+	height: 40px;
 	float: left;
-	margin-right:0.5em;
+	display: block;
+	margin-left: -20px;
 }
 
 .form-stacked label{
@@ -29,25 +57,32 @@ html, body{
 }
 
 .topbar{
+	//height:80px;
 	background-color: #1C0404;
 	position:relative;
 	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+	padding: 40px 0 10px 0;
+}
+
+.topbar form{
+	//margin: 30px 0 0 0;
 }
 
 #main-section{
-	min-height: 578px;
+	max-width: 100%;
+	margin: 0 auto;
+	position: relative;
+	min-height: 100%;
+	background: no-repeat url("/static/images/background2.jpg");
+	background-position:center top;
 }
 
-.background-with{
-	background-color:#562F2F; 
-}
 
 .big-content{
-	background: no-repeat url("/static/images/background.jpg");
-	background-position:center top;
-	max-width: 1824px;
+
+	max-width: 100%;
 	margin:auto;
 	overflow: hidden;
 	height: 578px;
@@ -66,37 +101,38 @@ html, body{
 
 .home-text-ul li{
 	background-image: url("/static/images/asteriscos.png");
+	//background-attachment: fixed;
 	background-repeat:no-repeat;
 	//text-shadow: 0 0 0.05em white;
 	color: white;
-	height: 1em;
+	height: 0.9em;
 	margin-bottom: 0.7em;
 	line-height: 30px;
 }
 
 .li-first{
-	font-size: 2.6em;
-		padding-left:50px;
-	background-position-y: 5px;
+	font-size: 2.5em;
+	padding-left:50px;
+	background-position: 0px 5px;
 }
 
 .li-second{
-	font-size: 3em;
-	background-position-y: -27px;
-	padding-top: 5px;
+	font-size: 3.3em;
+	background-position: 0px -23px;
+	padding-top: 7px;
 		padding-left:50px;
 }
 
 .li-third{
-	font-size: 3.8em;
-	background-position-y: -71px;
+	font-size: 4em;
+	background-position: 0px -71px;
 	padding-top: 8px;
 		padding-left:50px;
 }
 
 .li-fourth{
 	font-size: 3.3em;
-	background-position-y: -200px;
+	background-position: 0px -200px;
 	padding-left: 0px; 
 	margin-top:0.5em;
 }
@@ -110,32 +146,37 @@ html, body{
 
 .register-box{
 	margin:7.5em 0 0 4em;
-		padding-left: 1em;
-	padding-bottom: 1em;
 }
 
 .gradient-div{
-	-webkit-box-shadow: 0px 0px 20px 25px rgba(0, 0, 0, 0.40);
-	-moz-box-shadow: 0px 0px 20px 25px rgba(0, 0, 0, 0.40);
-	box-shadow: 0px 0px 20px 25px rgba(0, 0, 0, 0.40);
-
-	background: -moz-linear-gradient(top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.4) 1%, rgba(0,0,0,0.4) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.4)), color-stop(1%,rgba(0,0,0,0.4)), color-stop(100%,rgba(0,0,0,0.4))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.4) 1%,rgba(0,0,0,0.4) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.4) 1%,rgba(0,0,0,0.4) 100%); /* Opera11.10+ */
-	background: -ms-linear-gradient(top, rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.4) 1%,rgba(0,0,0,0.4) 100%); /* IE10+ */
+	padding: 2.2em 0em 3.8em 1.1em;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+//	-webkit-box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.5);
+//	-moz-box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.5);
+//	box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.5);
+	background: -moz-linear-gradient(top, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 1%, rgba(0,0,0,0.1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.1)), color-stop(1%,rgba(0,0,0,0.1)), color-stop(100%,rgba(0,0,0,0.1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.1) 1%,rgba(0,0,0,0.1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.1) 1%,rgba(0,0,0,0.1) 100%); /* Opera11.10+ */
+	background: -ms-linear-gradient(top, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.1) 1%,rgba(0,0,0,0.1) 100%); /* IE10+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#66000000', endColorstr='#66000000',GradientType=0 ); /* IE6-9 */
-	background: linear-gradient(top, rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.4) 1%,rgba(0,0,0,0.4) 100%); /* W3C */
-
+	background: linear-gradient(top, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.1) 1%,rgba(0,0,0,0.1) 100%); /* W3C */
 }
 
-.input label{
+.clearfix label{
+	font-weight: normal;
+	font-size: 1.2em;
+}
+
+.input label, .remember label{
 	display: none;
 }
 
 .submit-button{
 	float: left;
-	margin-left: -29px;
+	margin-left: -33px;
 	margin-top: 0.7em;
 	border: 0;
 	border:none;
@@ -143,13 +184,49 @@ html, body{
 	height: 82px;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
+	box-shadow: none;	
+}
+
+#login-button-header{
+	width:120px;
+	height:29px;
+	padding:0;
+	margin-bottom:-11px;
+	border: 0;
+	border: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
 	box-shadow: none;
-	
+	background: none;
+}
+
+.pull-right label{
+	display: none;
+}
+
+.pull-right input{
+	border: 0;
+	border: none;
+	margin-left:5px;
 }
 
 footer{
 	background-color: #1C0404;
-	margin: 0;
+	padding-top:30px;
+	border: 0;
+	position: relative;
+	margin-top: -60px; /* negative value of footer height */
+	height: 100px;
+	clear:both; 
+}
+
+/*Opera Fix*/
+body:before {
+	content:"";
+	height:100%;
+	float:left;
+	width:0;
+	margin-top:-32767px;/
 }
 
 .social-icons{
@@ -162,41 +239,84 @@ footer{
 
 .social-icons li{
 	float:left;
-	width: 55px;
-	height: 63px;
-	background-image:url("/static/images/social.png");
-	background-position-y:9px;
+	width: 63px;
+	height: 60px;
+	background-image: url("/static/images/social.png");
+	//background-attachment: fixed;
 	margin-left:1em;
 }
 
-.twitter{
-	background-position-x: -60px;
+.facebook{
+	background-position:6px 8px;
+}
+.facebook:hover{
+	background-position:6px -51px;
 }
 
-.social-icons li:hover{
-	background-position-y: -50px;
+.twitter{
+	background-position: -56px 7px;
+}
+.twitter:hover{
+	background-position: -56px -52px;
 }
 
 .google{
-	background-position-x: -123px;
+	background-position: -120px 7px;
+}
+.google:hover{
+	background-position: -120px -52px;
 }
 
 .tumblr{
-	background-position-x: -193px;	
+	background-position: -183px 7px;	
+}
+.tumblr:hover{
+	background-position: -183px -52px;
 }
 
 .friends{
-	background-position-x: -253px;
+	background-position: -243px 7px;
+}
+.friends:hover{
+	background-position: -243px -52px;
 }
 
 .blogger{
-	background-position-x: -313px;
+	background-position: -313px 7px;
 }
+.blogger:hover{
+	background-position: -313px -52px;
+}
+
+
+
 
 .logInbox{
 	margin-top: 6em;
 }
 
 
-//LOGIN//
-
+/*GENERALS*/
+.box-title{
+	text-align: center;
+}
+.box-title h1{
+	font-family: "VintageRegular", serif;
+	font-size: 4.5em;
+	font-weight: normal;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+.yellow-text{
+	color: #ffc010;
+}
+.topbar a span{
+	color: #ffc010;
+	text-decoration: underline;
+}
+.white-text{
+	color: white;
+}
+.big-menu{
+	font-size: 1.7em;
+	padding: 18px 12px 0px 0px;
+}

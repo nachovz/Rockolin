@@ -8,15 +8,15 @@
 					<img class="logo-img" src="/static/images/logo.png" />
 					<ul class="home-text-ul">
 						<li class="li-first">Create your event</li>
-						<li class="li-second">Add music to you setlist</li>
-						<li class="li-third">Share and invite</li>
-						<li class="li-fourth">... and let <span>THEM</span> choose how it will go!</li>
+						<li class="li-second">add some music</li>
+						<li class="li-third">Share it</li>
+						<li class="li-fourth">... and let your <span>GUEST</span> make the mix</li>
 					</ul>
 				</div>
 				<div class="span7">
 					<div class="register-box gradient-div">
 						<div class="fade in">
-							<form name = "signup" class="form-stacked" method="post" action="{{ current_url }}" enctype="multipart/form-data">
+							<form name="signup" class="form-stacked" method="post" action="{{ current_url }}" enctype="multipart/form-data">
 							
 							<div class="clearfix">
 								<label>Username</label>
@@ -40,7 +40,7 @@
 							</div>
 							<br/>
 							<div class="clearfix">
-								<label>Retype password</label>
+								<label>Password (Confirm)</label>
 								<div class="input">
 									{{ form_field(form.password_confirm, class='required xlarge') }}
 								</div>
