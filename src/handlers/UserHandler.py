@@ -9,10 +9,11 @@ from tipfy.auth.google import GoogleMixin
 from tipfy.auth.twitter import TwitterMixin
 from tipfy.sessions import SessionMiddleware
 from tipfy.utils import json_encode
-
+from exception import RequestException
 from tipfyext.jinja2 import Jinja2Mixin
 from tipfyext.wtforms import Form, fields, validators
-
+from google.appengine.ext import db
+import datetime
 # ----- Forms -----
 
 REQUIRED = validators.required()
@@ -40,6 +41,93 @@ class RegistrationForm(Form):
 class BaseHandler(RequestHandler, Jinja2Mixin):
     middleware = [SessionMiddleware(), UserRequiredIfAuthenticatedMiddleware()]
 
+    def getVar(self, name, type='string'):
+        
+        if(type=='listProperty'):
+            return self.request.args.getlist("name")
+            
+        value = self.request.args.get(name)
+        if(value != None and value != ''):
+            return self.cast(value,type);
+        else:
+            exception = RequestException.InvalidArgumentException
+            exception.message = "Invalid Argument "+name
+            #exception.setCode(401)
+            raise exception
+    
+    def getOptionalVar(self, name, type='string'):
+        
+        value = self.request.args.get(name)
+        if(value != None and value != ''):
+            return self.cast(value,type);
+        else:
+            return None
+    def cast(self,value,type):
+        
+        newvalue = None
+        try:
+            if(type=='long'):
+                newvalue = long(value)
+            elif(type=='string'):
+                try:
+                    newvalue = str(value)
+                except:
+                    newvalue = value
+            elif(type=='float'):
+                newvalue = float(value)
+            elif(type=='int'):
+                newvalue = int(value)
+            elif(type=='bool'):
+                newvalue = (value=='true' or value=='True' or value=='TRUE')
+            elif(type=='email'):
+                    newvalue = value
+            elif(type=='date'):
+                if(value[11:13]): hora = int(value[11:13])
+                else: hora = 0
+                if(value[14:16]): minuto = int(value[14:16])
+                else: minuto = 0
+                
+                newvalue = datetime.datetime(
+                                            int(value[6:10]),
+                                            int(value[3:5]), 
+                                            int(value[:2]),
+                                            hora,
+                                            minuto
+                                            )
+            elif(type=='reference'):
+                newvalue = db.get(value)
+            elif(type=='file'):
+                    newvalue = value
+            else:
+                exception = RequestException.InvalidArgumentException
+                exception.message = "Cast error "+value
+                #exception.setCode(401)
+                raise exception
+    
+            return newvalue
+        except Exception,e:
+            exception = RequestException.InvalidArgumentException
+            exception.message = "Cast Error "+value+": "+e.message
+            #exception.setCode(401)
+            raise exception
+        
+        newvalue = None
+        
+    def wrapResult(self,data):
+        result = {
+                    'code' : '200',
+                    'message' : 'ok',
+                    'data' : data
+                  }
+        return result
+    
+    def wrapFault(self,message, code=500):
+        result = {
+                    'code' : str(code),
+                    'message' : message
+                  }
+        return result
+    
     @cached_property
     def messages(self):
         """A list of status messages to be displayed to the user."""

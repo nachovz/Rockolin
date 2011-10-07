@@ -7,7 +7,9 @@ Created on Aug 9, 2011
 from google.appengine.ext import db
 from lib.tipfy.appengine.auth.model import User
 from SetList import SetList
+
 class Event(db.Model):
+    
     created = db.DateTimeProperty(auto_now_add=True)
     updated = db.DateTimeProperty(auto_now=True)
     name = db.StringProperty(required=True)
