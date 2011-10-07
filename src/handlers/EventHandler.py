@@ -56,18 +56,18 @@ class CreateEventHandler(BaseHandler):
         
         def post(self, **kwargs):
             image = self.request.files.get('image_upload').read()
-#            datestring = self.request.form.get('start-date')
-#            timestring = self.request.form.get('start-time')
-#            start_date = self.castTime(datestring, timestring)
-#            end_date = self.castTime(self.request.form.get('finish-date'), self.request.form.get('finish-time'))
-#            #start_date = datetime.datetime(self.request.form.get('start_time'))
+            datestring = self.request.form.get('start-date')
+            timestring = self.request.form.get('start-time')
+            start_date = self.castTime(datestring, timestring)
+            end_date = self.castTime(self.request.form.get('finish-date'), self.request.form.get('finish-time'))
+            #start_date = datetime.datetime(self.request.form.get('start_time'))
             
             params = {
                         "file": images.resize(image, 90, 90),
                         "filetype": self.request.files.get('image_upload').filename,
                         "name" : self.request.form.get('name'),
-#                        "start_date" : start_date,
-#                        "end_date" : end_date,
+                        "start_date" : start_date,
+                        "end_date" : end_date,
                         "description" : self.request.form.get('description'),
                         "creator" : self.auth.user,
 #                        "people_invited" : self.request.form.getlist('people_invited'),
