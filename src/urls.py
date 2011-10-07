@@ -10,8 +10,7 @@ rules = [
     Rule('/create-event', endpoint='create-event', handler='handlers.EventHandler.CreateEventHandler'),
     Rule('/auth/logout', endpoint='auth/logout', handler='handlers.UserHandler.LogoutHandler'),
     Rule('/auth/signup', endpoint='auth/signup', handler='handlers.UserHandler.SignupHandler'),
-    
-
+    Rule('/event/file/<key>', endpoint='event-file', handler='handlers.EventHandler.EventFileHandler'),
     Rule('/auth/facebook/', endpoint='auth/facebook', handler='handlers.UserHandler.FacebookAuthHandler'),
     Rule('/auth/friendfeed/', endpoint='auth/friendfeed', handler='handlers.UserHandler.FriendFeedAuthHandler'),
     Rule('/auth/google/', endpoint='auth/google', handler='handlers.UserHandler.GoogleAuthHandler'),

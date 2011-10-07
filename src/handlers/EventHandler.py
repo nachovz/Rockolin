@@ -14,7 +14,9 @@ from delegate.EventDelegate import EventDelegate
 from model.Event import Event
 from tipfyext.jinja2 import Jinja2Mixin
 from tipfyext.wtforms import Form, fields, validators
-
+from tipfy import Response
+from google.appengine.api import images
+from xmlrpclib import datetime
 
 REQUIRED = validators.required()
 
@@ -37,13 +39,35 @@ class CreateEventHandler(BaseHandler):
         def get(self, **kwargs):
             
             return self.render_response('create_event.html',form=self.form)
+        def castTime(self,datestring,timestring):
+            year = int(datestring[:4])
+            month = int(datestring[5:7])
+            day = int(datestring[8:10])
+            hour = int(timestring[:2])
+            minutes = int(timestring[3:5])
+            newvalue = datetime.datetime(
+                                            year,
+                                            month, 
+                                            day,
+                                            hour,
+                                            minutes
+                                            )
+            return newvalue
         
         def post(self, **kwargs):
+            image = self.request.files.get('image_upload').read()
+#            datestring = self.request.form.get('start-date')
+#            timestring = self.request.form.get('start-time')
+#            start_date = self.castTime(datestring, timestring)
+#            end_date = self.castTime(self.request.form.get('finish-date'), self.request.form.get('finish-time'))
+#            #start_date = datetime.datetime(self.request.form.get('start_time'))
+            
             params = {
-                        "image": db.Blob(self.request.files.get('image_upload').filename),
+                        "file": images.resize(image, 90, 90),
+                        "filetype": self.request.files.get('image_upload').filename,
                         "name" : self.request.form.get('name'),
-#                        "start_date" : self.cast(self.request.form.get('start_date'),'date'),
-#                        "end_date" : self.cast(self.request.form.get('end_date'),'date'),
+#                        "start_date" : start_date,
+#                        "end_date" : end_date,
                         "description" : self.request.form.get('description'),
                         "creator" : self.auth.user,
 #                        "people_invited" : self.request.form.getlist('people_invited'),
@@ -67,4 +91,18 @@ class EventListHandler(BaseHandler):
             events = manager.listEvents(self.auth.user)
             
             return self.render_response('create_event.html',events=events)
-        
+
+class EventFileHandler(BaseHandler):
+
+    def get(self,key):
+        response = Response()
+        response.headers['Content-Type'] = "image"
+        response.headers['Content-Disposition'] = "attachment"
+        try:
+            manager = EventDelegate('Event')
+            result = manager.getFile(key.split('.')[0])
+        except Exception,e:
+            result = self.wrapFault(e.message)
+        response.headers['filename'] = result["name"]
+        response.data = result["file"]
+        return response

@@ -4,13 +4,21 @@
 {% block body %}
 
 	<form method="post" action="{{ current_url }}" enctype="multipart/form-data" class="form-stacked">
-        	<input type="file" name="image_upload">
+        	<label for="image_upload">Related Image</label>
+        	<input type="file" name="image_upload" id = "image_upload">
         	<div class = "clearfix">
         	{{ form_field(form.name, class='medium') }}
         	</div>
         	<div class = "clearfix">
         	{{ form_field(form.description, class='medium') }}
         	</div>
+        	<label for="start-date">Start Date</label>
+        	<input id = "start-date" name ="start-date" type="date">
+        	<input id = "start-time" name ="start-time"  type="time">
+        	
+        	<label for="finish-date">Finish Date</label>
+        	<input id = "finish-date" name = "finish-date" type="date">
+        	<input id = "finish-time" name = "finish-time" type="time">
         <fieldset class="submit">
             <input type="submit" name="submit" value="{{ _('Submit') }}">
        </fieldset>

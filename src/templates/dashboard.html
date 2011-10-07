@@ -4,7 +4,7 @@
 	<a href="/create-event">Create Event</a>
 	{% if events %}
 		{% for event in events %}
-			{{ event.name }}
+			<img src="/event/file/{{ event.key() }}.{{ event.filetype }}"></img>
 		{% endfor %}
 	{% endif %}
 {% endblock %}

@@ -82,6 +82,7 @@ class BaseHandler(RequestHandler, Jinja2Mixin):
             elif(type=='email'):
                     newvalue = value
             elif(type=='date'):
+                
                 if(value[11:13]): hora = int(value[11:13])
                 else: hora = 0
                 if(value[14:16]): minuto = int(value[14:16])

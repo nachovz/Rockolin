@@ -13,7 +13,8 @@ class EventDelegate(BaseDelegate):
         
         event = Event(
             name = params["name"],
-            image = params["name"],
+            file = params["file"],
+            filetype = params["filetype"].split('.')[1],
 #            start_date = params["start_date"],
 #            end_date = params["end_date"],
             description = params["description"],
@@ -39,4 +40,13 @@ class EventDelegate(BaseDelegate):
         event.put()
         return event
 
+    def getFile(self, key):
     
+        event = Event.get(key)
+        result = {
+                "file": event.file,
+                "name": str(event.key())+"."+event.filetype
+        
+                }
+        
+        return result
