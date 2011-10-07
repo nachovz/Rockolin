@@ -7,7 +7,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <html>
     <head charset="utf-8">
-    	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		  {% block head %}
 		  <title>{% block title %}{% endblock %}</title>
 		  <meta name="description" content="">
@@ -22,8 +22,12 @@
 		  <!-- CSS concatenated and minified via ant build script-->
 		  <!-- Important: Do not reference other stylesheets here! The build-script won't include them. 
 		       Instead use @import in style.css -->
-		  <link rel="stylesheet" href="/static/styles/bootstrap.min.css" />
+		  <link rel="stylesheet" type="text/css" href="/static/styles/bootstrap.min.css" />
 		  <link rel="stylesheet" type="text/css" href="/static/styles/main.css">
+		  
+		  {% if section == 'dashboard' %}
+		  <link rel="stylesheet" type="text/css" href="/static/styles/mosaic.css"/>
+		  {% endif %}
 		<!--[if !IE 7]>
 			<style type="text/css">
 				#wrap {display:table;height:100%}
@@ -34,16 +38,22 @@
 		
 		  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
 		
+		     <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+		  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		  <script>window.jQuery || document.write('<script src="/static/scripts/libs/jquery-1.6.2.min.js"><\/script>')</script>
+		
+		
 		  <!-- All JavaScript at the bottom, except for Modernizr / Respond.
 		       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
 		       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+		  
 		  <script src="/static/scripts/libs/modernizr-2.0.6.min.js"></script>
 		  <!--<script src="/static/scripts/less-1.1.3.min.js"></script>-->
 		  
 		  {% block head_include %}{% endblock %}
 		  
-        <script type="text/javascript" src="http://use.typekit.com/ibi3agd.js"></script>
-		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <!--<script type="text/javascript" src="http://use.typekit.com/ibi3agd.js"></script>-->
+		<!--<script type="text/javascript">try{Typekit.load();}catch(e){}</script>-->
     </head>
     <body>
     	<div id="wrap">
@@ -51,8 +61,10 @@
 	    		{% include "header.html"%}
 	    	</header>
 	    	<div id="main">
-	    	{% block body %}
-		    {% endblock %}
+	    		<section id="main-section" >
+			    	{% block body %}
+				    {% endblock %}
+		   		</section>
 	    	</div>
 	    </div>
     	<footer>
@@ -72,16 +84,20 @@
             {%- endblock -%}
         {% endblock %}
         
-          <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-		  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-		  <script>window.jQuery || document.write('<script src="/static/scripts/libs/jquery-1.6.2.min.js"><\/script>')</script>
-		
+     
 		
 		  <!-- scripts concatenated and minified via ant build script-->
 		  <script defer src="/static/scripts/plugins.js"></script>
 		  <!--<script defer src="/static/scripts/script.js"></script>-->
 		  <script defer src="/static/scripts/mylibs/openid-en.js"></script>
-		  <script defer src="/static/scripts/libs/jquery.lettering-0.6.min.js"></script>
+		  		  <script type="text/javascript" src="/static/scripts/libs/mosaic.1.0.1.js"></script>
+
+		  {% if section == 'login' %}
+  		  <script defer src="/static/scripts/libs/jquery.lettering-0.6.min.js"></script>  
+		  <script type="text/javascript" src="/static/scripts/login.js"></script>
+		  {% elif section == 'dashboard' %}
+		  <script type="text/javascript" src="/static/scripts/dashboard.js"></script>
+		  {% endif%}
 		  
 		  <!-- end scripts-->
 		
