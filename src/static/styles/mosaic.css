@@ -62,9 +62,10 @@
 		}*/
 		
 		.bar .mosaic-overlay {
-			bottom:-130px;
-			height:130px;
-			width:45%;
+			bottom:-70px;
+			height:70px;
+			width:100%;
+			margin: 0 auto;
 			background: -moz-linear-gradient(top, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.3) 1%, rgba(0,0,0,0.3) 100%); /* FF3.6+ */
 			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.3)), color-stop(1%,rgba(0,0,0,0.3)), color-stop(100%,rgba(0,0,0,0.3))); /* Chrome,Safari4+ */
 			background: -webkit-linear-gradient(top, rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.3) 1%,rgba(0,0,0,0.3) 100%); /* Chrome10+,Safari5.1+ */
