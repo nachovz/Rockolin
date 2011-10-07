@@ -5,7 +5,7 @@ Created on Aug 9, 2011
 '''
 
 from google.appengine.ext import db
-from lib.tipfy.appengine.auth.model import User
+from tipfy.appengine.auth.model import User
 
 
 class Album(db.Model):

@@ -12,10 +12,13 @@ from django.utils import simplejson as json
 
 from tipfyext.jinja2 import Jinja2Mixin
 from tipfyext.wtforms import Form, fields, validators
+from delegate.EventDelegate import EventDelegate
 
-class DashboardHandler(BaseHandler, Jinja2Mixin):
+class DashboardHandler(BaseHandler):
     
         def get(self, **kwargs):
             
-            return self.render_response('dashboard.html')
+            manager = EventDelegate('Event')
+            events = manager.listEvents(self.auth.user)
+            return self.render_response('dashboard.html',events=events)
         

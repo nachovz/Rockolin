@@ -1,6 +1,11 @@
 {% extends 'layout.html' %}
 {% from '_form_macros.html' import form_field %}
 {% block body %}
-
+	<a href="/create-event">Create Event</a>
+	{% if events %}
+		{% for event in events %}
+			{{ event.name }}
+		{% endfor %}
+	{% endif %}
 {% endblock %}
 
