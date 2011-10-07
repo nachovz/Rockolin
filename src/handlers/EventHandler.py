@@ -3,6 +3,7 @@ Created on Sep 29, 2011
 
 @author: Alexander
 '''
+from google.appengine.ext import db
 from werkzeug import cached_property
 from tipfy import RequestHandler
 from google.appengine.api import mail
@@ -13,6 +14,7 @@ from delegate.EventDelegate import EventDelegate
 from model.Event import Event
 from tipfyext.jinja2 import Jinja2Mixin
 from tipfyext.wtforms import Form, fields, validators
+
 
 REQUIRED = validators.required()
 
@@ -38,6 +40,7 @@ class CreateEventHandler(BaseHandler):
         
         def post(self, **kwargs):
             params = {
+                        "image": db.Blob(self.request.files.get('image_upload').filename),
                         "name" : self.request.form.get('name'),
 #                        "start_date" : self.cast(self.request.form.get('start_date'),'date'),
 #                        "end_date" : self.cast(self.request.form.get('end_date'),'date'),

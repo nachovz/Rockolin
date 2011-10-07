@@ -322,7 +322,7 @@ class SignupHandler(BaseHandler):
 class RegisterHandler(BaseHandler):
     def get(self, **kwargs):
         redirect_url = self.redirect_path()
-
+        
         if self.auth.user:
             # User is already registered, so don't display the registration form.
             return self.redirect('/dashboard')

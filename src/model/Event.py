@@ -20,6 +20,7 @@ class Event(db.Model):
     people_invited = db.ListProperty(db.Key)
     type = db.StringProperty(required=False)
     setlist = db.ReferenceProperty(SetList, 'setlist_events')
+    image = db.BlobProperty(required = False)
     
     def to_dict(self):
         
