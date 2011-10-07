@@ -20,5 +20,5 @@ class DashboardHandler(BaseHandler):
             
             manager = EventDelegate('Event')
             events = manager.listEvents(self.auth.user)
-            return self.render_response('dashboard.html',events=events)
+            return self.render_response('dashboard.html',section='dashboard', events=events)
         

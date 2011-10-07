@@ -17,10 +17,10 @@
             {% if current_user -%}
             <ul class="nav secondary-nav">
             	<li>
-	                <a>{{ current_user.username|e }}</a>        		
+	                <a class="yellow-text big-menu"><span>{{ current_user.username|e }}</span></a>        		
             	</li>
             	<li>
-            		<a href="{{ logout_url }}">Sign out</a>
+            		<a class="big-menu" href="{{ logout_url }}">Sign out</a>
             	</li>
             </ul>
             {%- endif %}
