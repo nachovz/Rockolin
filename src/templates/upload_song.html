@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% from '_form_macros.html' import form_field %}
+
+{% block body %}
+	
+	<form method="post" action="{{ current_url }}" enctype="multipart/form-data" class="form-stacked">
+        	<div class = "clearfix">
+        	{{ form_field(form.artist, class='medium') }}
+        	</div>
+        	<div class = "clearfix">
+        	{{ form_field(form.name, class='medium') }}
+        	</div>
+        	<label for="image_upload">Song</label>
+        	<input type="file" name="song_upload" id = "song_upload">
+        <fieldset class="submit">
+            <input type="submit" name="submit" value="{{ _('Submit') }}">
+       </fieldset>
+    </form>
+    
+    {% if songs %}
+    	{% for song in songs %}
+    	<li>
+	    	<audio controls="controls">
+			  <source src="/event/file/{{ song.key() }}.{{ song.filetype }}" type="audio/mp3" />
+			  Your browser does not support the audio element.
+			</audio>
+		</li>
+    		
+    	{% endfor %}
+    {% endif %}
+{% endblock %}
+

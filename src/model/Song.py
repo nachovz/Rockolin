@@ -14,6 +14,8 @@ class Song(db.Model):
     artist = db.ReferenceProperty(Artist, collection_name = 'artist_songs')
     album = db.ReferenceProperty(Album, collection_name = 'album_songs')
     likes = db.ListProperty(db.Key)
+    file = db.BlobProperty(required=False)  
+    filetype = db.StringProperty(required=False)
     
     def to_dict(self):
         
