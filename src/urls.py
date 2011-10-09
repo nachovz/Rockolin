@@ -9,6 +9,7 @@ rules = [
     Rule('/artist-json', endpoint='artist-json', handler='handlers.LastFmHandler.GetArtistHandler'),
     Rule('/dashboard', endpoint='dashboard', handler='handlers.DashboardHandler.DashboardHandler'),
     Rule('/create-event', endpoint='create-event', handler='handlers.EventHandler.CreateEventHandler'),
+    Rule('/event', endpoint='event', handler='handlers.EventHandler.EventHandler'),
     Rule('/upload-song', endpoint='upload-song', handler='handlers.SongHandler.CreateSongHandler'),
     Rule('/auth/logout', endpoint='auth/logout', handler='handlers.UserHandler.LogoutHandler'),
     Rule('/auth/signup', endpoint='auth/signup', handler='handlers.UserHandler.SignupHandler'),

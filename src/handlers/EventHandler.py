@@ -31,7 +31,7 @@ class EventHandler(BaseHandler):
             manager = EventDelegate('Event')
             events = manager.listEvents(self.auth.user)
             
-            return self.render_response('create_event.html',events=events)
+            return self.render_response('event.html',events=events)
         
         
 class CreateEventHandler(BaseHandler):

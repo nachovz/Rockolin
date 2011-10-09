@@ -16,6 +16,7 @@ class Song(db.Model):
     likes = db.ListProperty(db.Key)
     file = db.BlobProperty(required=False)  
     filetype = db.StringProperty(required=False)
+    url = db.StringProperty(required = False)
     
     def to_dict(self):
         

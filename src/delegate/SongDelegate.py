@@ -22,8 +22,7 @@ class SongDelegate(BaseDelegate):
         song = Song(
             name = params["name"],
             artist = a,
-            file = params["file"],
-            filetype = params["filetype"].split('.')[1],
+            url = params["url"]
         )
         song.put()
         

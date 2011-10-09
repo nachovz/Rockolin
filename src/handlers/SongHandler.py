@@ -23,6 +23,7 @@ REQUIRED = validators.required()
 class SongForm(Form):
     name = fields.TextField('Name', validators=[REQUIRED])
     artist = fields.TextField('Artist', validators=[REQUIRED])
+    url = fields.TextField('URL', validators=[REQUIRED])
 
 class CreateSongHandler(BaseHandler):
     
@@ -33,10 +34,9 @@ class CreateSongHandler(BaseHandler):
         
         def post(self, **kwargs):
             
-            song = self.request.files.get('song_upload').read()
+            
             params = {
-                        "file": song,
-                        "filetype": self.request.files.get('song_upload').filename,
+                        "url": self.request.form.get('url'), 
                         "name" : self.request.form.get('name'), 
                         "artist" : self.request.form.get('artist')                   
                   }
