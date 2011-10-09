@@ -25,6 +25,14 @@
 		{% else %}
 		
 			{% if section != 'register' %}
+			<div class="nav-container">
+				<a href="/"><img class="img-logo" src="/static/images/logo.png" /></a>
+				<ul class="nav">
+					<li>
+						<a class="big-menu white-text" href="#">About us</a>
+					</li>
+				</ul>
+			</div>
 			<ul class="nav secondary-nav">
 	        	<li>
 	        		<a class="big-menu">Haven't try Rockolin' yet? </a>
@@ -34,10 +42,10 @@
 	        	</li>
 	        </ul>
 			{%- else %}
-				<form id="login-form" class="pull-right validate" method="post" action="/auth/login" enctype="multipart/form-data" class="tipfy-form">
+				<form id="login-form" class="pull-right" method="post" action="/auth/login" enctype="multipart/form-data" class="tipfy-form">
         
-		            {{ form_field(form.username_login, class='medium required',placeholder='username') }}
-		            {{ form_field(form.password_login, class='medium required',placeholder='password') }}
+		            {{ form_field(form.username_login, class='medium',placeholder='username') }}
+		            {{ form_field(form.password_login, class='medium',placeholder='password') }}
 		        
 		        	<a href="#" id="login-button-header" class=" submit-button" onclick="$(this).parent().submit()">SIGN IN</a>
 		            <!--<input id="login-button-header" type="image" src="/static/images/loginrockolin.png" name="submit" value="{{ _('Sign in') }}">-->
