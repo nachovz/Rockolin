@@ -203,7 +203,11 @@ body{
 }
 
 .mini-button{
-	background: url("/static/images/small.png") no-repeat;
+	background: url("/static/images/smaller.png") no-repeat;
+	font-size: 1.2em;
+	margin-left:95px;
+	padding: 3px 7px 5px 7px;
+	line-height: 70px;
 }
 
 #login-button-header{
