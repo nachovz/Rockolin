@@ -31,7 +31,7 @@ class ValidateUserForm(Form):
 class EventValidateUserHandler(BaseHandler):
     def get(self,key, **kwargs):
             event = Event.get(key)
-            return self.render_response('validate_user.html',form = self.form,event=event)
+            return self.render_response('validate_user.html',section='validate_user',form = self.form,event=event)
     
     def post(self, key, **kwargs):
         event = Event.get(key)
@@ -39,7 +39,7 @@ class EventValidateUserHandler(BaseHandler):
         invited_users = event.event_user_invited
         for iu in invited_users:
             if email == iu.email:
-                return self.redirect('/event')
+                return self.redirect('/event/'+str(event.key()))
             else: 
                 self.messages.append(('This email was not invited to this event',
                             'error'))

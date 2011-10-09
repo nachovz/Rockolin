@@ -328,7 +328,7 @@ class RegisterHandler(BaseHandler):
             # User is already registered, so don't display the registration form.
             return self.redirect('/dashboard')
 
-        return self.render_response('register.html', form=self.form)
+        return self.render_response('register.html',section='register', form=self.form)
 
     def post(self, **kwargs):
         redirect_url = self.redirect_path()
