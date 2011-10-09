@@ -11,12 +11,12 @@ class SongDelegate(BaseDelegate):
     
     def add(self, params):
         artist = Artist.all().filter('artist =', params["artist"]).get()
-        artist = None
+        
         if artist:
             a = artist
         else:
             a = Artist(
-                       name = params["name"]
+                       name = params["artist"]
                        )
             a.put()
         song = Song(

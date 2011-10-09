@@ -17,7 +17,7 @@ from tipfyext.wtforms import Form, fields, validators
 from tipfy import Response
 from google.appengine.api import images
 from xmlrpclib import datetime
-
+from model.Song import Song
 REQUIRED = validators.required()
 
 class SearchForm(Form):
@@ -28,10 +28,8 @@ class EventHandler(BaseHandler):
     
         def get(self, **kwargs):
             
-            manager = EventDelegate('Event')
-            events = manager.listEvents(self.auth.user)
-            
-            return self.render_response('event.html',events=events)
+            songs = Song.all()
+            return self.render_response('event.html',songs=songs)
         
         
 class CreateEventHandler(BaseHandler):
