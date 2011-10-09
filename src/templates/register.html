@@ -16,7 +16,7 @@
 				<div class="span7">
 					<div class="register-box log-in-box gradient-div">
 						<div class="fade in">
-							<form name="signup" class="form-stacked" method="post" action="{{ current_url }}" enctype="multipart/form-data">
+							<form id="register-form" name="signup" class="form-stacked validate" method="post" action="{{ current_url }}" enctype="multipart/form-data">
 							
 								<div class="clearfix">
 									<label>Username</label>
@@ -28,7 +28,7 @@
 								<div class="clearfix">
 									<label>Email</label>
 									<div class="input">
-										{{ form_field(form.email, class='required xlarge') }}
+										{{ form_field(form.email, class='required xlarge email') }}
 									</div>
 								</div>
 								<br/>
@@ -46,9 +46,9 @@
 									</div>
 								</div>
 														
-		
-								<input class="submit-button" type="image" src="/static/images/buttonSignUp.png" name="submit" />
-								<!--<a class="submit-button" onClick="document.signup.submit()"><img src="/static/images/buttonSignUp.png" /></a>-->
+								<a class="submit-button big-button-rockolin register-button-form" href="#" onclick="$(this).parent().submit()">SIGN UP</a>
+								<!--<input class="submit-button" type="submit" src="/static/images/buttonSignUp.png" name="submit" value="SIGN UP"/>
+								<a class="submit-button" onClick="document.signup.submit()"><img src="/static/images/buttonSignUp.png" /></a>-->
 								</div>
 							</form>
 					</div>

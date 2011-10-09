@@ -1,15 +1,17 @@
 
 {% from '_form_macros.html' import form_field %}
 
-<div class="topbar">	
+<div class="topbar-header">	
 	<div class="container">
 		{% if current_user or auth_session or section == 'login' -%}
-		<a href="/"><img class="img-logo" src="/static/images/logo.png" /></a>
-		<ul class="nav">
-			<li>
-				<a class="big-menu" href="#">About us</a>
-			</li>
-		</ul>
+		<div class="nav-container">
+			<a href="/"><img class="img-logo" src="/static/images/logo.png" /></a>
+			<ul class="nav">
+				<li>
+					<a class="big-menu white-text" href="#">About us</a>
+				</li>
+			</ul>
+		</div>
 		{%- endif %} 
 		
 		
@@ -20,7 +22,7 @@
 	                <a class="yellow-text big-menu"><span>{{ current_user.username|e }}</span></a>        		
             	</li>
             	<li>
-            		<a class="big-menu" href="{{ logout_url }}">Sign out</a>
+            		<a class="big-menu white-text" href="{{ logout_url }}">Sign out</a>
             	</li>
             </ul>
             {%- endif %}
@@ -35,12 +37,13 @@
             </ul>
             {%- endif %} 
         {% else %}
-        <form class="pull-right" method="post" action="/auth/login" enctype="multipart/form-data" class="tipfy-form">
+        <form id="login-form" class="pull-right validate" method="post" action="/auth/login" enctype="multipart/form-data" class="tipfy-form">
         
-            {{ form_field(form.username_login, class='small',placeholder='username') }}
-            {{ form_field(form.password_login, class='small',placeholder='password') }}
+            {{ form_field(form.username_login, class='medium required',placeholder='username') }}
+            {{ form_field(form.password_login, class='medium required',placeholder='password') }}
         
-            <input id="login-button-header" type="image" src="/static/images/loginrockolin.png" name="submit" value="{{ _('Sign in') }}">
+        	<a href="#" id="login-button-header" class=" submit-button" onclick="$(this).parent().submit()">SIGN IN</a>
+            <!--<input id="login-button-header" type="image" src="/static/images/loginrockolin.png" name="submit" value="{{ _('Sign in') }}">-->
         
     	</form>
 		
