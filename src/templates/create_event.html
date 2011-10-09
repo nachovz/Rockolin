@@ -12,24 +12,29 @@
         	<div class = "clearfix">
         	{{ form_field(form.description, class='medium') }}
         	</div>
+        	<div class = "clearfix">
         	<label for="start-date">Start Date</label>
         	<input id = "start-date" name ="start-date" type="date">
         	<input id = "start-time" name ="start-time"  type="time">
-        	
+        	</div>
+        	<div class = "clearfix">
         	<label for="finish-date">Finish Date</label>
         	<input id = "finish-date" name = "finish-date" type="date">
         	<input id = "finish-time" name = "finish-time" type="time">
-        	
-        	<table style = "color:white">
+        	</div>
+        	<div class = "clearfix">
+        	<label for="add-email">Add Emails</label>
+        	<input id="add-email" type="text" onClick = "testKey()">
+        	</div>
+        	<div id = "add" >Add</div>
+        	<table id = "table" style = "color:white">
 			<tr>
 			<td ><input id="master-toggle-switch" type="checkbox" checked=""  value="all" name="master-toggle-switch"></td>
-			<td >Name</th>
 			<td >E-mail</th>
 			</tr>
 			
 				<tr>
 					<td><input class="check" type="checkbox" checked="" value="alex.milano@gmail.com" name="contacts[]"></td>
-					<td>Alex Milano</td>
 					<td >alex.milano@gmail.com</th>
 				</tr>
 			

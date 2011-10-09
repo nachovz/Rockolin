@@ -6,13 +6,14 @@ Created on Aug 9, 2011
 
 from google.appengine.ext import db
 from tipfy.appengine.auth.model import User
-
+from model.Event import Event
 
 class InvitedUser(db.Model):
-    firstname = db.StringProperty(required=True)
-    lastname = db.StringProperty(required=True)
+    firstname = db.StringProperty(required=False)
+    lastname = db.StringProperty(required=False)
     email = db.EmailProperty()
     favorite_songs = db.ListProperty(db.Key)
+    event = db.ReferenceProperty(Event, collection_name = 'event_user_invited')
     
     
     def to_dict(self):
