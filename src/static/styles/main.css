@@ -58,17 +58,19 @@ body{
 	font-size: 1.1em;
 }
 
-.topbar{
+.topbar-header{
 	background-color: #1C0404;
 	position:relative;
 	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-	padding: 30px 0 0px 0;
+	padding: 25px 0 0px 0;
+	overflow: hidden;
+	min-height: 60px;
 }
 
-.topbar form{
-	//margin: 30px 0 0 0;
+.nav-container{
+	padding-top:15px;
 }
 
 #main-section{
@@ -148,7 +150,7 @@ body{
 }
 
 .log-in-box{
-	padding: 2.2em 0em 3.8em 1.1em;
+	padding: 2.2em 0em 2.8em 1.1em;
 }
 
 .gradient-div{
@@ -174,29 +176,48 @@ body{
 }
 
 .submit-button{
+	text-align: center;
+	position: relative;
+	color: #260d06;
+	cursor: pointer;
+}
+
+.big-button-rockolin{
+	width: 300px;
+	height: 64px;
+	background: url("/static/images/medium-btn-form.png") no-repeat;
+	display: block;
+}
+
+.register-button-form{
 	float: left;
-	margin-left: -33px;
-	margin-top: 0.7em;
-	border: 0;
-	border:none;
-	width: 340px;
-	height: 82px;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;	
+	font-size: 3.8em;	
+	padding: 8px 0 0 0;
+	margin: 15px 0 0 -10px;
+}
+
+.cevent-button{
+	font-size: 2.5em;
+	padding: 18px 0 0 0;
+	margin: auto;
+}
+
+.mini-button{
+	background: url("/static/images/small.png") no-repeat;
 }
 
 #login-button-header{
-	width:120px;
-	height:29px;
-	padding:0;
-	margin-bottom:-11px;
-	border: 0;
-	border: none;
+	width:165px;
+	height:28px;
+	display:inline-block;
+	background: url("/static/images/small.png") no-repeat;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
-	background: none;
+	color: #260d06;
+	padding:7px 0;
+	font-size: 2em;
+	margin: 0;
 }
 
 .pull-right label{
@@ -303,6 +324,15 @@ body:before {
 }
 
 /*GENERALS*/
+.errors{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	color: #ffc010;
+}
+.form-stacked .error{
+	color: #ffc010;
+}
 .top-sections{
 	padding-top: 60px;
 }
@@ -310,12 +340,15 @@ body:before {
 	text-align: center;
 }
 .box-title{
-}
-.box-title h1{
 	font-family: "VintageRegular", serif;
-	font-size: 4.5em;
 	font-weight: normal;
 	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+.box-title h1{
+	font-size: 4.5em;
+	}
+.box-title h2{
+	font-size: 2.8em;
 }
 h1 .word1{
 	font-size: 1.2em;
@@ -333,4 +366,36 @@ h1 .word1{
 .big-menu{
 	font-size: 1.7em;
 	padding: 18px 12px 0px 0px;
+}
+.stats-box{
+	padding: 20px 0 0 0;
+}
+.stats{
+	margin-top: 25px;
+}
+/* DASHBOARD STATS*/
+.stats > .clearfix{
+	overflow: hidden;
+	width: 75%;
+	margin: 15px auto;
+}
+.stat-div{
+	height: 55px;
+	
+}
+.stat-div h4{
+	margin-left: 20px;
+	color: white;
+	font-size: 2em;
+	line-height: 50px;
+	font-weight: normal;
+}
+.stat-div span{
+	font-size: 2.2em;
+	line-height: 50px;
+	font-weight: bolder;
+}
+.stat-img{
+	width: 50px;
+	height: 50px;
 }

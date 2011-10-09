@@ -42,7 +42,8 @@
 		  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 		  <script>window.jQuery || document.write('<script src="/static/scripts/libs/jquery-1.6.2.min.js"><\/script>')</script>
 		
-		
+		  <script type="text/javascript" src="/static/scripts/libs/cufon-yui.js"></script>
+		  <script type="text/javascript" src="/static/scripts/mylibs/Vintage_400.font.js"></script>
 		  <!-- All JavaScript at the bottom, except for Modernizr / Respond.
 		       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
 		       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
@@ -50,7 +51,9 @@
 		  <script src="/static/scripts/libs/modernizr-2.0.6.min.js"></script>
 		  
 		  <!--<script src="/static/scripts/less-1.1.3.min.js"></script>-->
-		  
+		  <script type="text/javascript">
+			Cufon.replace('.submit-button');
+		  </script>
 		  {% block head_include %}{% endblock %}
 		  
         <!--<script type="text/javascript" src="http://use.typekit.com/ibi3agd.js"></script>-->
@@ -92,7 +95,8 @@
 		  <!--<script defer src="/static/scripts/script.js"></script>-->
 		  <script defer src="/static/scripts/mylibs/openid-en.js"></script>
 		  		  <script type="text/javascript" src="/static/scripts/libs/mosaic.1.0.1.js"></script>
-
+		  <script type="text/javascript" src="/static/scripts/libs/jquery.validate.min.js"></script>
+		  <script type="text/javascript" src="/static/scripts/main.js"></script>
 		  {% if section == 'login' %}
   		  <script defer src="/static/scripts/libs/jquery.lettering-0.6.min.js"></script>  
 		  <script type="text/javascript" src="/static/scripts/login.js"></script>
@@ -137,6 +141,6 @@
 		    <script defer src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
 		    <script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
 		  <![endif]-->
-		  
+		  <script type="text/javascript"> Cufon.now(); </script>
     </body>
 </html>

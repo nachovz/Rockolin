@@ -9,21 +9,21 @@
 			
 			<div class="span6 offset5 logInbox">
 				<div class="box-title  centered">
-					<h1 class="yellow-text">SIGN IN</h1>
+					<!--<h1 class="yellow-text">SIGN IN</h1>-->
 				</div>
 				<div class="log-in-box gradient-div">
-				    <form class="form-stacked"  method="post" action="{{ current_url }}" enctype="multipart/form-data">
+				    <form  class="form-stacked validate"  method="post" action="{{ current_url }}" enctype="multipart/form-data">
 				        <fieldset class="textbox">
 				        	<div class="clearfix">
 					        	<label for="username_login">Username</label>
 					        	<div class="input">
-					        		{{ form_field(form.username_login, class='xlarge') }}
+					        		{{ form_field(form.username_login, class='xlarge required') }}
 					        	</div>
 					        </div>
 				            <div class="clearfix">
 				            	<label for="password_login">Password</label>
 				            	<div class="input">
-				            		{{ form_field(form.password_login, class='xlarge') }}
+				            		{{ form_field(form.password_login, class='xlarge required') }}
 				            	</div>
 				            </div>
 			            </fieldset>
@@ -37,7 +37,7 @@
 			        		<span class="white-text">Don't have an account? <a href="/">Create a new one</a></span>
 			        	</p>
 			        	<br />
-				            <input class="submit-button" type="image" src="/static/images/loginrockolin.png" name="submit" />
+			        		<a class="submit-button register-button-form" href="#" onclick="$(this).parent().submit()">SIGN IN</a>
 				    </form>
 				</div>
 			    
