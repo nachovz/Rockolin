@@ -11,6 +11,7 @@ rules = [
     Rule('/create-event', endpoint='create-event', handler='handlers.EventHandler.CreateEventHandler'),
     Rule('/task/mail', endpoint='/task/mail', handler='handlers.MailHandler.MailSender'),
     Rule('/event/invitation/<key>', endpoint='event-validate', handler='handlers.EventHandler.EventValidateUserHandler'),
+    Rule('/setlist/update', endpoint='event', handler='handlers.SetListHandler.SetListHandler'),
     Rule('/event/<key>', endpoint='event', handler='handlers.EventHandler.EventHandler'),
     Rule('/upload-song', endpoint='upload-song', handler='handlers.SongHandler.CreateSongHandler'),
     Rule('/auth/logout', endpoint='auth/logout', handler='handlers.UserHandler.LogoutHandler'),

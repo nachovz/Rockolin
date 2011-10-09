@@ -27,8 +27,8 @@ class SetListHandler(BaseHandler):
         
 
         def post(self, **kwargs):
-            song = Song.get(self.request.form.get('key-song'))
-            event = Event.get(self.request.form.get('key-event'))
+            song = Song.get(self.request.form.get('idsong'))
+            event = Event.get(self.request.form.get('idevent'))
             params = {
                         "event": event,
                         "song": song
@@ -38,5 +38,10 @@ class SetListHandler(BaseHandler):
             manager = SetListVotesDelegate('SetListVotes')
             manager.update(params)
             slv = event.event_setlist.order('-votes')
-            i = slv.index(song)
-            return i
+            i = 0
+            for s in slv:
+                if s.song.key() == song.key():
+                    break
+                i=i+1
+            list = {'position' : i}
+            return json.dumps(list)
