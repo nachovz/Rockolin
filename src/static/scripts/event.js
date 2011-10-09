@@ -27,22 +27,28 @@ $(document).ready(function(){
   	  
   });
   $('.love-song').click(function() {
-  	/*if ($(this).parent().parent().hasClass('jplayer_playlist_current')) {
-  		$('.play-song').trigger('click');
-  	}else{*/
   		$('.jplayer_playlist_current div .play-song').trigger('click');
-  	/*}*/
-  	  // the clicked LI
-      var clicked = $(this).parent().parent();
-
-      // all the LIs above the clicked one
-      //var previousAll = clicked.prevAll();
-
-      // only proceed if it's not already on top (no previous siblings)
+      var $clicked = $(this).parent().parent();
+      
       //if(previousAll.length > 0) {
-		moveSong(clicked,2);
-      //}
+		//send to server
+		var id = $(this).attr('rel');
+		var eventId = $clicked.parent().attr('rel');
+		
+		$.ajax({
+		   type: "POST",
+		   url: "/setlist/update",
+		   dataType: "json",
+		   data: {idevent: eventId , idsong: id},
+		   success: function(data)
+		   {
+		   		if (data) {
+		   			moveSong($clicked,data['position']);		   			
+		   		}
+		   }
+	 	});
     });
+    
 });
 
 $("#jplayer_playlist ul").sortable();
@@ -63,35 +69,37 @@ function playSong(i){
 function moveSong(clicked,index){
 	
 	//previousAll for visual
-	var previousAllV = clicked.prevUntil('li:nth-child('+(index)+')');
+	//var previousAllV = clicked.prevUntil('li:nth-child('+(index)+')');
 	
 	// all the LIs above the clicked to index position
-    var previousAll = clicked.prevUntil('li:nth-child('+(index-1)+')');
+    var previousAll = clicked.prevUntil('li:nth-child('+(index)+')');
 	
 	// top LI for VISUAL
-    var top = $(previousAll[previousAll.length - (index+1)]);//$($list+' li:nth-child('+index+')'); //$(previousAll[previousAll.length - 1]);
+    var top = $(previousAll[previousAll.length-1]);//$($list+' li:nth-child('+index+')'); //$(previousAll[previousAll.length - 1]);
 
 	//top LI for DOM
-	var topD = $(previousAll[previousAll.length - (index)]);
+	//var topD = $(previousAll[previousAll.length - (index)]);
 	
     // immediately previous LI
     var previous = $(previousAll[0]);
 
     // how far up do we need to move the clicked LI?
-    var moveUp = clicked.attr('offsetTop') - top.attr('offsetTop');
+    var topof = clicked.offset().top;
+    
+    var moveUp = clicked.offset().top/*clicked.attr('offset')/*attr('offset')*/ - top.offset().top/*attr('offset')*/;
 
     // how far down do we need to move the previous siblings?
     var moveDown = (clicked.offset().top + clicked.outerHeight()) - (previous.offset().top + previous.outerHeight());
 
     // let's move stuff
     clicked.css('position', 'relative');
-    previousAllV.css('position', 'relative');
+    previousAll.css('position', 'relative');
     clicked.animate({'top': -moveUp});
     previousAll.animate({'top': moveDown}, {complete: function() {
       // rearrange the DOM and restore positioning when we're done moving
       //clicked.parent().prepend(clicked);
-      $(clicked).insertAfter(top);
+      $(clicked).insertBefore(top);
       clicked.css({'position': 'static', 'top': 0});
-      previousAllV.css({'position': 'static', 'top': 0}); 
+      previousAll.css({'position': 'static', 'top': 0}); 
     }});
 }
