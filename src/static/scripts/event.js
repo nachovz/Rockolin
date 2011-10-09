@@ -27,22 +27,28 @@ $(document).ready(function(){
   	  
   });
   $('.love-song').click(function() {
-  	/*if ($(this).parent().parent().hasClass('jplayer_playlist_current')) {
-  		$('.play-song').trigger('click');
-  	}else{*/
   		$('.jplayer_playlist_current div .play-song').trigger('click');
-  	/*}*/
-  	  // the clicked LI
       var $clicked = $(this).parent().parent();
-
-      // all the LIs above the clicked one
-      //var previousAll = clicked.prevAll();
-
-      // only proceed if it's not already on top (no previous siblings)
+      
       //if(previousAll.length > 0) {
-		moveSong($clicked,2);
-      //}
+		//send to server
+		var id = $(this).attr('rel');
+		var eventId = $clicked.parent().attr('rel');
+		
+		$.ajax({
+		   type: "POST",
+		   url: "/setlist/update",
+		   dataType: "json",
+		   data: {idevent: eventId , idsong: id},
+		   success: function(data)
+		   {
+		   		if (data) {
+		   			moveSong($clicked,data['position']);		   			
+		   		}
+		   }
+	 	});
     });
+    
 });
 
 $("#jplayer_playlist ul").sortable();
