@@ -23,7 +23,31 @@ REQUIRED = validators.required()
 class SearchForm(Form):
     name = fields.TextField('Name', validators=[REQUIRED])
     description = fields.TextField('Description', validators=[REQUIRED])
+
+class ValidateUserForm(Form):
+    email = fields.TextField('Email', validators=[REQUIRED])
     
+class EventValidateUserHandler(BaseHandler):
+    def get(self,key, **kwargs):
+            event = Event.get(key)
+            return self.render_response('validate_user.html',form = self.form,event=event)
+    
+    def post(self, key, **kwargs):
+        event = Event.get(key)
+        email = self.form.email.data
+        invited_users = event.event_user_invited
+        for iu in invited_users:
+            if email == iu.email:
+                return self.redirect('/event')
+            else: 
+                self.messages.append(('This email was not invited to this event',
+                            'error'))
+                return self.get(key,**kwargs)
+            
+    @cached_property
+    def form(self):
+        return ValidateUserForm(self.request)   
+        
 class EventHandler(BaseHandler):
     
         def get(self, **kwargs):
@@ -31,6 +55,7 @@ class EventHandler(BaseHandler):
             songs = Song.all()
             return self.render_response('event.html',section='event',songs=songs)
         
+
         
 class CreateEventHandler(BaseHandler):
     
@@ -68,7 +93,7 @@ class CreateEventHandler(BaseHandler):
                         "end_date" : end_date,
                         "description" : self.request.form.get('description'),
                         "creator" : self.auth.user,
-#                        "people_invited" : self.request.form.getlist('people_invited'),
+                        "people_invited" : self.request.form.getlist('contacts[]'),
 #                        "type" : self.request.form.get('type'),
 #                        "setlist" : self.request.form.getlist('setlist')
                     

@@ -141,6 +141,36 @@
 
 					}
 				});
+
+		    	$("#add").click(function(){
+					addEmail();
+				});
+				
+		    	function addEmail(){
+		    		var text = document.getElementById("add-email").value;	
+					$('#contacts-header').show();
+					$('#table').append('<tr> <td><input type="checkbox" name="contacts[]" value="'+text+'" checked class="check"></td> <td><strong class="fn">'+text+'</strong></td></tr>');
+					
+			    	}
+		    	
+		    	function testKey() {
+					/*var e = document.getElementById('add-email');
+
+					e.onkeydown = function (evt) {
+
+					    evt = (evt) ? evt : ((window.event) ? window.event : "");
+
+					    if (evt) {
+							if (evt.keyCode == 13){
+								addEmail();
+
+							}
+					    }
+					}*/
+					alert("wuju");
+		    	}
+						
+						
 		    });
 			</script>
 		  <!-- end scripts-->

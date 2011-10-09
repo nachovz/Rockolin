@@ -2,6 +2,9 @@ from BaseDelegate import BaseDelegate
 from google.appengine.ext import db
 from google.appengine.api import mail
 from model.Event import Event
+from model.InvitedUser import InvitedUser
+from google.appengine.api.taskqueue.taskqueue import Task
+from google.appengine.api.taskqueue import Queue
 
 class EventDelegate(BaseDelegate):
     
@@ -25,7 +28,22 @@ class EventDelegate(BaseDelegate):
             
         )
         event.put()
-        
+        list = params["people_invited"]
+        for l in list:
+            iu = InvitedUser(
+                             email = l,
+                             event = event
+                             )
+            queue = Queue('mail-queue')
+            subject =  "You have been invited to the event " + event.name + " in Rockolin'"
+            body = " Hi!, You have been invited to the event " + event.name + """
+                    This event would be on: """ + event.start_date + """ 
+                    If you want to decide the music justo go to the following 
+                    link: http://rockolinapp.appspot.com/event/"""+str(event.key())+"""
+            
+            queue.add(Task(url='/task/mail', params = { 'to' : l, 'subject' : subject, 'body' : body }))        
+            iu.put()
+        queue.purge()
         return event
     
     def update(self, params):

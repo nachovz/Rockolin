@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% from '_form_macros.html' import form_field %}
+
+{% block body %}
+<section id="main-section" class="background-with big-content">
+	<div class="container">
+		<div class="row">
+			
+			<div class="span6 offset5 logInbox">
+				<div class="box-title  centered">
+					<!--<h1 class="yellow-text">SIGN IN</h1>-->
+				</div>
+				<div class="log-in-box gradient-div">
+				    <form  class="form-stacked validate"  method="post" action="{{ current_url }}" enctype="multipart/form-data">
+				        
+				        <fieldset class="textbox">
+				        	<div class="clearfix">
+					        	<label for="username_login">Username</label>
+					        	<div class="input">
+					        		{{ form_field(form.email, class='xlarge required') }}
+					        	</div>
+					        </div>
+				            
+			            </fieldset>
+			            
+			        	
+			        	<br />
+			        		<a class="submit-button register-button-form" href="#" onclick="$(this).parent().submit()">Let's Rock</a>
+				    </form>
+				</div>
+			    
+			<!--
+			    <p>Or select a service to sign in with:</p>
+			    <p>
+			        <a href="{{ facebook_login_url }}" title="Sign in with Facebook"><img src="/static/images/facebook.png" width="60" height="60" alt="Sign in with Facebook"></a>
+			        <a href="{{ friendfeed_login_url }}" title="Sign in with FriendFeed"><img src="/static/images/friendfeed.png" width="60" height="60" alt="Sign in with FriendFeed"></a>
+			        <a href="{{ google_login_url }}" title="Sign in with Google"><img src="/static/images/google.png" width="60" height="60" alt="Sign in with Google"></a>
+			        <a href="{{ twitter_login_url }}" title="Sign in with Twitter"><img src="/static/images/twitter.png" width="60" height="60" alt="Sign in with Twitter"></a>
+			        {#<a href="{{ yahoo_login_url }}" title="Sign in with Yahoo!"><img src="/static/images/yahoo.png" width="60" height="60" alt="Sign in with Yahoo!"></a>#}
+			    </p>-->
+			</div>
+		    
+	    </div>
+    </div>
+</section>
+
+{% endblock %}
+
