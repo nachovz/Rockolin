@@ -129,6 +129,18 @@
 		    	}).result(function(e, item) {
 		    		$("#content").append("<p>selected " + format(item) + "</p>");
 		    	});
+
+		    	$("#master-toggle-switch").click(function(){
+
+					if ($("#master-toggle-switch").is(':checked')){
+						$(".check").attr('checked',true);
+
+					}else
+					{
+						$(".check").attr('checked',false);
+
+					}
+				});
 		    });
 			</script>
 		  <!-- end scripts-->
