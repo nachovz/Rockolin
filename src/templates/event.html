@@ -22,19 +22,25 @@
 		<div class="span10">
 			<div class="gradient-div">
 				<div id="jplayer_playlist" class="jp-playlist" >
-					<ul></ul>
+					<ul>
+						{% for song in songs %}
+						
+							{{ song.url }}
+							{{ song.name }}
+							{{ song.artist }}
+							
+						{% endfor %}
+					</ul>
 				</div>	
 			</div>
 		</div>
 	</div>
 	
 </div>
+<script type="text/javascript">
+	
+</script>
 
-	{% for song in songs %}
-		{{ song.url }}
-		{{ song.name }}
-		{{ song.artist }}
-		
-	{% endfor %}
+	
 {% endblock %}
 
