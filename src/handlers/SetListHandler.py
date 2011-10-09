@@ -16,7 +16,8 @@ from google.appengine.api import images
 from xmlrpclib import datetime
 from model.Song import Song
 from model.SetListVotes import SetListVotes
-    
+from delegate.SetListDelegate import SetListVotesDelegate
+
 class SetListHandler(BaseHandler):
     
         def get(self, **kwargs):
@@ -25,3 +26,17 @@ class SetListHandler(BaseHandler):
             return self.render_response('event.html',section='event',songs=songs)
         
 
+        def post(self, **kwargs):
+            song = Song.get(self.request.form.get('key-song'))
+            event = Event.get(self.request.form.get('key-event'))
+            params = {
+                        "event": event,
+                        "song": song
+                        
+                    
+                  }
+            manager = SetListVotesDelegate('SetListVotes')
+            manager.update(params)
+            slv = event.event_setlist.order('-votes')
+            i = slv.index(song)
+            return i
