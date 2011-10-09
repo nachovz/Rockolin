@@ -2,11 +2,12 @@
 {% from '_form_macros.html' import form_field %}
 
 {% block body %}
-
+	hola
 	{% for song in songs %}
+	
 		{{ song.url }}
 		{{ song.name }}
-		{{ song.artist }}
+		{{ song.artist.name }}
 		
 	{% endfor %}
 {% endblock %}
