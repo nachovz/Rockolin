@@ -2,6 +2,7 @@
 {% from '_form_macros.html' import form_field %}
 
 {% block body %}
+
 <div class="container">
 	
 	<div class="row">
@@ -26,8 +27,9 @@
 						{% for song in songs %}
 						
 							{{ song.url }}
-							{{ song.name }}
-							{{ song.artist }}
+		{{ song.name }}
+		{{ song.artist.name }}
+		
 							
 						{% endfor %}
 					</ul>
@@ -42,5 +44,6 @@
 </script>
 
 	
+
 {% endblock %}
 

@@ -10,7 +10,7 @@ class SongDelegate(BaseDelegate):
         return songs
     
     def add(self, params):
-        artist = Artist.all().filter('artist =', params["artist"]).get()
+        artist = Artist.all().filter('name =', params["artist"]).get()
         
         if artist:
             a = artist
