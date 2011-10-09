@@ -1,0 +1,6 @@
+indexes:
+- kind: SetListVotes
+  properties:
+  - name: event
+  - name: votes
+    direction: desc

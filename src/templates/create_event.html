@@ -23,6 +23,25 @@
         	<input id = "finish-time" name = "finish-time" type="time">
         	</div>
         	<div class = "clearfix">
+        	<label for="add-email">Add Songs</label>
+        	</div>
+        	<table id = "table" style = "color:white">
+			<tr>
+			<td ><input id="master-toggle-switch" type="checkbox" checked=""  value="all" name="master-toggle-switch"></td>
+			<td >Artist</th>
+			<td >Song</th>
+			</tr>
+			{% for song in songs %}
+				<tr>
+					<td><input class="check" type="checkbox" checked="" value="{{ song.key() }}" name="songs[]"></td>
+					<td >{{ song.artist.name }}</th>
+					<td >{{ song.name }}</th>
+				</tr>
+			{% endfor %}
+			</table>
+			
+        	<br><br><br><br><br>
+        	<div class = "clearfix">
         	<label for="add-email">Add Emails</label>
         	<input id="add-email" type="text" onClick = "testKey()">
         	</div>
@@ -33,16 +52,14 @@
 			<td >E-mail</th>
 			</tr>
 			
-				<tr>
-					<td><input class="check" type="checkbox" checked="" value="alex.milano@gmail.com" name="contacts[]"></td>
-					<td >alex.milano@gmail.com</th>
-				</tr>
+			<tr>
+				<td><input class="check" type="checkbox" checked="" value="alex.milano@gmail.com" name="contacts[]"></td>
+				<td >alex.milano@gmail.com</th>
+			</tr>
 			
 			</table>
-        	
-        	
-        	
-        <fieldset class="submit">
+
+		<fieldset class="submit">
             <input type="submit" name="submit" value="{{ _('Submit') }}">
        </fieldset>
     </form>

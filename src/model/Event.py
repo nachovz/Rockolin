@@ -6,7 +6,6 @@ Created on Aug 9, 2011
 
 from google.appengine.ext import db
 from tipfy.appengine.auth.model import User
-from SetList import SetList
 
 class Event(db.Model):
     
@@ -19,7 +18,6 @@ class Event(db.Model):
     creator = db.ReferenceProperty(User, collection_name = 'user_events')
     people_invited = db.ListProperty(db.Key)
     type = db.StringProperty(required=False)
-    setlist = db.ReferenceProperty(SetList, 'setlist_events')
     file = db.BlobProperty(required=False)  
     filetype = db.StringProperty(required=False)
     
