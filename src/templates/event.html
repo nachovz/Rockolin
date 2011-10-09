@@ -3,6 +3,11 @@
 
 {% block body %}
 
-	
+	{% for song in songs %}
+		{{ song.url }}
+		{{ song.name }}
+		{{ song.artist }}
+		
+	{% endfor %}
 {% endblock %}
 
