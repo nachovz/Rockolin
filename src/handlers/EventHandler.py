@@ -29,7 +29,7 @@ class EventHandler(BaseHandler):
         def get(self, **kwargs):
             
             songs = Song.all()
-            return self.render_response('event.html',songs=songs)
+            return self.render_response('event.html',section='event',songs=songs)
         
         
 class CreateEventHandler(BaseHandler):
