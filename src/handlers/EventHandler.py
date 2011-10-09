@@ -54,7 +54,7 @@ class EventHandler(BaseHandler):
         def get(self,key, **kwargs):
             
             slv = Event.get(key).event_setlist.order('-votes')
-            return self.render_response('event.html',section='event',setlist = slv)
+            return self.render_response('event.html',section='event',setlist = slv,event=Event.get(key))
         
 
         
