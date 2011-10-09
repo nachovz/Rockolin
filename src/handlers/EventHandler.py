@@ -18,6 +18,7 @@ from tipfy import Response
 from google.appengine.api import images
 from xmlrpclib import datetime
 from model.Song import Song
+from model.SetListVotes import SetListVotes
 REQUIRED = validators.required()
 
 class SearchForm(Form):
@@ -50,18 +51,19 @@ class EventValidateUserHandler(BaseHandler):
         
 class EventHandler(BaseHandler):
     
-        def get(self, **kwargs):
+        def get(self,key, **kwargs):
             
+            slv = Event.get(key).event_setlist.order('-votes')
             songs = Song.all()
-            return self.render_response('event.html',section='event',songs=songs)
+            return self.render_response('event.html',section='event',songs=songs,setlist = slv)
         
 
         
 class CreateEventHandler(BaseHandler):
     
         def get(self, **kwargs):
-            
-            return self.render_response('create_event.html',form=self.form)
+            songs = Song.all()
+            return self.render_response('create_event.html',form=self.form,songs=songs)
         def castTime(self,datestring,timestring):
             year = int(datestring[:4])
             month = int(datestring[5:7])
@@ -95,12 +97,14 @@ class CreateEventHandler(BaseHandler):
                         "creator" : self.auth.user,
                         "people_invited" : self.request.form.getlist('contacts[]'),
 #                        "type" : self.request.form.get('type'),
-#                        "setlist" : self.request.form.getlist('setlist')
+                        "setlist" : self.request.form.getlist('songs[]')
                     
                   }
             manager = EventDelegate('Event')
             value = manager.add(params)
-            return self.render_response('create_event.html',form=self.form)
+            songs = Song.all()
+            
+            return self.render_response('create_event.html',form=self.form,songs=songs)
         
         @cached_property
         def form(self):
