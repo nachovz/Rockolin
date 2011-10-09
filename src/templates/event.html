@@ -64,49 +64,19 @@
 							{% for song in songs %}
 								<li class="song-container">
 									<div>
-										<a class="play-song pull-left"><img src="/static/images/play_big.png" /></a>
+										<a class="play-song pull-left" rel="{{ song.key() }}"><img src="/static/images/play_big.png" /></a>
 										<a class="song-artist-info pull-left">{{ song.name }} <span>by {{ song.artist.name }}</span></a>
 										<a class="love-song pull-right"><img src="/static/images/heart.png"/></a>
 										<div class="song-url" style="display: none;">{{ song.url }}</div>
 									</div>
 								</li>
 							{% endfor %}
-							<li class="song-container">
-								<div>
-									<a class="play-song pull-left"><img src="/static/images/play_big.png" /></a>
-									<a class="song-artist-info pull-left">Algo Distinto <span>by Rawayana</span></a>
-									<a class="love-song pull-right"><img src="/static/images/heart.png"/></a>
-								</div>
-							</li>
 						</ul>
 					</div>
 			</div>	
 		</div>
 	</div>
-	
-</div>
-<script type="text/javascript">
-/*var myPlaylist = new jPlayerPlaylist({
-	jPlayer: "#jquery_jplayer_1",
-    cssSelectorAncestor: "#jp_container_1"
-}, [
-  {% for song in songs %}
-	{
-	title:"{{ song.name }}",
-	artist:"{{ song.artist.name }}",
-	mp3:"{{ song.url }}",
-	}{% if not loop.last %},{% endif %}
-  {% endfor %}
-],{
-  playlistOptions: {
-    enableRemoveControls: true
-  }
-});
-*/
-
-</script>
-
-	
+</div>	
 
 {% endblock %}
 

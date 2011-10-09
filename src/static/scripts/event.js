@@ -6,7 +6,7 @@ $(document).ready(function(){
         oga: "http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg"
       });
     },*/
-    swfPath: "/static/scripts/libs/",
+    swfPath: "/static/scripts/libs/Jplayer.swf",
     supplied: "mp3",
     solution:"html,flash",
     size: "cssClass"
@@ -36,33 +36,12 @@ $(document).ready(function(){
       var clicked = $(this).parent().parent();
 
       // all the LIs above the clicked one
-      var previousAll = clicked.prevAll();
+      //var previousAll = clicked.prevAll();
 
       // only proceed if it's not already on top (no previous siblings)
-      if(previousAll.length > 0) {
-        // top LI
-        var top = $(previousAll[previousAll.length - 1]);
-
-        // immediately previous LI
-        var previous = $(previousAll[0]);
-
-        // how far up do we need to move the clicked LI?
-        var moveUp = clicked.attr('offsetTop') - top.attr('offsetTop');
-
-        // how far down do we need to move the previous siblings?
-        var moveDown = (clicked.offset().top + clicked.outerHeight()) - (previous.offset().top + previous.outerHeight());
-
-        // let's move stuff
-        clicked.css('position', 'relative');
-        previousAll.css('position', 'relative');
-        clicked.animate({'top': -moveUp});
-        previousAll.animate({'top': moveDown}, {complete: function() {
-          // rearrange the DOM and restore positioning when we're done moving
-          clicked.parent().prepend(clicked);
-          clicked.css({'position': 'static', 'top': 0});
-          previousAll.css({'position': 'static', 'top': 0}); 
-        }});
-      }
+      //if(previousAll.length > 0) {
+		moveSong(clicked,2);
+      //}
     });
 });
 
@@ -79,4 +58,40 @@ function playSong(i){
 	{
 		mp3: mp3u
 	}).jPlayer("play");
+}
+
+function moveSong(clicked,index){
+	
+	//previousAll for visual
+	var previousAllV = clicked.prevUntil('li:nth-child('+(index)+')');
+	
+	// all the LIs above the clicked to index position
+    var previousAll = clicked.prevUntil('li:nth-child('+(index-1)+')');
+	
+	// top LI for VISUAL
+    var top = $(previousAll[previousAll.length - (index+1)]);//$($list+' li:nth-child('+index+')'); //$(previousAll[previousAll.length - 1]);
+
+	//top LI for DOM
+	var topD = $(previousAll[previousAll.length - (index)]);
+	
+    // immediately previous LI
+    var previous = $(previousAll[0]);
+
+    // how far up do we need to move the clicked LI?
+    var moveUp = clicked.attr('offsetTop') - top.attr('offsetTop');
+
+    // how far down do we need to move the previous siblings?
+    var moveDown = (clicked.offset().top + clicked.outerHeight()) - (previous.offset().top + previous.outerHeight());
+
+    // let's move stuff
+    clicked.css('position', 'relative');
+    previousAllV.css('position', 'relative');
+    clicked.animate({'top': -moveUp});
+    previousAll.animate({'top': moveDown}, {complete: function() {
+      // rearrange the DOM and restore positioning when we're done moving
+      //clicked.parent().prepend(clicked);
+      $(clicked).insertAfter(top);
+      clicked.css({'position': 'static', 'top': 0});
+      previousAllV.css({'position': 'static', 'top': 0}); 
+    }});
 }
