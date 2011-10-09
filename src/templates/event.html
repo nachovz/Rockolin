@@ -60,13 +60,13 @@
 					</div>
 					<div class="song-list">
 						<ul>
-							{% for song in songs %}
+							{% for set in setlist %}
 								<li class="song-container">
 									<div>
 										<a class="play-song pull-left" rel="{{ song.key() }}"><img src="/static/images/play_big.png" /></a>
-										<a class="song-artist-info pull-left">{{ song.name }} <span>by {{ song.artist.name }}</span></a>
+										<a class="song-artist-info pull-left">{{ set.song.name }} <span>by {{ set.song.artist.name }}</span></a>
 										<a class="love-song pull-right"><img src="/static/images/heart.png"/></a>
-										<div class="song-url" style="display: none;">{{ song.url }}</div>
+										<div class="song-url" style="display: none;">{{ set.song.url }}</div>
 									</div>
 								</li>
 							{% endfor %}
