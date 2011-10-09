@@ -178,7 +178,7 @@ body{
 .submit-button{
 	text-align: center;
 	position: relative;
-	color: #260d06;
+	color: #260d06;//#1c0404
 	cursor: pointer;
 }
 
@@ -239,7 +239,7 @@ footer{
 	padding-top:30px;
 	border: 0;
 	position: relative;
-	margin-top: -60px; /* negative value of footer height */
+	margin-top: -80px; /* negative value of footer height */
 	height: 100px;
 	clear:both; 
 }
@@ -402,4 +402,44 @@ h1 .word1{
 .stat-img{
 	width: 50px;
 	height: 50px;
+}
+
+/* EVENT CSS*/
+.song-list ul{
+	list-style: none;
+	width: 80%;
+	margin: auto;
+	overflow: hidden;
+	padding:0;
+}
+.song-container{
+	margin-bottom: 10px;
+	background: #1C0404;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	padding: 4px;
+	overflow: hidden;
+}
+.song-container div{
+	overflow: hidden;
+}
+.song-container div a{
+	font-size: 2em;
+	color: white;
+}
+.song-container div a:hover{
+	text-decoration: none;
+}
+.song-artist-info{
+	line-height: 40px;
+}
+.song-artist-info span{
+	color: #ffc010;
+	font-size: 0.7em;
+}
+.song-container img{
+	height: 40px;
+	cursor: pointer;
 }
