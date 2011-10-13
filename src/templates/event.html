@@ -2,28 +2,40 @@
 {% from '_form_macros.html' import form_field %}
 
 {% block body %}
-<section id="main-section" class="background-with big-content">
+<section id="main-section" class="background-with big-content top-sections">
 	<div class="container">
 		<div class="row">
-			<div class="span6">
-				<div class="gradient-div">
+			<div class="span7">
+				<div class="gradient-div ">
 					<div class="row">
-						<div class="span4">
-							<img class="event-img" src="{{ /event/file/{{ event.key() }}.{{ event.filetype }}" />
+						<div class="span3">
+							<div class="padding-ok">
+							<img class="event-img" src="/event/file/{{ event.key() }}.{{ event.filetype }}" />
+							</div>
 						</div>
-						<div class="span2">
-							<div class="event-stats">
-								
+						<div class="span4">
+							<div class="padding-ok event-stats">
+								<h1 class="white-text">{{ event.name }}</h1>
+								<ul>
+									<li>
+										<h4 class="yellow-text">Date</h4>
+										<p class="white-text">{{ event.start_date}}</p>
+									</li>
+									<li>
+										<h4 class="yellow-text">Description</h4>
+										<p class="white-text">{{ event.description }}</p>
+									</li>
+								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="span10">
-				<div class="gradient-div">
+			<div class="span9">
+				<div class="gradient-div padding-ok">
 					
 						<div id="jquery_jplayer_1" ></div>
-						<div id="jp_container_1" class="jp-audio">
+						<div id="jp_container_1" class="jp-audio" style="display: none;">
 						    <div class="jp-type-playlist">
 						      <div class="jp-gui jp-interface">
 						        <ul class="jp-controls">
@@ -58,6 +70,7 @@
 						      </div>
 						    </div>
 						</div>
+						
 						<div class="song-list">
 							<ul rel="{{ event.key() }}">
 								{% for set in setlist %}

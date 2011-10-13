@@ -1,5 +1,5 @@
 
-{% from '_form_macros.html' import form_field %}
+{% from '_form_macros.html' import form_field_solo %}
 
 <div class="topbar-header">	
 	<div class="container">
@@ -42,12 +42,14 @@
 	        	</li>
 	        </ul>
 			{%- else %}
-				<form id="login-form" class="pull-right" method="post" action="/auth/login" enctype="multipart/form-data" class="tipfy-form">
-        
-		            {{ form_field(form.username_login, class='medium',placeholder='username') }}
-		            {{ form_field(form.password_login, class='medium',placeholder='password') }}
-		        
-		        	<a href="#" id="login-button-header" class=" submit-button" onclick="$(this).parent().submit()">SIGN IN</a>
+				<form id="login-form" class="pull-right" method="post" action="/auth/login" enctype="multipart/form-data">
+        			<div class="input">
+	        			<div class="inline-inputs">
+				            {{ form_field_solo(form.username_login, class='medium',placeholder='username') }}
+				            {{ form_field_solo(form.password_login, class='medium',placeholder='password') }}
+				       		<a href="#" class="login-button-header submit-button" onclick="$('#login-form').submit()">SIGN IN</a>
+						</div>
+		       		</div>
 		            <!--<input id="login-button-header" type="image" src="/static/images/loginrockolin.png" name="submit" value="{{ _('Sign in') }}">-->
 		        
 		    	</form>
