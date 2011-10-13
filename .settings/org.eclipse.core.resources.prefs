@@ -1,6 +1,7 @@
-#Thu Oct 06 23:57:15 VET 2011
+#Wed Oct 12 15:49:07 VET 2011
 eclipse.preferences.version=1
 encoding//src/config.py=utf-8
+encoding//src/lib/jinja2/defaults.py=utf-8
 encoding//src/lib/tipfy/__init__.py=utf-8
 encoding//src/lib/tipfy/appengine/auth/__init__.py=utf-8
 encoding//src/lib/tipfy/appengine/auth/model.py=utf-8

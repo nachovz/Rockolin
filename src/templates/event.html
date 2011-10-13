@@ -2,80 +2,93 @@
 {% from '_form_macros.html' import form_field %}
 
 {% block body %}
-
-<div class="container">
-	<div class="row">
-		<div class="span6">
-			<div class="gradient-div">
-				<div class="row">
-					<div class="span4">
-						<img class="event-img" />
-					</div>
-					<div class="span2">
-						<div class="event-stats">
-							
+<section id="main-section" class="background-with big-content top-sections">
+	<div class="container">
+		<div class="row">
+			<div class="span7">
+				<div class="gradient-div ">
+					<div class="row">
+						<div class="span3">
+							<div class="padding-ok">
+							<img class="event-img" src="/event/file/{{ event.key() }}.{{ event.filetype }}" />
+							</div>
+						</div>
+						<div class="span4">
+							<div class="padding-ok event-stats">
+								<h1 class="white-text">{{ event.name }}</h1>
+								<ul>
+									<li>
+										<h4 class="yellow-text">Date</h4>
+										<p class="white-text">{{ event.start_date}}</p>
+									</li>
+									<li>
+										<h4 class="yellow-text">Description</h4>
+										<p class="white-text">{{ event.description }}</p>
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="span10">
-			<div class="gradient-div">
-				
-					<div id="jquery_jplayer_1" ></div>
-					<div id="jp_container_1" class="jp-audio">
-					    <div class="jp-type-playlist">
-					      <div class="jp-gui jp-interface">
-					        <ul class="jp-controls">
-					          <li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
-					          <li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
-					          <li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
-					          <li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
-					          <li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
-					          <li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
-					        </ul>
-					        <div class="jp-progress">
-					          <div class="jp-seek-bar">
-					            <div class="jp-play-bar"></div>
-					          </div>
-					        </div>
-					        <div class="jp-volume-bar">
-					          <div class="jp-volume-bar-value"></div>
-					        </div>
-					        <div class="jp-time-holder">
-					          <div class="jp-current-time"></div>
-					          <div class="jp-duration"></div>
-					        </div>
-					      </div>
-					      <div class="jp-playlist" id="jplayer_playlist" >
-							<ul>
-		
+			<div class="span9">
+				<div class="gradient-div padding-ok">
+					
+						<div id="jquery_jplayer_1" ></div>
+						<div id="jp_container_1" class="jp-audio" style="display: none;">
+						    <div class="jp-type-playlist">
+						      <div class="jp-gui jp-interface">
+						        <ul class="jp-controls">
+						          <li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+						          <li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+						          <li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+						          <li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+						          <li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+						          <li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+						        </ul>
+						        <div class="jp-progress">
+						          <div class="jp-seek-bar">
+						            <div class="jp-play-bar"></div>
+						          </div>
+						        </div>
+						        <div class="jp-volume-bar">
+						          <div class="jp-volume-bar-value"></div>
+						        </div>
+						        <div class="jp-time-holder">
+						          <div class="jp-current-time"></div>
+						          <div class="jp-duration"></div>
+						        </div>
+						      </div>
+						      <div class="jp-playlist" id="jplayer_playlist" >
+								<ul>
+			
+								</ul>
+							  </div>
+						      <div class="jp-no-solution">
+						        <span>Update Required</span>
+						        To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+						      </div>
+						    </div>
+						</div>
+						
+						<div class="song-list">
+							<ul rel="{{ event.key() }}">
+								{% for set in setlist %}
+									<li class="song-container">
+										<div>
+											<a class="play-song pull-left" ><img src="/static/images/play_big.png" /></a>
+											<a class="song-artist-info pull-left">{{ set.song.name }} <span>by {{ set.song.artist.name }}</span></a>
+											<a class="love-song pull-right" rel="{{ set.song.key() }}"><img src="/static/images/heart.png"/></a>
+											<div class="song-url" style="display: none;">{{ set.song.url }}</div>
+										</div>
+									</li>
+								{% endfor %}
 							</ul>
-						  </div>
-					      <div class="jp-no-solution">
-					        <span>Update Required</span>
-					        To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
-					      </div>
-					    </div>
-					</div>
-					<div class="song-list">
-						<ul rel="{{ event.key() }}">
-							{% for set in setlist %}
-								<li class="song-container">
-									<div>
-										<a class="play-song pull-left" ><img src="/static/images/play_big.png" /></a>
-										<a class="song-artist-info pull-left">{{ set.song.name }} <span>by {{ set.song.artist.name }}</span></a>
-										<a class="love-song pull-right" rel="{{ set.song.key() }}"><img src="/static/images/heart.png"/></a>
-										<div class="song-url" style="display: none;">{{ set.song.url }}</div>
-									</div>
-								</li>
-							{% endfor %}
-						</ul>
-					</div>
-			</div>	
+						</div>
+				</div>	
+			</div>
 		</div>
-	</div>
-</div>	
-
+	</div>	
+</section>
 {% endblock %}
 
