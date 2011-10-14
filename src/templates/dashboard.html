@@ -7,28 +7,26 @@
 			<div class="span10">
 				<div class="top-sections">
 					<div class="box-title ">
-						<h1 class="yellow-text">My Events</h1>
+						<h1 class="yellow-text">My Parties</h1>
 					</div>
 					<div class="row">
 						
 						<!--<div class="span5">-->
 							{% for event in events %}
 							<div class="event-thumbnail gradient-div mosaic-block bar span4">
-								<a href="http://www.nonsensesociety.com/2011/01/sloppy-art/" target="_blank" class="mosaic-overlay">
-									<div class="details">
-										<h4>Sloppy Art - A Mess of Inspiration</h4>
-										<p>via the Nonsense Society (image credit: Florian</p>
-									</div>
-								</a>
+								<div class="details mosaic-overlay">
+										<a class="submit-button mini-button">Details</a>
+										<!--<a class="submit-button mini-button">Edit</a>-->
+								</div>
 								<div class="mosaic-backdrop">
 									<div class="">
-										<h3 class="white-text"><a href="/event/{{ event.key() }}">{{ event.name }}</a></h3>
+										<h2 ><a class="white-text" href="/event/{{ event.key() }}">{{ event.name }}</a></h2>
 										<div class="row">
 											<div class="span2">
 												<ul class="media-grid">
 													<li>
-														<a href="#" >
-															<img src="/event/file/{{ event.key() }}.{{ event.filetype }}" class="thumbnail" alt=" " />
+														<a href="" >
+															<img src="/event/file/{{ event.key() }}.{{ event.filetype }}" class="thumbnail event-img" alt=" " />
 														</a>
 													</li>
 												</ul>
@@ -40,56 +38,13 @@
 													</li>
 													<li class="like-dislikes white-text">
 														<div class="row">
-															<div class="span1">
-																<img alt="likes" />
-																<span>120</span>
+															<div class="span1 centered">
+																<div class="stat-img "></div>
+																<span class="yellow-text">120</span>
 															</div>
-															<div class="span1">
-																<img alt="dislikes" />
-																<span>15</span>
-															</div>
-														</div>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							{% endfor %}
-							
-							<div class="event-thumbnail gradient-div mosaic-block bar span4">
-									<div class="details mosaic-overlay">
-										<a class="submit-button mini-button">Details</a>
-										<!--<a class="submit-button mini-button">Edit</a>-->
-									</div>
-								<div class="mosaic-backdrop">
-									<div class="">
-										<h3 class="white-text">Fiesta Black & White Red Bull</h3>
-										<div class="row">
-											<div class="span2">
-												<ul class="media-grid">
-													<li>
-														<a href="#" >
-															<img src="http://placehold.it/90x90" class="thumbnail" alt=" " />
-														</a>
-													</li>
-												</ul>
-											</div>
-											<div class="span2">
-												<ul class="unstyled event-min-data">
-													<li class="date-event white-text">
-														<span>Fecha: 12/10/2011</span>
-													</li>
-													<li class="like-dislikes white-text">
-														<div class="row">
-															<div class="span1">
-																<img alt="likes" />
-																<span>120</span>
-															</div>
-															<div class="span1">
-																<img alt="dislikes" />
-																<span>15</span>
+															<div class="span1 centered">
+																<div class="stat-img dislikes"></div>
+																<span class="yellow-text">15</span>
 															</div>
 														</div>
 													</li>
@@ -99,236 +54,7 @@
 									</div>
 								</div>
 							</div>
-							
-							<div class="event-thumbnail gradient-div mosaic-block bar span4">
-								<a href="http://www.nonsensesociety.com/2011/01/sloppy-art/" target="_blank" class="mosaic-overlay">
-									<div class="details">
-										<h4>Sloppy Art - A Mess of Inspiration</h4>
-										<p>via the Nonsense Society (image credit: Florian</p>
-									</div>
-								</a>
-								<div class="mosaic-backdrop">
-									<div class="">
-										<h3 class="white-text">Fiesta Black & White Red Bull</h3>
-										<div class="row">
-											<div class="span2">
-												<ul class="media-grid">
-													<li>
-														<a href="#" >
-															<img src="http://placehold.it/90x90" class="thumbnail" alt=" " />
-														</a>
-													</li>
-												</ul>
-											</div>
-											<div class="span2">
-												<ul class="unstyled event-min-data">
-													<li class="date-event white-text">
-														<span>Fecha: 12/10/2011</span>
-													</li>
-													<li class="like-dislikes white-text">
-														<div class="row">
-															<div class="span1">
-																<img alt="likes" />
-																<span>120</span>
-															</div>
-															<div class="span1">
-																<img alt="dislikes" />
-																<span>15</span>
-															</div>
-														</div>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							<div class="event-thumbnail gradient-div mosaic-block bar span4">
-								<a href="http://www.nonsensesociety.com/2011/01/sloppy-art/" target="_blank" class="mosaic-overlay">
-									<div class="details">
-										<h4>Sloppy Art - A Mess of Inspiration</h4>
-										<p>via the Nonsense Society (image credit: Florian</p>
-									</div>
-								</a>
-								<div class="mosaic-backdrop">
-									<div class="">
-										<h3 class="white-text">Fiesta Black & White Red Bull</h3>
-										<div class="row">
-											<div class="span2">
-												<ul class="media-grid">
-													<li>
-														<a href="#" >
-															<img src="http://placehold.it/90x90" class="thumbnail" alt=" " />
-														</a>
-													</li>
-												</ul>
-											</div>
-											<div class="span2">
-												<ul class="unstyled event-min-data">
-													<li class="date-event white-text">
-														<span>Fecha: 12/10/2011</span>
-													</li>
-													<li class="like-dislikes white-text">
-														<div class="row">
-															<div class="span1">
-																<img alt="likes" />
-																<span>120</span>
-															</div>
-															<div class="span1">
-																<img alt="dislikes" />
-																<span>15</span>
-															</div>
-														</div>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							<div class="event-thumbnail gradient-div mosaic-block bar span4">
-								<a href="http://www.nonsensesociety.com/2011/01/sloppy-art/" target="_blank" class="mosaic-overlay">
-									<div class="details">
-										<h4>Sloppy Art - A Mess of Inspiration</h4>
-										<p>via the Nonsense Society (image credit: Florian</p>
-									</div>
-								</a>
-								<div class="mosaic-backdrop">
-									<div class="">
-										<h3 class="white-text">Fiesta Black & White Red Bull</h3>
-										<div class="row">
-											<div class="span2">
-												<ul class="media-grid">
-													<li>
-														<a href="#" >
-															<img src="http://placehold.it/90x90" class="thumbnail" alt=" " />
-														</a>
-													</li>
-												</ul>
-											</div>
-											<div class="span2">
-												<ul class="unstyled event-min-data">
-													<li class="date-event white-text">
-														<span>Fecha: 12/10/2011</span>
-													</li>
-													<li class="like-dislikes white-text">
-														<div class="row">
-															<div class="span1">
-																<img alt="likes" />
-																<span>120</span>
-															</div>
-															<div class="span1">
-																<img alt="dislikes" />
-																<span>15</span>
-															</div>
-														</div>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							<div class="event-thumbnail gradient-div mosaic-block bar span4">
-								<a href="http://www.nonsensesociety.com/2011/01/sloppy-art/" target="_blank" class="mosaic-overlay">
-									<div class="details">
-										<h4>Sloppy Art - A Mess of Inspiration</h4>
-										<p>via the Nonsense Society (image credit: Florian</p>
-									</div>
-								</a>
-								<div class="mosaic-backdrop">
-									<div class="">
-										<h3 class="white-text">Fiesta Black & White Red Bull</h3>
-										<div class="row">
-											<div class="span2">
-												<ul class="media-grid">
-													<li>
-														<a href="#" >
-															<img src="http://placehold.it/90x90" class="thumbnail" alt=" " />
-														</a>
-													</li>
-												</ul>
-											</div>
-											<div class="span2">
-												<ul class="unstyled event-min-data">
-													<li class="date-event white-text">
-														<span>Fecha: 12/10/2011</span>
-													</li>
-													<li class="like-dislikes white-text">
-														<div class="row">
-															<div class="span1">
-																<img alt="likes" />
-																<span>120</span>
-															</div>
-															<div class="span1">
-																<img alt="dislikes" />
-																<span>15</span>
-															</div>
-														</div>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							
-							
-						<!--</div>-->
-						
-						<!--<div class="span5">
-						{% for event in events%}
-							<div class="event-thumbnail gradient-div mosaic-block bar">
-								<a href="http://www.nonsensesociety.com/2011/01/sloppy-art/" target="_blank" class="mosaic-overlay">
-									<div class="details">
-										<h4>Sloppy Art - A Mess of Inspiration</h4>
-										<p>via the Nonsense Society (image credit: Florian</p>
-									</div>
-								</a>
-								<div class="mosaic-backdrop">
-									<div class="">
-										<h3 class="white-text">Fiesta Black & White Red Bull</h3>
-										<div class="row">
-											<div class="span2">
-												<ul class="media-grid">
-													<li>
-														<a href="#" >
-															<img src="http://placehold.it/90x90" class="thumbnail" alt=" " />
-														</a>
-													</li>
-												</ul>
-											</div>
-											<div class="span2">
-												<ul class="unstyled event-min-data">
-													<li class="date-event white-text">
-														<span>Fecha: 21/10/2011</span>
-													</li>
-													<li class="like-dislikes white-text">
-														<div class="row">
-															<div class="span1">
-																<img alt="likes" />
-																<span>120</span>
-															</div>
-															<div class="span1">
-																<img alt="dislikes" />
-																<span>15</span>
-															</div>
-														</div>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							{% endfor %}
-							
-						</div>-->
-						
+						{% endfor %}
 					</div>
 				</div>
 			</div>
@@ -340,13 +66,13 @@
 					<div class="gradient-div stats-box">
 						
 						<div class="box-title centered">
-							<h2 class="yellow-text">Global Stats</h2>
+							<h2 class="yellow-text">Dashboard</h2>
 						</div>
 						
 						<div class="stats">
 							<div class="clearfix">
-								<div class="stat-div pull-left">
-									<img class="stat-img" />
+								<div class="stat-div pull-left stat-img">
+									
 								</div>
 								<div class="stat-div pull-left">
 									<h4>Likes</h4>
@@ -357,8 +83,7 @@
 							</div>
 							
 							<div class="clearfix">
-								<div class="stat-div pull-left">
-									<img class="stat-img" />
+								<div class="stat-div pull-left stat-img dislikes">
 								</div>
 								<div class="stat-div pull-left">
 									<h4>Dislikes</h4>
@@ -369,8 +94,7 @@
 							</div>
 							
 							<div class="clearfix">
-								<div class="stat-div pull-left">
-									<img class="stat-img" />
+								<div class="stat-div pull-left stat-img comments">
 								</div>
 								<div class="stat-div pull-left">
 									<h4>Comments</h4>
@@ -381,8 +105,7 @@
 							</div>
 							
 							<div class="clearfix">
-								<div class="stat-div pull-left">
-									<img class="stat-img" />
+								<div class="stat-div pull-left stat-img events">
 								</div>
 								<div class="stat-div pull-left">
 									<h4>Events</h4>

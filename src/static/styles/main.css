@@ -82,7 +82,7 @@ form label{
 
 .big-content{
 	background: no-repeat url("/static/images/background2.jpg");
-	background-position:center top;
+	background-position:center center;
 	max-width: 100%;
 	margin:auto;
 	overflow: hidden;
@@ -91,7 +91,7 @@ form label{
 }
 
 .main-logo{
-	margin-top: 8em;
+	margin-top: 5em;
 }
 
 .home-text-ul{
@@ -207,7 +207,7 @@ form label{
 .mini-button{
 	background: url("/static/images/smaller.png") no-repeat;
 	font-size: 1.2em;
-	margin-left:95px;
+	margin-left:35px;
 	padding: 3px 7px 5px 7px;
 	line-height: 70px;
 }
@@ -325,7 +325,10 @@ body:before {
 	margin-top: 30px;
 	height: 166px
 }
-
+.event-img{
+	height: 90px;
+	width: 90px;
+}
 .event-min-data li{
 	margin-top: 10px;
 }
@@ -410,7 +413,18 @@ input[type="file"]{
 }
 .stat-img{
 	width: 50px;
-	height: 50px;
+	height: 38px;
+	background: url("/static/images/icons.png") no-repeat;
+	
+}
+.dislikes{
+	background-position: 0px -55px;
+}
+.comments{
+	background-position: 0px -100px;
+}
+.events{
+	background-position: 0px -150px;
 }
 
 /* EVENT CSS*/
@@ -452,6 +466,16 @@ input[type="file"]{
 	height: 40px;
 	cursor: pointer;
 }
+.love-song{
+	width: 45px;
+	height: 35px;
+	background: url("/static/images/heart.png") no-repeat;
+	background-position: -42px -5px;
+}
+.liked{
+	background-position: -4px -4px;
+}
+
 
 /*CREATE EVENT CSS*/
 .yellow-circle{
