@@ -8,15 +8,10 @@
 			<div class="span7">
 				<div class="gradient-div ">
 					<div class="row">
-<<<<<<< HEAD
-						<div class="span4">
-							<img class="event-img" src="/event/file/{{ event.key() }}.{{ event.filetype }}" />
-=======
 						<div class="span3">
 							<div class="padding-ok">
 							<img class="event-img" src="/event/file/{{ event.key() }}.{{ event.filetype }}" />
 							</div>
->>>>>>> 8c84cae6e2435d883ea4a127115a8599939239bb
 						</div>
 						<div class="span4">
 							<div class="padding-ok event-stats">
@@ -82,7 +77,7 @@
 									<li class="song-container">
 										<div>
 											<a class="play-song pull-left" ><img src="/static/images/play_big.png" /></a>
-											<a class="song-artist-info pull-left">{{ set.song.name }} <span>by {{ set.song.artist.name }} (Votes: {{ set.votes }})</span></a>
+											<a class="song-artist-info pull-left">{{ set.song.name }} <span>by {{ set.song.artist.name }} (Votes: <b class="votes-song">{{ set.votes }}</b>)</span></a>
 											<a class="love-song pull-right" rel="{{ set.song.key() }}"></a>
 											<div class="song-url" style="display: none;">{{ set.song.url }}</div>
 										</div>
