@@ -2,66 +2,133 @@
 {% from '_form_macros.html' import form_field %}
 
 {% block body %}
-
-	<form method="post" action="{{ current_url }}" enctype="multipart/form-data" class="form-stacked">
-        	<label for="image_upload">Related Image</label>
-        	<input type="file" name="image_upload" id = "image_upload">
-        	<div class = "clearfix">
-        	{{ form_field(form.name, class='medium') }}
-        	</div>
-        	<div class = "clearfix">
-        	{{ form_field(form.description, class='medium') }}
-        	</div>
-        	<div class = "clearfix">
-        	<label for="start-date">Start Date</label>
-        	<input id = "start-date" name ="start-date" type="date">
-        	<input id = "start-time" name ="start-time"  type="time">
-        	</div>
-        	<div class = "clearfix">
-        	<label for="finish-date">Finish Date</label>
-        	<input id = "finish-date" name = "finish-date" type="date">
-        	<input id = "finish-time" name = "finish-time" type="time">
-        	</div>
-        	<div class = "clearfix">
-        	<label for="add-email">Add Songs</label>
-        	</div>
-        	<table id = "table" style = "color:white">
-			<tr>
-			<td ><input id="master-toggle-switch" type="checkbox" checked=""  value="all" name="master-toggle-switch"></td>
-			<td >Artist</th>
-			<td >Song</th>
-			</tr>
-			{% for song in songs %}
-				<tr>
-					<td><input class="check" type="checkbox" checked="" value="{{ song.key() }}" name="songs[]"></td>
-					<td >{{ song.artist.name }}</th>
-					<td >{{ song.name }}</th>
-				</tr>
-			{% endfor %}
-			</table>
-			
-        	<br><br><br><br><br>
-        	<div class = "clearfix">
-        	<label for="add-email">Add Emails</label>
-        	<input id="add-email" type="text" onClick = "testKey()">
-        	</div>
-        	<div id = "add" >Add</div>
-        	<table id = "table" style = "color:white">
-			<tr>
-			<td ><input id="master-toggle-switch" type="checkbox" checked=""  value="all" name="master-toggle-switch"></td>
-			<td >E-mail</th>
-			</tr>
-			
-			<tr>
-				<td><input class="check" type="checkbox" checked="" value="alex.milano@gmail.com" name="contacts[]"></td>
-				<td >alex.milano@gmail.com</th>
-			</tr>
-			
-			</table>
-
-		<fieldset class="submit">
-            <input type="submit" name="submit" value="{{ _('Submit') }}">
-       </fieldset>
-    </form>
+<div class="background-with big-content top-sections">
+	<div class="container">
+		<div class="row">
+			<div class="span-one-third centered">
+				<div class="title-box">
+					<div class="yellow-circle">
+						<h1 class="submit-button">1</h1>
+					</div>
+				</div>
+				<h1 class="yellow-text vintage-border">The Information</h1>
+			</div>
+			<div class="span-one-third centered disabled step2-circle">
+				<div class="title-box">
+					<div class="yellow-circle">
+						<h1 class="submit-button">2</h1>
+					</div>
+				</div>
+				<h1 class="yellow-text vintage-border">The Songs</h1>
+			</div>
+			<div class="span-one-third centered disabled step3-circle">
+				<div class="title-box">
+					<div class="yellow-circle">
+						<h1 class="submit-button">3</h1>
+					</div>
+				</div>
+				<h1 class="yellow-text vintage-border">The Guests</h1>
+			</div>
+		</div>
+		<div class="top-sections">
+			<div class="row">
+				<div class="span-one-third">
+					<!--<a class="submit-button login-button-header pull-right" href="#" onclick="">PREVIOUS</a>-->
+				</div>
+				<div class="span-one-third offset5">
+					<div class="gradient-div padding-ok step-container">
+					<form id="create-form" class="form-stacked" method="post" action="{{ current_url }}" enctype="multipart/form-data" >
+		        	<!--<div class="actual-step">-->
+			        	<fieldset class="step1">
+			        		<div class = "clearfix">
+					        	{{ form_field(form.name, class='large') }}
+				        	</div>
+				        	<div class = "clearfix">
+				        		{{ form_field(form.description, class='large', rows='3') }}
+				        	</div>
+			        		<div class="clearfix">
+				        		<label for="image_upload">Event Image</label>
+					        	<div class="input">
+					        		<input class="input-file" type="file" name="image_upload" id = "image_upload">
+					        	</div>
+				        	</div>
+				        		        	
+				        	<div class = "clearfix">
+					        	<label for="start-date">Event Date</label>
+					        	<div class="input">
+					        		<div class="inline-inputs">
+					        			<input class="small" id = "start-date" name ="start-date" type="date">
+					        			<input class="mini" id = "start-time" name ="start-time"  type="time">
+					        			<br />
+					        			<br />
+					        			<strong class="white-text">to</strong>
+					        			<br />
+					        			<br />
+					        			<input class="small" id = "finish-date" name = "finish-date" type="date">
+				        				<input class="mini" id = "finish-time" name = "finish-time" type="time">
+					        		</div>
+					        		
+					        	</div>
+					        </div>
+			        	</fieldset>
+			        	
+			        	<fieldset class="step2">
+				        	<div class = "clearfix">
+				        	<label for="add-email">Add Songs</label>
+				        	</div>
+				        	<table id = "table" style = "color:white">
+							<tr>
+							<th ><input id="master-toggle-switch" type="checkbox" checked=""  value="all" name="master-toggle-switch"></th>
+							<th >Artist</th>
+							<th >Song</th>
+							</tr>
+							{% for song in songs %}
+								<tr>
+									<td><input class="check" type="checkbox" checked="" value="{{ song.key() }}" name="songs[]"></td>
+									<td >{{ song.artist.name }}</td>
+									<td >{{ song.name }}</td>
+								</tr>
+							{% endfor %}
+							</table>
+						</fieldset>
+						
+						<fieldset class="step3">
+				        	<div class = "clearfix">
+				        	<label for="add-email">Add Emails</label>
+				        	<input id="add-email" type="text" onClick = "testKey()">
+				        	</div>
+				        	<div id = "add" >Add</div>
+				        	<table id = "table" style = "color:white">
+							<tr>
+							<td ><input id="master-toggle-switch" type="checkbox" checked=""  value="all" name="master-toggle-switch"></td>
+							<td >E-mail</td>
+							</tr>
+							
+							<tr>
+								<td><input class="check" type="checkbox" checked="" value="alex.milano@gmail.com" name="contacts[]"></td>
+								<td >alex.milano@gmail.com</td>
+							</tr>
+							
+							</table>
+							
+	
+						</fieldset>
+					
+			       	<!--</div>-->
+			    	</form>
+			    	</div>
+			    	<div class="centered">
+			    		<a class="submit-button login-button-header next-button">NEXT</a>
+						<a class="submit-button login-button-header create-button" href="#" onclick="$('#create-form').submit()">CREATE</a>
+			    	</div>
+				</div>
+				<div class="span-one-third">
+					<!--<a class="submit-button login-button-header" href="#" onclick="">NEXT</a>-->
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
 {% endblock %}
 

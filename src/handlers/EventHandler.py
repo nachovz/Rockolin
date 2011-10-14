@@ -103,7 +103,7 @@ class CreateEventHandler(BaseHandler):
             value = manager.add(params)
             songs = Song.all()
             
-            return self.render_response('create_event.html',form=self.form,songs=songs)
+            return self.redirect('/dashboard')
         
         @cached_property
         def form(self):

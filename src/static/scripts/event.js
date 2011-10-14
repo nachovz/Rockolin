@@ -28,6 +28,14 @@ $(document).ready(function(){
   });
   $('.love-song').click(function() {
   		$('.jplayer_playlist_current div .play-song').trigger('click');
+      	var sume = 1;
+      	if ($(this).hasClass('liked')) {
+      		$(this).toggleClass('liked',false);
+      		sume = -1;
+      	}else{
+      		$(this).toggleClass('liked',true);
+      	}
+      
       var $clicked = $(this).parent().parent();
       
       //if(previousAll.length > 0) {
@@ -39,7 +47,7 @@ $(document).ready(function(){
 		   type: "POST",
 		   url: "/setlist/update",
 		   dataType: "json",
-		   data: {idevent: eventId , idsong: id},
+		   data: {idevent: eventId , idsong: id, sum: sume},
 		   success: function(data)
 		   {
 		   		if (data) {

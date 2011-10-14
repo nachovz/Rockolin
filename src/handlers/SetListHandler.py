@@ -29,10 +29,11 @@ class SetListHandler(BaseHandler):
         def post(self, **kwargs):
             song = Song.get(self.request.form.get('idsong'))
             event = Event.get(self.request.form.get('idevent'))
+            sum =  int(self.request.form.get('sum'))
             params = {
                         "event": event,
-                        "song": song
-                        
+                        "song": song,
+                        "sum": sum
                     
                   }
             manager = SetListVotesDelegate('SetListVotes')

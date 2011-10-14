@@ -9,7 +9,7 @@ class SetListVotesDelegate(BaseDelegate):
     def update(self, params):
         
         setlist = params["event"].event_setlist.filter('song =',params["song"]).get()
-        c = setlist.votes + 1
+        c = setlist.votes + params["sum"]
         setlist.votes = c
         setlist.put()
         

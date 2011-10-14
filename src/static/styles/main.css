@@ -42,7 +42,7 @@ body{
 
 #main{
 	overflow: auto;
-	padding-bottom: 60px;
+	padding-bottom: 130px;
 }
 
 .img-logo{
@@ -53,7 +53,7 @@ body{
 	margin-left: -20px;
 }
 
-.form-stacked label{
+form label{
 	color: white;
 	font-size: 1.1em;
 }
@@ -82,15 +82,19 @@ body{
 
 .big-content{
 	background: no-repeat url("/static/images/background2.jpg");
-	background-position:center top;
+	background-position:center center;
 	max-width: 100%;
 	margin:auto;
 	overflow: hidden;
 	min-height: 578px;
+<<<<<<< HEAD
+=======
+	padding-bottom: 30px;
+>>>>>>> 8c84cae6e2435d883ea4a127115a8599939239bb
 }
 
 .main-logo{
-	margin-top: 8em;
+	margin-top: 5em;
 }
 
 .home-text-ul{
@@ -157,6 +161,7 @@ body{
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
+	border-bottom:none;
 	background: -moz-linear-gradient(top, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 1%, rgba(0,0,0,0.1) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.1)), color-stop(1%,rgba(0,0,0,0.1)), color-stop(100%,rgba(0,0,0,0.1))); /* Chrome,Safari4+ */
 	background: -webkit-linear-gradient(top, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.1) 1%,rgba(0,0,0,0.1) 100%); /* Chrome10+,Safari5.1+ */
@@ -205,12 +210,12 @@ body{
 .mini-button{
 	background: url("/static/images/smaller.png") no-repeat;
 	font-size: 1.2em;
-	margin-left:95px;
+	margin-left:35px;
 	padding: 3px 7px 5px 7px;
 	line-height: 70px;
 }
 
-#login-button-header{
+.login-button-header{
 	width:165px;
 	height:28px;
 	display:inline-block;
@@ -239,7 +244,7 @@ footer{
 	padding-top:30px;
 	border: 0;
 	position: relative;
-	margin-top: -80px; /* negative value of footer height */
+	margin-top: -130px; /* negative value of footer height */
 	height: 100px;
 	clear:both; 
 }
@@ -321,8 +326,12 @@ body:before {
 	padding-top:10px;
 	padding-right:20px;
 	margin-top: 30px;
+	height: 166px
 }
-
+.event-img{
+	height: 90px;
+	width: 90px;
+}
 .event-min-data li{
 	margin-top: 10px;
 }
@@ -334,11 +343,14 @@ body:before {
 	list-style: none;
 	color: #ffc010;
 }
+.padding-ok{
+	padding: 19px;
+}
 .form-stacked .error{
 	color: #ffc010;
 }
 .top-sections{
-	padding-top: 60px;
+	padding-top: 50px;
 }
 .centered{
 	text-align: center;
@@ -377,6 +389,9 @@ h1 .word1{
 .stats{
 	margin-top: 25px;
 }
+input[type="file"]{
+	background: none;
+}
 /* DASHBOARD STATS*/
 .stats > .clearfix{
 	overflow: hidden;
@@ -401,7 +416,18 @@ h1 .word1{
 }
 .stat-img{
 	width: 50px;
-	height: 50px;
+	height: 38px;
+	background: url("/static/images/icons.png") no-repeat;
+	
+}
+.dislikes{
+	background-position: 0px -55px;
+}
+.comments{
+	background-position: 0px -100px;
+}
+.events{
+	background-position: 0px -150px;
 }
 
 /* EVENT CSS*/
@@ -442,4 +468,46 @@ h1 .word1{
 .song-container img{
 	height: 40px;
 	cursor: pointer;
+}
+.love-song{
+	width: 45px;
+	height: 35px;
+	background: url("/static/images/heart.png") no-repeat;
+	background-position: -42px -5px;
+}
+.liked{
+	background-position: -4px -4px;
+}
+
+
+/*CREATE EVENT CSS*/
+.yellow-circle{
+	background-color:#ffc010;
+	border:#260d06 solid 5px;
+	width:64px;
+	margin:auto;
+	-webkit-border-radius: 130px;
+	-moz-border-radius: 130px;
+	border-radius: 130px;
+}
+.yellow-circle h1{
+	font-size:3em;
+	line-height: 64px;
+	margin: 0;
+	top: -2px;
+}
+div > .disabled{
+	opacity: 0.3;
+}
+.step-container{
+	min-height: 350px;
+}
+.step2, .step3{
+	display: none;
+}
+.next-box a{
+	margin: auto;
+}
+.create-button{
+	display: none;
 }
