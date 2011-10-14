@@ -20,6 +20,7 @@ class EventDelegate(BaseDelegate):
         event = Event(
             name = params["name"],
             file = params["file"],
+            file150 = params["file150"],
             filetype = params["filetype"].split('.')[1],
             start_date = params["start_date"],
             end_date = params["end_date"],
@@ -75,11 +76,17 @@ class EventDelegate(BaseDelegate):
         event.put()
         return event
 
-    def getFile(self, key):
+    def getFile(self, key,size):
     
         event = Event.get(key)
+        file = None
+        if size == 90:
+            file = event.file
+        elif size == 150:
+            file = event.file150
+            
         result = {
-                "file": event.file,
+                "file": file,
                 "name": str(event.key())+"."+event.filetype
         
                 }

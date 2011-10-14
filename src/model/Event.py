@@ -19,6 +19,7 @@ class Event(db.Model):
     people_invited = db.ListProperty(db.Key)
     type = db.StringProperty(required=False)
     file = db.BlobProperty(required=False)  
+    file150 = db.BlobProperty(required=False) 
     filetype = db.StringProperty(required=False)
     
     def to_dict(self):
