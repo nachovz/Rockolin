@@ -40,9 +40,11 @@ class SetListHandler(BaseHandler):
             manager.update(params)
             slv = event.event_setlist.order('-votes')
             i = 0
+            votes = 0
             for s in slv:
                 if s.song.key() == song.key():
+                    votes = s.votes
                     break
                 i=i+1
-            list = {'position' : i}
+            list = {'position' : i,'votes':votes}
             return json.dumps(list)
