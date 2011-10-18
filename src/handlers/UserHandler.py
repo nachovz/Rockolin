@@ -1,4 +1,4 @@
-from werkzeug import cached_property
+from werkzeug.utils import cached_property
 
 from tipfy import RequestHandler
 from tipfy.auth import (login_required, user_required,

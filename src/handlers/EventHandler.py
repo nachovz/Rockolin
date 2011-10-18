@@ -62,7 +62,7 @@ class CreateEventHandler(BaseHandler):
     
         def get(self, **kwargs):
             songs = Song.all()
-            return self.render_response('create_event.html',form=self.form,songs=songs)
+            return self.render_response('create_event.html',section='create-event',form=self.form,songs=songs)
         def castTime(self,datestring,timestring):
             year = int(datestring[:4])
             month = int(datestring[5:7])
@@ -88,6 +88,7 @@ class CreateEventHandler(BaseHandler):
             
             params = {
                         "file": images.resize(image, 90, 90),
+                        "file150": images.resize(image, 150, 150),
                         "filetype": self.request.files.get('image_upload').filename,
                         "name" : self.request.form.get('name'),
                         "start_date" : start_date,
@@ -126,7 +127,22 @@ class EventFileHandler(BaseHandler):
         response.headers['Content-Disposition'] = "attachment"
         try:
             manager = EventDelegate('Event')
-            result = manager.getFile(key.split('.')[0])
+            result = manager.getFile(key.split('.')[0],90)
+        except Exception,e:
+            result = self.wrapFault(e.message)
+        response.headers['filename'] = result["name"]
+        response.data = result["file"]
+        return response
+    
+class EventFile150Handler(BaseHandler):
+
+    def get(self,key):
+        response = Response()
+        response.headers['Content-Type'] = "image"
+        response.headers['Content-Disposition'] = "attachment"
+        try:
+            manager = EventDelegate('Event')
+            result = manager.getFile(key.split('.')[0],150)
         except Exception,e:
             result = self.wrapFault(e.message)
         response.headers['filename'] = result["name"]

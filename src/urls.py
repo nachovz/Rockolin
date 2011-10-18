@@ -16,6 +16,7 @@ rules = [
     Rule('/upload-song', endpoint='upload-song', handler='handlers.SongHandler.CreateSongHandler'),
     Rule('/auth/logout', endpoint='auth/logout', handler='handlers.UserHandler.LogoutHandler'),
     Rule('/auth/signup', endpoint='auth/signup', handler='handlers.UserHandler.SignupHandler'),
+    Rule('/event/file150/<key>', endpoint='event-file', handler='handlers.EventHandler.EventFile150Handler'),
     Rule('/event/file/<key>', endpoint='event-file', handler='handlers.EventHandler.EventFileHandler'),
     Rule('/auth/facebook/', endpoint='auth/facebook', handler='handlers.UserHandler.FacebookAuthHandler'),
     Rule('/auth/friendfeed/', endpoint='auth/friendfeed', handler='handlers.UserHandler.FriendFeedAuthHandler'),
