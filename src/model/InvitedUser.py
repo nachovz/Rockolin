@@ -7,6 +7,7 @@ Created on Aug 9, 2011
 from google.appengine.ext import db
 from tipfy.appengine.auth.model import User
 from model.Event import Event
+from django.template.defaultfilters import default
 
 class InvitedUser(db.Model):
     firstname = db.StringProperty(required=False)
@@ -14,7 +15,8 @@ class InvitedUser(db.Model):
     email = db.EmailProperty()
     favorite_songs = db.ListProperty(db.Key)
     event = db.ReferenceProperty(Event, collection_name = 'event_user_invited')
-    
+    status = db.StringProperty(default='waiting')
+    gender = db.StringProperty(required=False)
     
     def to_dict(self):
         

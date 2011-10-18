@@ -118,6 +118,15 @@ class EventListHandler(BaseHandler):
             
             return self.render_response('create_event.html',events=events)
 
+class EventStatsHandler(BaseHandler):
+    
+        def get(self,key, **kwargs):
+            
+            
+            people = Event.get(key).event_user_invited.filter('status =','voted')
+            
+            return self.render_response('event_stats.html',people=people)
+
 class EventFileHandler(BaseHandler):
 
     def get(self,key):

@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% from '_form_macros.html' import form_field %}
+{% block body %}
+
+{% if current_user %}
+People who made the mix:
+{% if people %}
+	<ul>
+	{% for p in people %}
+		<li>{{ p.firstname }} {{ p.lastname }}</li>
+	{% endfor %}
+	</ul>
+{% else %}
+Nobody mixed yet!
+{% endif %}
+{% endif %}
+Popular Songs:
+Men Popular Songs:
+Women Popular Songs:
+
+{% endblock %}
+

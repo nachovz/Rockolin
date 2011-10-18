@@ -13,6 +13,7 @@ rules = [
     Rule('/event/invitation/<key>', endpoint='event-validate', handler='handlers.EventHandler.EventValidateUserHandler'),
     Rule('/setlist/update', endpoint='event', handler='handlers.SetListHandler.SetListHandler'),
     Rule('/event/<key>', endpoint='event', handler='handlers.EventHandler.EventHandler'),
+    Rule('/event/stats/<key>', endpoint='event-stats', handler='handlers.EventHandler.EventStatsHandler'),
     Rule('/upload-song', endpoint='upload-song', handler='handlers.SongHandler.CreateSongHandler'),
     Rule('/auth/logout', endpoint='auth/logout', handler='handlers.UserHandler.LogoutHandler'),
     Rule('/auth/signup', endpoint='auth/signup', handler='handlers.UserHandler.SignupHandler'),
