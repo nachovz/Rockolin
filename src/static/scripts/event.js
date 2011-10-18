@@ -81,7 +81,7 @@ function playSong(i){
 function moveSong(clicked,index,sume){
 	
 	if (sume < 1) {
-		var nextAll = clicked.nextUntil('li:nth-child('+(index)+')');
+		var nextAll = clicked.nextAfter('li:nth-child('+(index)+')');
 		
 		var bottom = $(nextAll[nextAll.length-1]);
 		
