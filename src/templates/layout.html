@@ -32,7 +32,8 @@
 		  <link type="text/css" href="/static/styles/skin/codrops/jplayer.codrops.css" rel="stylesheet" />
 		  
 		  {% elif section == 'create-event' %}
-		  <link rel="stylesheet" type="text/css" href="/static/styles/anytime.css" />
+		  <link rel="stylesheet" type="text/css" href="/static/styles/anytimec.css" />
+		  <link rel="stylesheet" type="text/css" href="/static/styles/sunny/jquery-ui-1.8.16.custom.css" />
 		  {% endif %}
 		  
 		<!--[if !IE 7]>
@@ -115,12 +116,12 @@
 		  {% elif section == 'dashboard' %}
 		  <script type="text/javascript" src="/static/scripts/dashboard.js"></script>
 		  {% elif section == 'event' %}
-		  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
+		  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
 		  <script type="text/javascript" src="/static/scripts/event.js"></script>
 		  {% elif section == 'create-event' %}
-		  <script type="text/javascript" src="/static/scripts/create-event.js"></script>		  
-		  <script src="/static/scripts/mylibs/anytimec.js"></script>
-		  <script src="/anytimetz.js"></script>
+		  <script type="text/javascript" src="/static/scripts/mylibs/anytimec.js"></script>
+		  <script type="text/javascript" src="/static/scripts/mylibs/anytimetz.js"></script>
+		  <script type="text/javascript" src="/static/scripts/create-event.js"></script>
 		  {% endif%}
 			<link rel="stylesheet" type="text/css" href="/static/styles/jquery.autocomplete.css" />
 			<!--<link rel="stylesheet" type="text/css" href="/static/styles/thickbox.css" />-->
@@ -161,16 +162,6 @@
 					}
 				});
 
-		    	$("#add").click(function(){
-					addEmail();
-				});
-				
-		    	function addEmail(){
-		    		var text = document.getElementById("add-email").value;	
-					$('#contacts-header').show();
-					$('#table').append('<tr> <td><input type="checkbox" name="contacts[]" value="'+text+'" checked class="check"></td> <td><strong class="fn">'+text+'</strong></td></tr>');
-					
-			    	}
 		    	
 		    	function testKey() {
 					/*var e = document.getElementById('add-email');
@@ -192,6 +183,7 @@
 						
 		    });
 			</script>
+		  <script type="text/javascript" src="/static/scripts/mylibs/jquery-ui-1.8.16.custom.min.js"></script>
 		  <!-- end scripts-->
 		
 		  {% block scripts %}{% endblock %}
@@ -203,5 +195,7 @@
 		    <script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
 		  <![endif]-->
 		  <script type="text/javascript"> Cufon.now(); </script>
+		  <script type="text/javascript" src="/static/scripts/mylibs/filterTable.js"></script>
+		  <script type="text/javascript" src="/static/scripts/libs/jquery.tablesorter.min.js"></script>
     </body>
 </html>

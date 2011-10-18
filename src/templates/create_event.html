@@ -32,27 +32,24 @@
 		</div>
 		<div class="top-sections">
 			<div class="row">
-				<div class="span-one-third">
-					<!--<a class="submit-button login-button-header pull-right" href="#" onclick="">PREVIOUS</a>-->
-				</div>
-				<div class="span-one-third offset5">
+				<div class="span6 offset5">
 					<div class="gradient-div padding-ok step-container">
-					<form id="create-form" class="form-stacked" method="post" action="{{ current_url }}" enctype="multipart/form-data" >
+					<form id="create-form" class="form-stacked validate" method="post" action="{{ current_url }}" enctype="multipart/form-data" >
 		        	<!--<div class="actual-step">-->
 			        	<fieldset class="step1">
 			        		<br />
 			        		<div class = "clearfix">
-					        	{{ form_field(form.name, class='large required') }}
+					        	{{ form_field(form.name, class='xlarge required', id='name') }}
 				        	</div>
 				        	<br />
 				        	<div class = "clearfix">
-				        		{{ form_field(form.description, class='large required', rows='3') }}
+				        		{{ form_field(form.description, id='description', class='xlarge required', rows='3') }}
 				        	</div>
 				        	<br />
 			        		<div class="clearfix">
 				        		<label for="image_upload">Event Image</label>
 					        	<div class="input">
-					        		<input class="input-file required" type="file" name="image_upload" id = "image_upload">
+					        		<input id="image_upload" class="input-file required" type="file" name="image_upload" id = "image_upload">
 					        	</div>
 				        	</div>
 				        	<br />    	
@@ -60,7 +57,7 @@
 					        	<label for="start-date">Event Date</label>
 					        	<div class="input">
 					        		<div class="inline-inputs">
-						        		<input id="start-date" type="text" name="statr-date" class="large required" />
+						        		<input id="start-date" type="text" name="start-date" class="xlarge required centered" />
 					        		</div>
 					        	</div>
 					        </div>
@@ -68,57 +65,60 @@
 			        	
 			        	<fieldset class="step2">
 				        	<div class = "clearfix">
-				        	<label for="add-email">Add Songs</label>
+				        	<label for="table-songs">Add Songs</label>
 				        	</div>
-				        	<table id = "table" style = "color:white">
-							<tr>
-							<th ><input id="master-toggle-switch" type="checkbox" checked=""  value="all" name="master-toggle-switch"></th>
-							<th >Artist</th>
-							<th >Song</th>
-							</tr>
-							{% for song in songs %}
-								<tr>
-									<td><input class="check" type="checkbox" checked="" value="{{ song.key() }}" name="songs[]"></td>
-									<td >{{ song.artist.name }}</td>
-									<td >{{ song.name }}</td>
-								</tr>
-							{% endfor %}
+				        	<table id = "table-songs"  >
+				        		<thead>
+									<tr>
+									<th ><input id="master-toggle-switch" type="checkbox" checked=""  value="all" name="master-toggle-switch"></th>
+									<th class="yellow header" >Artist</th>
+									<th class="red header" >Song</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for song in songs %}
+										<tr>
+											<td><input class="check" type="checkbox" checked="" value="{{ song.key() }}" name="songs[]"></td>
+											<td >{{ song.artist.name }}</td>
+											<td >{{ song.name }}</td>
+										</tr>
+									{% endfor %}
+								</tbody>
 							</table>
 						</fieldset>
 						
 						<fieldset class="step3">
 				        	<div class = "clearfix">
-				        	<label for="add-email">Add Emails</label>
-				        	<input id="add-email" type="text" onClick = "testKey()">
+					        	<label for="add-email">Add Emails</label>
+					        	<div class="input">
+					        		<div class="inline-inputs">
+							        	<input type="button" class="add-email-button" value="Add" />
+							        	<input id="add-email" type="email" class="email"/>				        		
+					        		</div>
+					        	</div>
 				        	</div>
-				        	<div id = "add" >Add</div>
-				        	<table id = "table" style = "color:white">
-							<tr>
-							<td ><input id="master-toggle-switch" type="checkbox" checked=""  value="all" name="master-toggle-switch"></td>
-							<td >E-mail</td>
-							</tr>
-							
-							<tr>
-								<td><input class="check" type="checkbox" checked="" value="alex.milano@gmail.com" name="contacts[]"></td>
-								<td >alex.milano@gmail.com</td>
-							</tr>
-							
+				        	<table id = "table-emails" >
+								<thead>
+									<tr class="contacts-header">	
+										<td ><input id="master-toggle-switch" type="checkbox" checked=""  value="all" name="master-toggle-switch"></td>
+										<td class="yellow header">E-mail</td>
+									</tr>	
+								</thead>
+								<tbody>
+									<tr>
+									</tr>
+								</tbody>
 							</table>
-							
-	
 						</fieldset>
-					
 			       	<!--</div>-->
 			    	</form>
 			    	</div>
-			    	<div class="centered">
-			    		<a class="submit-button login-button-header next-button">NEXT</a>
+			    	<div class="centered event-create-buttons">
+			    		<a class="submit-button login-button-header back-button pull-left">BACK</a>
+			    		<a class="submit-button login-button-header next-button pull-right">NEXT</a>
 						<a class="submit-button login-button-header create-button" href="#" onclick="$('#create-form').submit()">CREATE</a>
 			    	</div>
 			    	<br />
-				</div>
-				<div class="span-one-third">
-					<!--<a class="submit-button login-button-header" href="#" onclick="">NEXT</a>-->
 				</div>
 			</div>
 		</div>

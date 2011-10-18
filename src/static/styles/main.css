@@ -87,10 +87,7 @@ form label{
 	margin:auto;
 	overflow: hidden;
 	min-height: 578px;
-<<<<<<< HEAD
-=======
 	padding-bottom: 30px;
->>>>>>> 8c84cae6e2435d883ea4a127115a8599939239bb
 }
 
 .main-logo{
@@ -352,8 +349,9 @@ body:before {
 .top-sections{
 	padding-top: 50px;
 }
-.centered{
+.0.3{
 	text-align: center;
+	overflow: hidden;
 }
 .box-title{
 	font-family: "VintageRegular", serif;
@@ -391,6 +389,10 @@ h1 .word1{
 }
 input[type="file"]{
 	background: none;
+}
+.centered{
+	text-align: center;
+	overflow: hidden;
 }
 /* DASHBOARD STATS*/
 .stats > .clearfix{
@@ -516,6 +518,19 @@ div > .disabled{
 .next-box a{
 	margin: auto;
 }
-.create-button{
+.create-button, .back-button{
 	display: none;
+}
+.event-create-buttons{
+	margin-top: -20px;
+}
+#create-form{
+	padding: 0;
+}
+#table-songs, #table-emails{
+	color: white;
+	font-size: 1em;
+}
+.AnyTime-hdr{
+	color: white;
 }
