@@ -62,7 +62,7 @@ class CreateEventHandler(BaseHandler):
     
         def get(self, **kwargs):
             songs = Song.all()
-            return self.render_response('create_event.html',form=self.form,songs=songs)
+            return self.render_response('create_event.html',section='create-event',form=self.form,songs=songs)
         def castTime(self,datestring,timestring):
             year = int(datestring[:4])
             month = int(datestring[5:7])
