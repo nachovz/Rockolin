@@ -23,7 +23,7 @@ class EventDelegate(BaseDelegate):
             file150 = params["file150"],
             filetype = params["filetype"].split('.')[1],
             start_date = params["start_date"],
-            end_date = params["end_date"],
+#            end_date = params["end_date"],
             description = params["description"],
             creator = params["creator"],
 #            people_invited = params["people_invited"],
@@ -40,10 +40,10 @@ class EventDelegate(BaseDelegate):
                              )
             queue = Queue('mail-queue')
             subject =  "You have been invited to the event " + event.name + " in Rockolin'"
-            body = """ Hi!, You have been invited to the event """ + event.name + """
+            body = """     Hi!, You have been invited to the event """ + event.name + """
                     This event would be on: """ + str(event.start_date) + """ 
                     If you want to decide the music justo go to the following 
-                    link: http://rockolinapp.appspot.com/event/invitation/""" +str(event.key())
+                    link: http://rockolinapp.appspot.com/event/""" +str(event.key())
             
             queue.add(Task(url='/task/mail', params = { 'to' : l, 'subject' : subject, 'body' : body }))        
             iu.put()
@@ -82,7 +82,7 @@ class EventDelegate(BaseDelegate):
         file = None
         if size == 90:
             file = event.file
-        elif size == 150:
+        else:
             file = event.file150
             
         result = {

@@ -63,12 +63,12 @@ class CreateEventHandler(BaseHandler):
         def get(self, **kwargs):
             songs = Song.all()
             return self.render_response('create_event.html',section='create-event',form=self.form,songs=songs)
-        def castTime(self,datestring,timestring):
+        def castTime(self,datestring):
             year = int(datestring[:4])
             month = int(datestring[5:7])
             day = int(datestring[8:10])
-            hour = int(timestring[:2])
-            minutes = int(timestring[3:5])
+            hour = int(datestring[11:13])
+            minutes = int(datestring[14:16])
             newvalue = datetime.datetime(
                                             year,
                                             month, 
@@ -81,18 +81,17 @@ class CreateEventHandler(BaseHandler):
         def post(self, **kwargs):
             image = self.request.files.get('image_upload').read()
             datestring = self.request.form.get('start-date')
-            timestring = self.request.form.get('start-time')
-            start_date = self.castTime(datestring, timestring)
-            end_date = self.castTime(self.request.form.get('finish-date'), self.request.form.get('finish-time'))
+            start_date = self.castTime(datestring)
+            #end_date = self.castTime(self.request.form.get('finish-date'), self.request.form.get('finish-time'))
             #start_date = datetime.datetime(self.request.form.get('start_time'))
             
             params = {
                         "file": images.resize(image, 90, 90),
-                        "file150": images.resize(image, 150, 150),
+                        "file150": images.resize(image, 200, 200),
                         "filetype": self.request.files.get('image_upload').filename,
                         "name" : self.request.form.get('name'),
                         "start_date" : start_date,
-                        "end_date" : end_date,
+#                        "end_date" : end_date,
                         "description" : self.request.form.get('description'),
                         "creator" : self.auth.user,
                         "people_invited" : self.request.form.getlist('contacts[]'),
