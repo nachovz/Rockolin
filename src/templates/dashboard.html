@@ -119,14 +119,20 @@
 							
 							<div class="box-title centered">
 								<h2 class="yellow-text vintage-border">Top 5 Songs</h2>
-								<ul>
+							</div>
+							
+							<div class="top-songs padding-ok">
+								<ul class="unstyled">
 								{% for p in popular_songs %}
-									<li><img src="{{ p[2].get_cover_image(1) }}"/>{{ p[0] }} by {{ p[2].name }}({{ p[1] }})</li>
+									<li class="song-container">
+										<div>
+											<a class="play-song pull-left" ><img src="{{ p[2].get_cover_image(1) }}"/></a>
+											<a class="song-artist-info pull-left" style="font-size: 1.3em;">{{ p[0] }} <span class="yellow-text ">by {{ p[2].name }} (Votes: <b class="votes-song">{{ p[1] }}</b>)</span></a>
+										</div>
+									</li>
 								{% endfor %}
 								</ul>
 							</div>
-							
-							
 												
 						</div>
 					</div>
