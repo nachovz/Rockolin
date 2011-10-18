@@ -25,6 +25,7 @@ $('.next-button').click(function() {
 				$('.'+step).fadeOut('fast').hide();
 				$('.step2').fadeIn().show();
 				$('.step2-circle').animate({opacity: 0.3, opacity : 1}, 1000);
+				$('#start-date').val(formatDate($('#start-date-picker').val()));
 				$('.back-button').show();
 			}
 		break;
@@ -62,7 +63,8 @@ $('.back-button').click(function() {
 	}
 });
 
-AnyTime.picker("start-date",{ format: "%M %d, %Z at %h:%i%p", firstDOW: 1 });
+AnyTime.picker("start-date-picker",{ format: "%M %d, %Z at %h:%i%p", firstDOW: 1 });
+
 
 $(".add-email-button").click(function(){
 	if ($('.validate').validate().element('.email')) {
@@ -76,4 +78,14 @@ function addEmail(){
 	$('#table-emails').append('<tr> <td><input type="checkbox" name="contacts[]" value="'+text+'" checked class="check"></td> <td><strong class="fn">'+text+'</strong></td></tr>');
 	
 	}
-
+function formatDate(dateIn){
+	var defaultConv = new AnyTime.Converter({
+		format: "%M %d, %Z at %h:%i%p"
+	});
+	var date = defaultConv.parse(dateIn);
+	
+	var peluOut = new AnyTime.Converter({
+		format:"%Y-%m-%d-%H-%i"
+	});
+	return peluOut.format(date);
+}
