@@ -34,3 +34,5 @@ $('.next-button').click(function() {
 		break;
 	}
 });
+
+AnyTime.picker("start-date");

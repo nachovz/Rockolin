@@ -30,6 +30,9 @@
 		  
 		  {% elif section == 'event' %}
 		  <link type="text/css" href="/static/styles/skin/codrops/jplayer.codrops.css" rel="stylesheet" />
+		  
+		  {% elif section == 'create-event' %}
+		  <link rel="stylesheet" type="text/css" href="/static/styles/anytime.css" />
 		  {% endif %}
 		  
 		<!--[if !IE 7]>
@@ -103,7 +106,7 @@
 		  <script defer src="/static/scripts/plugins.js"></script>
 		  <!--<script defer src="/static/scripts/script.js"></script>-->
 		  <script defer src="/static/scripts/mylibs/openid-en.js"></script>
-		  		  <script type="text/javascript" src="/static/scripts/libs/mosaic.1.0.1.js"></script>
+		  <script type="text/javascript" src="/static/scripts/libs/mosaic.1.0.1.js"></script>
 		  <script type="text/javascript" src="/static/scripts/libs/jquery.validate.min.js"></script>
 		  <script type="text/javascript" src="/static/scripts/main.js"></script>
 		  {% if section == 'login' %}
@@ -115,8 +118,10 @@
 		  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
 		  <script type="text/javascript" src="/static/scripts/event.js"></script>
 		  {% elif section == 'create-event' %}
-		  
-		  {% endif%}<script type="text/javascript" src="/static/scripts/create-event.js"></script>
+		  <script type="text/javascript" src="/static/scripts/create-event.js"></script>		  
+		  <script src="/static/scripts/mylibs/anytimec.js"></script>
+		  <script src="/anytimetz.js"></script>
+		  {% endif%}
 			<link rel="stylesheet" type="text/css" href="/static/styles/jquery.autocomplete.css" />
 			<!--<link rel="stylesheet" type="text/css" href="/static/styles/thickbox.css" />-->
 		  <script type="text/javascript" src="/static/scripts/jquery.autocomplete.js"></script>

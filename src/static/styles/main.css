@@ -418,16 +418,24 @@ input[type="file"]{
 	width: 50px;
 	height: 38px;
 	background: url("/static/images/icons.png") no-repeat;
-	
 }
 .dislikes{
-	background-position: 0px -55px;
+	background-position: 0px -40px;
 }
 .comments{
-	background-position: 0px -100px;
+	background-position: 0px -81px;
 }
 .events{
-	background-position: 0px -150px;
+	background-position: 0px -127px;
+}
+.stat-img2{
+	background: url("/static/images/icons2.png") no-repeat;
+	width: 50px;
+	height: 30px;
+	background-position: 8px 0px;
+}
+.dislikes2{
+	background-position: 8px -27px;
 }
 
 /* EVENT CSS*/

@@ -40,34 +40,28 @@
 					<form id="create-form" class="form-stacked" method="post" action="{{ current_url }}" enctype="multipart/form-data" >
 		        	<!--<div class="actual-step">-->
 			        	<fieldset class="step1">
+			        		<br />
 			        		<div class = "clearfix">
-					        	{{ form_field(form.name, class='large') }}
+					        	{{ form_field(form.name, class='large required') }}
 				        	</div>
+				        	<br />
 				        	<div class = "clearfix">
-				        		{{ form_field(form.description, class='large', rows='3') }}
+				        		{{ form_field(form.description, class='large required', rows='3') }}
 				        	</div>
+				        	<br />
 			        		<div class="clearfix">
 				        		<label for="image_upload">Event Image</label>
 					        	<div class="input">
-					        		<input class="input-file" type="file" name="image_upload" id = "image_upload">
+					        		<input class="input-file required" type="file" name="image_upload" id = "image_upload">
 					        	</div>
 				        	</div>
-				        		        	
+				        	<br />    	
 				        	<div class = "clearfix">
 					        	<label for="start-date">Event Date</label>
 					        	<div class="input">
 					        		<div class="inline-inputs">
-					        			<input class="small" id = "start-date" name ="start-date" type="date">
-					        			<input class="mini" id = "start-time" name ="start-time"  type="time">
-					        			<br />
-					        			<br />
-					        			<strong class="white-text">to</strong>
-					        			<br />
-					        			<br />
-					        			<input class="small" id = "finish-date" name = "finish-date" type="date">
-				        				<input class="mini" id = "finish-time" name = "finish-time" type="time">
+						        		<input id="start-date" type="text" name="statr-date" class="large required" />
 					        		</div>
-					        		
 					        	</div>
 					        </div>
 			        	</fieldset>
@@ -121,6 +115,7 @@
 			    		<a class="submit-button login-button-header next-button">NEXT</a>
 						<a class="submit-button login-button-header create-button" href="#" onclick="$('#create-form').submit()">CREATE</a>
 			    	</div>
+			    	<br />
 				</div>
 				<div class="span-one-third">
 					<!--<a class="submit-button login-button-header" href="#" onclick="">NEXT</a>-->
