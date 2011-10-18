@@ -24,7 +24,7 @@ class DashboardHandler(BaseHandler):
             manager = EventDelegate('Event')
             events = manager.listEvents(self.auth.user)
             popular_songs = []
-            
+            count_events = events.count()
             for e in events:
                 for s in e.event_setlist:
                     aux = True
@@ -41,5 +41,5 @@ class DashboardHandler(BaseHandler):
             ps = sorted(popular_songs, key=lambda song: song[1], reverse=True)[:5]
             
                 
-            return self.render_response('dashboard.html',section='dashboard', events=events,popular_songs=ps)
+            return self.render_response('dashboard.html',section='dashboard', events=events,popular_songs=ps,count_events=count_events)
         

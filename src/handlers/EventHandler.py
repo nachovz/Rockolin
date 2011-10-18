@@ -87,7 +87,7 @@ class CreateEventHandler(BaseHandler):
             
             params = {
                         "file": images.resize(image, 90, 90),
-                        "file150": images.resize(image, 200, 200),
+                        "file150": images.resize(image, 150, 150),
                         "filetype": self.request.files.get('image_upload').filename,
                         "name" : self.request.form.get('name'),
                         "start_date" : start_date,
