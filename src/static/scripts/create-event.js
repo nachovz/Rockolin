@@ -11,14 +11,22 @@ jQuery.expr[':'].regex = function(elem, index, match) {
     return regex.test(jQuery(elem)[attr.method](attr.property));
 }
 
+$(function() {
+	$("table#table-songs").tablesorter({ sortList: [[1,0]] });
+	//$("table#table-emails").tablesorter({ sortList: [[1,0]] });
+});
+
 $('.next-button').click(function() {
 	var step = $('fieldset:regex(class,^step):not(:regex(css:display,none))').attr('class');
 
 	switch(step){
 		case "step1":
-			$('.'+step).fadeOut('fast').hide();
-			$('.step2').fadeIn().show();
-			$('.step2-circle').animate({opacity: 0.3, opacity : 1}, 1000);
+			if ($('.validate').validate().element('#name') && $('.validate').validate().element('#description') && $('.validate').validate().element('#image_upload') && $('.validate').validate().element('#start-date')) {	
+				$('.'+step).fadeOut('fast').hide();
+				$('.step2').fadeIn().show();
+				$('.step2-circle').animate({opacity: 0.3, opacity : 1}, 1000);
+				$('.back-button').show();
+			}
 		break;
 		case "step2":
 			$('.'+step).fadeOut('fast').hide();
@@ -34,3 +42,38 @@ $('.next-button').click(function() {
 		break;
 	}
 });
+
+$('.back-button').click(function() {
+	var step = $('fieldset:regex(class,^step):not(:regex(css:display,none))').attr('class');
+
+	switch(step){
+		case "step2":
+			$('.'+step).fadeOut('fast').hide();
+			$('.step1').fadeIn().show();
+			$('.step2-circle').animate({opacity: 1, opacity : 0.3}, 1000);
+			$('.back-button').hide();
+		break;
+		case "step3":
+			$('.'+step).fadeOut('fast').hide();
+			$('.step2').fadeIn().show();
+			$('.step3-circle').animate({opacity: 1, opacity : 0.3}, 1000);
+			$('.create-button').hide();
+		break;
+	}
+});
+
+AnyTime.picker("start-date",{ format: "%M %d, %Z at %h:%i%p", firstDOW: 1 });
+
+$(".add-email-button").click(function(){
+	if ($('.validate').validate().element('.email')) {
+		addEmail();
+	};
+});
+
+function addEmail(){
+	var text = document.getElementById("add-email").value;	
+	$('.contacts-header').show();
+	$('#table-emails').append('<tr> <td><input type="checkbox" name="contacts[]" value="'+text+'" checked class="check"></td> <td><strong class="fn">'+text+'</strong></td></tr>');
+	
+	}
+

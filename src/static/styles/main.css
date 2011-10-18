@@ -87,10 +87,7 @@ form label{
 	margin:auto;
 	overflow: hidden;
 	min-height: 578px;
-<<<<<<< HEAD
-=======
 	padding-bottom: 30px;
->>>>>>> 8c84cae6e2435d883ea4a127115a8599939239bb
 }
 
 .main-logo{
@@ -352,8 +349,9 @@ body:before {
 .top-sections{
 	padding-top: 50px;
 }
-.centered{
+.0.3{
 	text-align: center;
+	overflow: hidden;
 }
 .box-title{
 	font-family: "VintageRegular", serif;
@@ -392,6 +390,10 @@ h1 .word1{
 input[type="file"]{
 	background: none;
 }
+.centered{
+	text-align: center;
+	overflow: hidden;
+}
 /* DASHBOARD STATS*/
 .stats > .clearfix{
 	overflow: hidden;
@@ -418,16 +420,24 @@ input[type="file"]{
 	width: 50px;
 	height: 38px;
 	background: url("/static/images/icons.png") no-repeat;
-	
 }
 .dislikes{
-	background-position: 0px -55px;
+	background-position: 0px -40px;
 }
 .comments{
-	background-position: 0px -100px;
+	background-position: 0px -81px;
 }
 .events{
-	background-position: 0px -150px;
+	background-position: 0px -127px;
+}
+.stat-img2{
+	background: url("/static/images/icons2.png") no-repeat;
+	width: 50px;
+	height: 30px;
+	background-position: 8px 0px;
+}
+.dislikes2{
+	background-position: 8px -27px;
 }
 
 /* EVENT CSS*/
@@ -508,6 +518,19 @@ div > .disabled{
 .next-box a{
 	margin: auto;
 }
-.create-button{
+.create-button, .back-button{
 	display: none;
+}
+.event-create-buttons{
+	margin-top: -20px;
+}
+#create-form{
+	padding: 0;
+}
+#table-songs, #table-emails{
+	color: white;
+	font-size: 1em;
+}
+.AnyTime-hdr{
+	color: white;
 }
