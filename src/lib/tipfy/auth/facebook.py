@@ -142,7 +142,7 @@ class FacebookMixin(object):
             session_key=session['session_key'],
             uids=session['uid'],
             fields='uid,first_name,last_name,name,locale,pic_square,' \
-                   'profile_url,username')
+                   'profile_url,username,email')
 
     def facebook_request(self, method, callback=None, **kwargs):
         """Makes a Facebook API REST request.

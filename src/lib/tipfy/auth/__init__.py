@@ -261,7 +261,12 @@ class MultiAuthStore(SessionAuthStore):
         else:
             # Simply set a session; user will be created later if required.
             self._set_session(auth_id, remember=remember)
-
+    def _load_session(self):
+        self.loaded = True
+        session = self._session_base.get('_auth', {})
+        if session:
+            self._session = session
+            
     def _load_session_and_user(self):
         self.loaded = True
         session = self._session_base.get('_auth', {})
@@ -370,6 +375,7 @@ class AdminRequiredMiddleware(object):
 
 
 def login_required(func):
+    
     """A RequestHandler method decorator to require user authentication.
     Normally :func:`user_required` is used instead. Example::
 
@@ -470,6 +476,8 @@ def create_session_id():
 def _login_required(handler):
     """Implementation for login_required and LoginRequiredMiddleware."""
     auth = handler.auth
+    if not auth.session:
+        auth._load_session() # If no session try to load it from the _session_base
 
     if not auth.session:
         return handler.redirect(auth.login_url())

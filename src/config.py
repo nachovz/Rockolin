@@ -13,7 +13,7 @@ config['tipfy.sessions'] = {
 
 config['tipfy.auth.facebook'] = {
     'api_key':    '283934171634741',
-    'app_secret': '6a16d773ecd9f178e75b0a778ec636d4 ',
+    'app_secret': '6a16d773ecd9f178e75b0a778ec636d4',
 }
 
 config['tipfy.auth.friendfeed'] = {

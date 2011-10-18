@@ -17,7 +17,7 @@ import datetime
 # ----- Forms -----
 
 REQUIRED = validators.required()
-
+email_global = None
 class LoginForm(Form):
     username_login = fields.TextField('')
     password_login = fields.PasswordField('')
@@ -232,7 +232,6 @@ class ContentHandler(BaseHandler):
 
 class LoginHandler(BaseHandler):
     def get(self, **kwargs):
-        redirect_url = self.redirect_path()
 
         if self.auth.user:
             # User is already registered, so don't display the signup form.
@@ -282,13 +281,27 @@ class LogoutHandler(BaseHandler):
 
 
 class SignupHandler(BaseHandler):
+    
     @login_required
     def get(self, **kwargs):
         if self.auth.user:
             # User is already registered, so don't display the signup form.
             return self.redirect(self.redirect_path())
+        auth_id = self.auth.session.get('id')
+        user = self.auth.create_user(auth_id.split('|')[1], auth_id,email=email_global)
+        if user:
+            self.auth.login_with_auth_id(user.auth_id, True)
+            self.session.add_flash('You are now registered. Welcome!',
+                'success', '_messages')
+            return self.redirect('/dashboard')
+        else:
+            self.messages.append(('This nickname is already registered.',
+                'error'))
+            return self.get(**kwargs)
 
-        return self.render_response('signup.html', form=self.form)
+        self.messages.append(('A problem occurred. Please correct the '
+            'errors listed in the form.', 'error'))
+        return self.get(**kwargs)
 
     @login_required
     def post(self, **kwargs):
@@ -296,16 +309,16 @@ class SignupHandler(BaseHandler):
 
         if self.auth.user:
             # User is already registered, so don't process the signup form.
-            return self.redirect(redirect_url)
+            return self.redirect('/dashboard')
 
         if self.form.validate():
             auth_id = self.auth.session.get('id')
-            user = self.auth.create_user(self.form.nickname.data, auth_id)
+            user = self.auth.create_user(auth_id.split('|')[0], auth_id,email=email_global)
             if user:
                 self.auth.login_with_auth_id(user.auth_id, True)
                 self.session.add_flash('You are now registered. Welcome!',
                     'success', '_messages')
-                return self.redirect(redirect_url)
+                return self.redirect('/dashboard')
             else:
                 self.messages.append(('This nickname is already registered.',
                     'error'))
@@ -322,20 +335,27 @@ class SignupHandler(BaseHandler):
 
 class RegisterHandler(BaseHandler):
     def get(self, **kwargs):
-        redirect_url = self.redirect_path()
         
         if self.auth.user:
             # User is already registered, so don't display the registration form.
             return self.redirect('/dashboard')
-
-        return self.render_response('register.html',section='register', form=self.form)
+        opts = {'continue': self.redirect_path()}
+        context = {
+            
+            'facebook_login_url':   self.url_for('auth/facebook', **opts),
+            'friendfeed_login_url': self.url_for('auth/friendfeed', **opts),
+            'google_login_url':     self.url_for('auth/google', **opts),
+            'twitter_login_url':    self.url_for('auth/twitter', **opts),
+            'yahoo_login_url':      self.url_for('auth/yahoo', **opts),
+        }
+        return self.render_response('register.html',section='register', form=self.form, **context)
 
     def post(self, **kwargs):
         redirect_url = self.redirect_path()
 
         if self.auth.user:
             # User is already registered, so don't process the signup form.
-            return self.redirect(redirect_url)
+            return self.redirect('/dashboard')
 
         if self.form.validate():
             username = self.form.username.data
@@ -379,7 +399,7 @@ class FacebookAuthHandler(BaseHandler, FacebookMixin):
 
         if self.auth.session:
             # User is already signed in, so redirect back.
-            return self.redirect(url)
+            return self.redirect('/dashboard')
 
         self.session['_continue'] = url
 
@@ -398,7 +418,7 @@ class FacebookAuthHandler(BaseHandler, FacebookMixin):
         username = user.pop('username', None)
         if not username:
             username = user.pop('uid', '')
-
+        email_global = user.pop('email', None)
         auth_id = 'facebook|%s' % username
         self.auth.login_with_auth_id(auth_id, remember=True,
             session_key=user.get('session_key'))
