@@ -23,7 +23,7 @@ class EventDelegate(BaseDelegate):
             file150 = params["file150"],
             filetype = params["filetype"].split('.')[1],
             start_date = params["start_date"],
-            end_date = params["end_date"],
+#            end_date = params["end_date"],
             description = params["description"],
             creator = params["creator"],
 #            people_invited = params["people_invited"],

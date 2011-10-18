@@ -293,7 +293,10 @@ class SignupHandler(BaseHandler):
             self.auth.login_with_auth_id(user.auth_id, True)
             self.session.add_flash('You are now registered. Welcome!',
                 'success', '_messages')
-            return self.redirect('/dashboard')
+            if self.auth.user:
+                return self.redirect('/dashboard')
+            else:
+                return self.redirect('/auth/login')
         else:
             self.messages.append(('This nickname is already registered.',
                 'error'))
