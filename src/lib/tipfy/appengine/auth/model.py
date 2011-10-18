@@ -45,7 +45,7 @@ class User(db.Model):
     session_id = db.StringProperty(required=True)
     # Auth token last renewal date.
     session_updated = db.DateTimeProperty(auto_now_add=True)
-
+    type = db.StringProperty(default='sponsor')
     @classmethod
     def get_by_username(cls, username):
         return cls.get_by_key_name(username)

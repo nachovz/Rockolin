@@ -31,7 +31,18 @@ class ValidateUserForm(Form):
 class EventValidateUserHandler(BaseHandler):
     def get(self,key, **kwargs):
             event = Event.get(key)
-            return self.render_response('validate_user.html',section='validate_user',form = self.form,event=event)
+            if self.auth.user:
+            # User is already registered, so don't display the signup form.
+                return self.redirect('/event/'+str(key))
+    
+            opts = {'continue': self.redirect_path(),'event':key}
+            context = {
+                'facebook_login_url':   self.url_for('auth/invite/facebook', **opts),
+                'twitter_login_url':    self.url_for('auth/invite/twitter', **opts)
+                
+            }
+            
+            return self.render_response('validate_user.html',section='validate_user',form = self.form,event=event, **context)
     
     def post(self, key, **kwargs):
         event = Event.get(key)
@@ -52,10 +63,11 @@ class EventValidateUserHandler(BaseHandler):
 class EventHandler(BaseHandler):
     
         def get(self,key, **kwargs):
-            
-            slv = Event.get(key).event_setlist.order('-votes')
-            return self.render_response('event.html',section='event',setlist = slv,event=Event.get(key))
-        
+            if self.auth.user:
+                slv = Event.get(key).event_setlist.order('-votes')
+                return self.render_response('event.html',section='event',setlist = slv,event=Event.get(key))
+            else:
+                return self.redirect('/event/invitation/'+str(key))
 
         
 class CreateEventHandler(BaseHandler):

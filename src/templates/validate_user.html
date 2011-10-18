@@ -12,23 +12,20 @@
 					<!--<h1 class="yellow-text">SIGN IN</h1>-->
 				</div>
 				<div class="log-in-box gradient-div">
-				    <form  class="form-stacked validate"  method="post" action="{{ current_url }}" enctype="multipart/form-data">
+				   
 				        
-				        <fieldset class="textbox">
-				        	<div class="clearfix">
-					        	<label for="username_login">Username</label>
-					        	<div class="input">
-					        		{{ form_field(form.email, class='xlarge required') }}
-					        	</div>
-					        </div>
-				            
-			            </fieldset>
-			            
-			        	
-			        	<br />
-			        		<a class="submit-button register-button-form" href="#" onclick="$(this).parent().submit()">Let's Rock</a>
-				    </form>
+				        
+		        	<div class="clearfix">
+			        	<div class="log-in-other centered">
+							<h2 class="white-text">Please Sign up with:</h2>
+							<a href="{{ facebook_login_url }}" title="Sign in with Facebook"><img src="/static/images/facebook.png" width="60" height="60" alt="Sign in with Facebook"></a>
+							<a href="{{ twitter_login_url }}" title="Sign in with Twitter"><img src="/static/images/twitter.png" width="60" height="60" alt="Sign in with Twitter"></a>
+						</div>
+					</div>
 				</div>
+				            
+			            
+			</div>
 			    
 			<!--
 			    <p>Or select a service to sign in with:</p>

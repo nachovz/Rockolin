@@ -99,7 +99,8 @@ class BaseAuthStore(object):
             A URL to perform signup.
         """
         return self._url('auth/signup', **kwargs)
-
+    
+    
     def create_user(self, username, auth_id, **kwargs):
         """Creates a new user entity.
 

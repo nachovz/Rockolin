@@ -174,6 +174,22 @@ class BaseHandler(RequestHandler, Jinja2Mixin):
 
         if not self.auth.user:
             url = self.auth.signup_url()
+            
+
+        return self.redirect(url)
+    
+    def _on_auth_redirect_invite(self,key):
+        """Redirects after successful authentication using third party
+        services.
+        """
+        if '_continue' in self.session:
+            url = self.session.pop('_continue')
+        else:
+            url = '/'
+
+        if not self.auth.user:
+            url = '/auth/guest?event='+str(key)
+            
 
         return self.redirect(url)
 
@@ -279,7 +295,33 @@ class LogoutHandler(BaseHandler):
         self.auth.logout()
         return self.redirect(self.redirect_path())
 
+class GuestHandler(BaseHandler):
+    
+    @login_required
+    def get(self,**kwargs):
+        if self.auth.user:
+            # User is already registered, so don't display the signup form.
+            return self.redirect(self.redirect_path())
+        event = self.request.args.get('event')
+        auth_id = self.auth.session.get('id')
+        user = self.auth.create_user(auth_id.split('|')[1], auth_id,email=email_global,type='guest')
+        if user:
+            self.auth.login_with_auth_id(user.auth_id, True)
+            self.session.add_flash('You are now registered. Welcome!',
+                'success', '_messages')
+            if self.auth.user:
+                return self.redirect('/event/'+str(event))
+            else:
+                return self.redirect('/event/invitation/'+str(event))
+        else:
+            self.messages.append(('This nickname is already registered.',
+                'error'))
+            return self.get(**kwargs)
 
+        self.messages.append(('A problem occurred. Please correct the '
+            'errors listed in the form.', 'error'))
+        return self.get(**kwargs)
+    
 class SignupHandler(BaseHandler):
     
     @login_required
