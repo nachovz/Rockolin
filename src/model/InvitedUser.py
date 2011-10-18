@@ -7,7 +7,6 @@ Created on Aug 9, 2011
 from google.appengine.ext import db
 from tipfy.appengine.auth.model import User
 from model.Event import Event
-from django.template.defaultfilters import default
 
 class InvitedUser(db.Model):
     firstname = db.StringProperty(required=False)
