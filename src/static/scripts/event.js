@@ -85,7 +85,10 @@ function moveSong(clicked,index,sume,votes){
 	
 	
 	if (sume < 1) {
-		if (index >0 && $('.song-container:nth-child('+1+')') != clicked) {
+		if (index ==0 && $('.song-container:nth-child('+1+')') === clicked) {
+		
+		}else{ 
+			
 		var nextAll = clicked.nextUntil($('.song-container:nth-child('+(index+2)+')'));
 		
 		var bottom = $(nextAll[nextAll.length-1]);
@@ -110,15 +113,18 @@ function moveSong(clicked,index,sume,votes){
 	      	clicked.css({'position': 'static', 'top': 0});
 	      	nextAll.css({'position': 'static', 'top': 0}); 
     	  }});
-    	}  
+    	}
 	}else{
 			var more = parseInt(clicked.children().children().siblings('.song-artist-info').children().children().html()) - more;
 
 		//previousAll for visual
 		//var previousAllV = clicked.prevUntil('li:nth-child('+(index)+')');
 		var temp = $('.song-container:nth-child('+1+')');
-		if (index == 0 && temp.children().children().siblings('.love-song').attr('rel') !== clicked.children().children().siblings('.love-song').attr('rel')) {
-			// all the LIs above the clicked to index position
+		if (index == 0 && temp.children().children().siblings('.love-song').attr('rel') === clicked.children().children().siblings('.love-song').attr('rel') ) {
+			if(more >=2 ){
+			  	showPopover(clicked);
+			  }
+		}else{	
 			var previousAll = clicked.prevUntil('.song-container:nth-child('+index+')');
 			
 			// top LI for VISUAL
@@ -152,10 +158,6 @@ function moveSong(clicked,index,sume,votes){
 			  	showPopover(clicked);
 			  }
 			}});
-		}else{
-			if(more >=2 ){
-			  	showPopover(clicked);
-			  }
 		}
     }
     
