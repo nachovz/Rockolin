@@ -80,9 +80,12 @@ function playSong(i){
 
 function moveSong(clicked,index,sume,votes){
 	
-	clicked.siblings('.song-artist-info').children().children().html(votes);
+	var more = parseInt(clicked.children().children().siblings('.song-artist-info').children().children().html());
+	clicked.children().children().siblings('.song-artist-info').children().children().html(votes);
+	
 	
 	if (sume < 1) {
+		if (index >0 && $('.song-container:nth-child('+1+')') != clicked) {
 		var nextAll = clicked.nextUntil($('.song-container:nth-child('+(index+2)+')'));
 		
 		var bottom = $(nextAll[nextAll.length-1]);
@@ -107,43 +110,57 @@ function moveSong(clicked,index,sume,votes){
 	      	clicked.css({'position': 'static', 'top': 0});
 	      	nextAll.css({'position': 'static', 'top': 0}); 
     	  }});
-    	  
+    	}  
 	}else{
+			var more = parseInt(clicked.children().children().siblings('.song-artist-info').children().children().html()) - more;
+
 		//previousAll for visual
 		//var previousAllV = clicked.prevUntil('li:nth-child('+(index)+')');
-		
-		// all the LIs above the clicked to index position
-		var previousAll = clicked.prevUntil('.song-container:nth-child('+index+')');
-		
-		// top LI for VISUAL
-		var top = $(previousAll[previousAll.length-1]);//$($list+' li:nth-child('+index+')'); //$(previousAll[previousAll.length - 1]);
-		
-		//top LI for DOM
-		//var topD = $(previousAll[previousAll.length - (index)]);
-		
-		// immediately previous LI
-		var previous = $(previousAll[0]);
-		
-		// how far up do we need to move the clicked LI?
-		var topof = clicked.offset().top;
-		
-		var moveUp = clicked.offset().top/*clicked.attr('offset')/*attr('offset')*/ - top.offset().top/*attr('offset')*/;
-		
-		// how far down do we need to move the previous siblings?
-		var moveDown = (clicked.offset().top + clicked.outerHeight()) - (previous.offset().top + previous.outerHeight());
-		
-		// let's move stuff
-		clicked.css('position', 'relative');
-		previousAll.css('position', 'relative');
-		clicked.animate({'top': -moveUp});
-		previousAll.animate({'top': moveDown}, {complete: function() {
-		  // rearrange the DOM and restore positioning when we're done moving
-		  //clicked.parent().prepend(clicked);
-		  $(clicked).insertBefore(top);
-		  clicked.css({'position': 'static', 'top': 0});
-		  previousAll.css({'position': 'static', 'top': 0}); 
-		}});
+		var temp = $('.song-container:nth-child('+1+')');
+		if (index == 0 && temp.children().children().siblings('.love-song').attr('rel') !== clicked.children().children().siblings('.love-song').attr('rel')) {
+			// all the LIs above the clicked to index position
+			var previousAll = clicked.prevUntil('.song-container:nth-child('+index+')');
+			
+			// top LI for VISUAL
+			var top = $(previousAll[previousAll.length-1]);//$($list+' li:nth-child('+index+')'); //$(previousAll[previousAll.length - 1]);
+			
+			//top LI for DOM
+			//var topD = $(previousAll[previousAll.length - (index)]);
+			
+			// immediately previous LI
+			var previous = $(previousAll[0]);
+			
+			// how far up do we need to move the clicked LI?
+			var topof = clicked.offset().top;
+			
+			var moveUp = clicked.offset().top/*clicked.attr('offset')/*attr('offset')*/ - top.offset().top/*attr('offset')*/;
+			
+			// how far down do we need to move the previous siblings?
+			var moveDown = (clicked.offset().top + clicked.outerHeight()) - (previous.offset().top + previous.outerHeight());
+			
+			// let's move stuff
+			clicked.css('position', 'relative');
+			previousAll.css('position', 'relative');
+			clicked.animate({'top': -moveUp});
+			previousAll.animate({'top': moveDown}, {complete: function() {
+			  // rearrange the DOM and restore positioning when we're done moving
+			  //clicked.parent().prepend(clicked);
+			  $(clicked).insertBefore(top);
+			  clicked.css({'position': 'static', 'top': 0});
+			  previousAll.css({'position': 'static', 'top': 0});
+			  if(more >=2 ){
+			  	showPopover(clicked);
+			  }
+			}});
+		}else{
+			if(more >=2 ){
+			  	showPopover(clicked);
+			  }
+		}
     }
+    
+    
+    //clicked.popover('hide');
 }
 
 $('.date-event').html(formatDate($('.date-event').html()));
@@ -160,4 +177,27 @@ function formatDate(dateIn){
 	});
 	
 	return defaultConv.format(date);
+}
+
+/*$('.song-container').popover({
+	title: 'Multi-Votes',
+	content: 'Someone else vote for this song too!',
+	trigger: 'manual',
+	delayOut: 100,
+});*/
+
+function showPopover (argument) {
+  	$('.song-container').popover({
+  		trigger: 'manual',
+  		placement: 'left',
+  		title: function(){return popoverTitle();},
+		content: function(){return popoverText();}
+  	});
+  	$('.song-container').popover('show');
+}
+function popoverTitle () {
+  return "Multi-Votes";
+}
+function popoverText() {
+	return 'Someone else vote for this song too!';
 }
