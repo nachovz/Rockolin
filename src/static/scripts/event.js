@@ -55,7 +55,7 @@ $(document).ready(function(){
 		   success: function(data)
 		   {
 		   		if (data) {
-		   			moveSong($clicked,data['position']);		   			
+		   			moveSong($clicked,data['position'],sume);		   			
 		   		}
 		   }
 	 	});
@@ -78,40 +78,68 @@ function playSong(i){
 	}).jPlayer("play");
 }
 
-function moveSong(clicked,index){
+function moveSong(clicked,index,sume){
 	
-	//previousAll for visual
-	//var previousAllV = clicked.prevUntil('li:nth-child('+(index)+')');
+	if (sume < 1) {
+		var nextAll = clicked.nextUntil('li:nth-child('+(index)+')');
+		
+		var bottom = $(nextAll[nextAll.length-1]);
+		
+	    var next = $(nextAll[0]);
+
+	    // how far up do we need to move the clicked LI?
+	    var botof = clicked.offset().top;
+	    
+	    var moveDown = bottom.offset().top - clicked.offset().top;
 	
-	// all the LIs above the clicked to index position
-    var previousAll = clicked.prevUntil('li:nth-child('+(index)+')');
-	
-	// top LI for VISUAL
-    var top = $(previousAll[previousAll.length-1]);//$($list+' li:nth-child('+index+')'); //$(previousAll[previousAll.length - 1]);
-
-	//top LI for DOM
-	//var topD = $(previousAll[previousAll.length - (index)]);
-	
-    // immediately previous LI
-    var previous = $(previousAll[0]);
-
-    // how far up do we need to move the clicked LI?
-    var topof = clicked.offset().top;
-    
-    var moveUp = clicked.offset().top/*clicked.attr('offset')/*attr('offset')*/ - top.offset().top/*attr('offset')*/;
-
-    // how far down do we need to move the previous siblings?
-    var moveDown = (clicked.offset().top + clicked.outerHeight()) - (previous.offset().top + previous.outerHeight());
-
-    // let's move stuff
-    clicked.css('position', 'relative');
-    previousAll.css('position', 'relative');
-    clicked.animate({'top': -moveUp});
-    previousAll.animate({'top': moveDown}, {complete: function() {
-      // rearrange the DOM and restore positioning when we're done moving
-      //clicked.parent().prepend(clicked);
-      $(clicked).insertBefore(top);
-      clicked.css({'position': 'static', 'top': 0});
-      previousAll.css({'position': 'static', 'top': 0}); 
-    }});
+	    // how far down do we need to move the previous siblings?
+	    var moveUp =  (next.offset().top + next.outerHeight()) - (clicked.offset().top + clicked.outerHeight()) ;
+	    
+	    clicked.css('position', 'relative');
+	    nextAll.css('position', 'relative');
+	    clicked.animate({'top': moveDown});
+	    nextAll.animate({'top': -moveUp}, {complete: function() {
+	      // rearrange the DOM and restore positioning when we're done moving
+	      //clicked.parent().prepend(clicked);
+	      $(clicked).insertAfter(bottom);
+	      	clicked.css({'position': 'static', 'top': 0});
+	      	nextAll.css({'position': 'static', 'top': 0}); 
+    	  }});
+    	  
+	}else{
+		//previousAll for visual
+		//var previousAllV = clicked.prevUntil('li:nth-child('+(index)+')');
+		
+		// all the LIs above the clicked to index position
+		var previousAll = clicked.prevUntil('li:nth-child('+(index)+')');
+		
+		// top LI for VISUAL
+		var top = $(previousAll[previousAll.length-1]);//$($list+' li:nth-child('+index+')'); //$(previousAll[previousAll.length - 1]);
+		
+		//top LI for DOM
+		//var topD = $(previousAll[previousAll.length - (index)]);
+		
+		// immediately previous LI
+		var previous = $(previousAll[0]);
+		
+		// how far up do we need to move the clicked LI?
+		var topof = clicked.offset().top;
+		
+		var moveUp = clicked.offset().top/*clicked.attr('offset')/*attr('offset')*/ - top.offset().top/*attr('offset')*/;
+		
+		// how far down do we need to move the previous siblings?
+		var moveDown = (clicked.offset().top + clicked.outerHeight()) - (previous.offset().top + previous.outerHeight());
+		
+		// let's move stuff
+		clicked.css('position', 'relative');
+		previousAll.css('position', 'relative');
+		clicked.animate({'top': -moveUp});
+		previousAll.animate({'top': moveDown}, {complete: function() {
+		  // rearrange the DOM and restore positioning when we're done moving
+		  //clicked.parent().prepend(clicked);
+		  $(clicked).insertBefore(top);
+		  clicked.css({'position': 'static', 'top': 0});
+		  previousAll.css({'position': 'static', 'top': 0}); 
+		}});
+    }
 }
