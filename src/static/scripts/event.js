@@ -81,7 +81,7 @@ function playSong(i){
 function moveSong(clicked,index,sume){
 	
 	if (sume < 1) {
-		var nextAll = clicked.nextUntil('li:nth-child('+(index)+')');
+		var nextAll = clicked.nextUntil($('.song-container:nth-child('+(index+2)+')'));
 		
 		var bottom = $(nextAll[nextAll.length-1]);
 		
@@ -111,7 +111,7 @@ function moveSong(clicked,index,sume){
 		//var previousAllV = clicked.prevUntil('li:nth-child('+(index)+')');
 		
 		// all the LIs above the clicked to index position
-		var previousAll = clicked.prevUntil('li:nth-child('+(index)+')');
+		var previousAll = clicked.prevUntil('.song-container:nth-child('+index+')');
 		
 		// top LI for VISUAL
 		var top = $(previousAll[previousAll.length-1]);//$($list+' li:nth-child('+index+')'); //$(previousAll[previousAll.length - 1]);
@@ -142,4 +142,20 @@ function moveSong(clicked,index,sume){
 		  previousAll.css({'position': 'static', 'top': 0}); 
 		}});
     }
+}
+
+$('.date-event').html(formatDate($('.date-event').html()));
+
+function formatDate(dateIn){
+	var peluOut = new AnyTime.Converter({
+		format:"%Y-%m-%d %H:%i:%s"
+	});
+	
+	var date = peluOut.parse(dateIn);
+	
+	var defaultConv = new AnyTime.Converter({
+		format: "%M %d, %Z at %h:%i%p"
+	});
+	
+	return defaultConv.format(date);
 }
