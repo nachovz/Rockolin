@@ -33,10 +33,10 @@ $(document).ready(function(){
       	if ($(this).hasClass('liked')) {
       		$(this).toggleClass('liked',false);
       		sume = -1;
-      		$(this).siblings('.song-artist-info').children().children().html(vote-1);
+      		//$(this).siblings('.song-artist-info').children().children().html(vote-1);
       	}else{
       		//$(this).siblings('.song-artist-info').children().children().html('');
-      		$(this).siblings('.song-artist-info').children().children().html(vote+1);
+      		//$(this).siblings('.song-artist-info').children().children().html(vote+1);
       		$(this).toggleClass('liked',true);
       	}
       
@@ -55,7 +55,7 @@ $(document).ready(function(){
 		   success: function(data)
 		   {
 		   		if (data) {
-		   			moveSong($clicked,data['position'],sume);		   			
+		   			moveSong($clicked,data['position'],sume,data['votes']);		   			
 		   		}
 		   }
 	 	});
@@ -78,7 +78,9 @@ function playSong(i){
 	}).jPlayer("play");
 }
 
-function moveSong(clicked,index,sume){
+function moveSong(clicked,index,sume,votes){
+	
+	clicked.siblings('.song-artist-info').children().children().html(votes);
 	
 	if (sume < 1) {
 		var nextAll = clicked.nextUntil($('.song-container:nth-child('+(index+2)+')'));
