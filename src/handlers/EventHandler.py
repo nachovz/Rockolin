@@ -63,7 +63,7 @@ class CreateEventHandler(BaseHandler):
         def get(self, **kwargs):
             songs = Song.all()
             return self.render_response('create_event.html',section='create-event',form=self.form,songs=songs)
-        def castTime(self,datestring,timestring):
+        def castTime(self,datestring):
             year = int(datestring[:4])
             month = int(datestring[5:7])
             day = int(datestring[8:10])
@@ -87,7 +87,7 @@ class CreateEventHandler(BaseHandler):
             
             params = {
                         "file": images.resize(image, 90, 90),
-                        "file150": images.resize(image, 150, 150),
+                        "file150": images.resize(image, 200, 200),
                         "filetype": self.request.files.get('image_upload').filename,
                         "name" : self.request.form.get('name'),
                         "start_date" : start_date,
