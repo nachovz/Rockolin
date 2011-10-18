@@ -79,7 +79,7 @@
 								<tbody>
 									{% for song in songs %}
 										<tr>
-											<td><input class="check" type="checkbox" checked="" value="{{ song.key() }}" name="songs[]"></td>
+											<td><input class="check-song" type="checkbox" checked="" value="{{ song.key() }}" name="songs[]"></td>
 											<td >{{ song.artist.name }}</td>
 											<td >{{ song.name }}</td>
 										</tr>
@@ -115,9 +115,9 @@
 			    	</form>
 			    	</div>
 			    	<div class="centered event-create-buttons">
-			    		<a class="submit-button login-button-header back-button pull-left">BACK</a>
-			    		<a class="submit-button login-button-header next-button pull-right">NEXT</a>
-						<a class="submit-button login-button-header create-button" href="#" onclick="$('#create-form').submit()">CREATE</a>
+			    		<a class="submit-button login-button-header back-button pull-left" href="#">BACK</a>
+			    		<a class="submit-button login-button-header next-button pull-right" href="#">NEXT</a>
+						<a class="submit-button login-button-header create-button" href="#" onclick="validateAndSend()">CREATE</a>
 			    	</div>
 			    	<br />
 				</div>

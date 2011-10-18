@@ -332,6 +332,10 @@ body:before {
 .event-min-data li{
 	margin-top: 10px;
 }
+.log-in-other{
+	float: left;
+	width: 100%;
+}
 
 /*GENERALS*/
 .errors{

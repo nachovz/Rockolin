@@ -30,16 +30,20 @@ $('.next-button').click(function() {
 			}
 		break;
 		case "step2":
-			$('.'+step).fadeOut('fast').hide();
-			$('.step3').fadeIn().show();
-			$('.step3-circle').animate({opacity: 0.3, opacity : 1}, 1000);
-			$('.next-button').hide();
-			$('.create-button').css('display','inline-block');
+			if ($('.check-song').length - $('.check-song:unchecked').length != 0) {
+				$('.'+step).fadeOut('fast').hide();
+				$('.step3').fadeIn().show();
+				$('.step3-circle').animate({opacity: 0.3, opacity : 1}, 1000);
+				$('.next-button').hide();
+				$('.create-button').css('display','inline-block');
+			};
 		break;
 		case "step3":
-			$('.'+step).fadeOut('fast').hide();
-			$('.step2').fadeIn().show();
-			$('.step2-circle').animate({opacity: 0.3, opacity : 1}, 1000);
+			if (true) {	
+				$('.'+step).fadeOut('fast').hide();
+				$('.step2').fadeIn().show();
+				$('.step2-circle').animate({opacity: 0.3, opacity : 1}, 1000);
+			};
 		break;
 	}
 });
@@ -75,7 +79,7 @@ $(".add-email-button").click(function(){
 function addEmail(){
 	var text = document.getElementById("add-email").value;	
 	$('.contacts-header').show();
-	$('#table-emails').append('<tr> <td><input type="checkbox" name="contacts[]" value="'+text+'" checked class="check"></td> <td><strong class="fn">'+text+'</strong></td></tr>');
+	$('#table-emails').append('<tr> <td><input type="checkbox" name="contacts[]" value="'+text+'" checked class="check-email"></td> <td><strong class="fn">'+text+'</strong></td></tr>');
 	
 	}
 function formatDate(dateIn){
@@ -88,4 +92,10 @@ function formatDate(dateIn){
 		format:"%Y-%m-%d-%H-%i"
 	});
 	return peluOut.format(date);
+}
+
+function validateAndSend(){
+	if ($('.check-email').length >= 1) {
+		$('#create-form').submit();
+	};
 }
