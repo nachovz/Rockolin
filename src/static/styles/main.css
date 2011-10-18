@@ -82,7 +82,7 @@ form label{
 
 .big-content{
 	background: no-repeat url("/static/images/background2.jpg");
-	background-position:center center;
+	background-position:center top;
 	max-width: 100%;
 	margin:auto;
 	overflow: hidden;
@@ -330,7 +330,7 @@ body:before {
 	//width: 90px;
 }
 .event-min-data li{
-	margin-top: 10px;
+	//margin-top: 10px;
 }
 .log-in-other{
 	float: left;
