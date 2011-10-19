@@ -185,7 +185,7 @@ class BaseHandler(RequestHandler, Jinja2Mixin):
         if '_continue' in self.session:
             url = self.session.pop('_continue')
         else:
-            url = '/'
+            url = '/auth/guest?event='+str(key)
 
         if not self.auth.user:
             url = '/auth/guest?event='+str(key)
