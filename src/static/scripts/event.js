@@ -61,6 +61,7 @@ $(document).ready(function(){
 	 	});
     });
     
+   
 });
 
 $("#jplayer_playlist ul").sortable();
@@ -76,6 +77,13 @@ function playSong(i){
 	{
 		mp3: mp3u
 	}).jPlayer("play");
+	 $.bind($.jPlayer.event.progress, function() {
+	  	$next_song.append('<img class="progress-circle" src="/static/images/progress.gif"/>');
+	});
+	/*if ($.jPlayer.event.waiting) {
+	}else{
+	$('.progress-circle').hide().remove();
+	}*/
 }
 
 function moveSong(clicked,index,sume,votes){
@@ -85,9 +93,9 @@ function moveSong(clicked,index,sume,votes){
 	
 	
 	if (sume < 1) {
-		if (index ==0 && $('.song-container:nth-child('+1+')') === clicked) {
+		/*if (index ==0 && $('.song-container:nth-child('+1+')') === clicked) {
 		
-		}else{ 
+		}else{ */
 			
 		var nextAll = clicked.nextUntil($('.song-container:nth-child('+(index+2)+')'));
 		
@@ -113,18 +121,18 @@ function moveSong(clicked,index,sume,votes){
 	      	clicked.css({'position': 'static', 'top': 0});
 	      	nextAll.css({'position': 'static', 'top': 0}); 
     	  }});
-    	}
+    	//}
 	}else{
 			var more = parseInt(clicked.children().children().siblings('.song-artist-info').children().children().html()) - more;
 
 		//previousAll for visual
 		//var previousAllV = clicked.prevUntil('li:nth-child('+(index)+')');
 		var temp = $('.song-container:nth-child('+1+')');
-		if (index == 0 && temp.children().children().siblings('.love-song').attr('rel') === clicked.children().children().siblings('.love-song').attr('rel') ) {
+		/*if (index == 0 && temp.children().children().siblings('.love-song').attr('rel') === clicked.children().children().siblings('.love-song').attr('rel') ) {
 			if(more >=2 ){
 			  	showPopover(clicked);
 			  }
-		}else{	
+		}else{	*/
 			var previousAll = clicked.prevUntil('.song-container:nth-child('+index+')');
 			
 			// top LI for VISUAL
@@ -155,10 +163,10 @@ function moveSong(clicked,index,sume,votes){
 			  clicked.css({'position': 'static', 'top': 0});
 			  previousAll.css({'position': 'static', 'top': 0});
 			  if(more >=2 ){
-			  	showPopover(clicked);
+			  	showPopover(clicked,more);
 			  }
 			}});
-		}
+		//}
     }
     
     
@@ -188,17 +196,22 @@ function formatDate(dateIn){
 	delayOut: 100,
 });*/
 
-function showPopover (argument) {
-  	$('.song-container').popover({
+function showPopover (argument,more) {
+  	argument.popover({
   		trigger: 'manual',
   		placement: 'left',
-  		title: function(){return popoverTitle();},
+  		title: function(){return popoverTitle(more);},
 		content: function(){return popoverText();}
   	});
-  	$('.song-container').popover('show');
+  	argument.popover('show');
+  	setTimeout(function(){
+    //do something special
+    argument.popover('hide');
+  	}, 3000);
+  	
 }
-function popoverTitle () {
-  return "Multi-Votes";
+function popoverTitle (more) {
+  return "X"+more;
 }
 function popoverText() {
 	return 'Someone else vote for this song too!';

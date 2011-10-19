@@ -494,7 +494,12 @@ input[type="file"]{
 .liked{
 	background-position: -4px -4px;
 }
-
+.popover .tittle{
+	color: #ffc010;
+}
+.popover .inner{
+	width: 190px;
+}
 
 /*CREATE EVENT CSS*/
 .yellow-circle{
@@ -540,3 +545,5 @@ div > .disabled{
 .AnyTime-hdr{
 	color: white;
 }
+
+
